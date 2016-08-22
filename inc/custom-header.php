@@ -12,33 +12,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Sample_Theme
+ * @package hypatia
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses sample_theme_header_style()
+ * @uses hypatia_header_style()
  */
-function sample_theme_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'sample_theme_custom_header_args', array(
+function hypatia_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'hypatia_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'sample_theme_header_style',
+		'wp-head-callback'       => 'hypatia_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'sample_theme_custom_header_setup' );
+add_action( 'after_setup_theme', 'hypatia_custom_header_setup' );
 
-if ( ! function_exists( 'sample_theme_header_style' ) ) :
+if ( ! function_exists( 'hypatia_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see sample_theme_custom_header_setup().
+ * @see hypatia_custom_header_setup().
  */
-function sample_theme_header_style() {
+function hypatia_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*

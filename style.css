@@ -44,6 +44,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+@import 'https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata:400,700|Playfair+Display:400,400i,700,700i';
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -224,11 +225,14 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
-  font-family: sans-serif;
+  color: #333;
+  font-family: 'Inconsolata', sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
+
+h1 {
+  font-family: 'Playfair Display'; }
 
 h1,
 h2,
@@ -294,12 +298,10 @@ html {
 *,
 *:before,
 *:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit; }
 
 body {
-  background: #fff;
-  /* Fallback for when there is no custom background color defined. */ }
+  background: rgba(0, 150, 200, 0.2); }
 
 blockquote:before,
 blockquote:after,
@@ -508,9 +510,9 @@ a:active {
 @media screen and (min-width: 37.5em) {
   .menu-toggle {
     display: none; }
+
   .main-navigation ul {
     display: block; } }
-
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {

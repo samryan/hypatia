@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Sample_Theme
+ * @package hypatia
  */
 
 get_header(); ?>

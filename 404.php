@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Sample_Theme
+ * @package hypatia
  */
 
 get_header(); ?>
@@ -26,7 +26,7 @@ get_header(); ?>
 						the_widget( 'WP_Widget_Recent_Posts' );
 
 						// Only show the widget if site has multiple categories.
-						if ( sample_theme_categorized_blog() ) :
+						if ( hypatia_categorized_blog() ) :
 					?>
 
 					<div class="widget widget_categories">
