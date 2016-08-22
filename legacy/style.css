@@ -1,0 +1,30 @@
+/*
+Theme Name: Hypatia
+Theme URI: http://samryan.net/
+Author: Sam Ryan
+Author URI: http://samryan.net/
+Template: toolbox
+Description: Wordpress theme for samryan.net
+Version: 0.1
+*/
+
+html, body {
+  font-family: "Alegreya Sans";
+  color: #232323;
+  background-color: #efefef;
+}
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: #109173;
+}
+#primary {
+  width: 100%;
+  max-width: 100%;
+  background-color: #D9CB9E;
+}
+#content {
+  width: 100%;
+  max-width: 100%;
+}
