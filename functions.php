@@ -20,9 +20,9 @@ function hypatia_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on Sample Theme, use a find and replace
-	 * to change 'sample-theme' to the name of your theme in all the template files.
+	 * to change 'hypatia' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'sample-theme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'hypatia', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function hypatia_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'sample-theme' ),
+		'primary' => esc_html__( 'Primary', 'hypatia' ),
 	) );
 
 	/*
@@ -87,9 +87,9 @@ add_action( 'after_setup_theme', 'hypatia_content_width', 0 );
  */
 function hypatia_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'sample-theme' ),
+		'name'          => esc_html__( 'Sidebar', 'hypatia' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'sample-theme' ),
+		'description'   => esc_html__( 'Add widgets here.', 'hypatia' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -102,11 +102,11 @@ add_action( 'widgets_init', 'hypatia_widgets_init' );
  * Enqueue scripts and styles.
  */
 function hypatia_scripts() {
-	wp_enqueue_style( 'sample-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'sample-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'hypatia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'sample-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'hypatia-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -135,6 +135,10 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Stop printing the default wp-emoji stuff in the <head> tag.
  */
-require get_template_directory() . '/inc/jetpack.php';
+
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
