@@ -404,27 +404,10 @@ a {
     list-style: none;
     margin: 0;
     padding-left: 0; }
-    .main-navigation ul ul {
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-      float: left;
-      position: absolute;
-      top: 1.5em;
-      left: -999em;
-      z-index: 99999; }
-      .main-navigation ul ul ul {
-        left: -999em;
-        top: 0; }
-      .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
-        left: 100%; }
-      .main-navigation ul ul a {
-        width: 200px; }
-    .main-navigation ul li:hover > ul,
-    .main-navigation ul li.focus > ul {
-      left: auto; }
-  .main-navigation li {
-    float: left;
-    position: relative; }
+  .main-navigation li:hover > a, .main-navigation li.focus > a {
+    text-decoration: underline; }
   .main-navigation a {
+    color: #fff;
     display: block;
     text-decoration: none; }
 
@@ -550,28 +533,57 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
-.sticky {
-  display: block; }
+#page {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: 100vh; }
+  #page header.header {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+    padding: 0 1rem;
+    text-align: right;
+    background-color: #07255a;
+    z-index: 1; }
+    #page header.header:last-child {
+      margin-right: 0; }
+    #page header.header:after {
+      content: " ";
+      height: 100%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      padding: 0 1rem;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #07255a;
+      z-index: -1; }
+      #page header.header:after:last-child {
+        margin-right: 0; }
+  #page .content {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%;
+    max-width: 60rem;
+    overflow: scroll;
+    margin-right: 0; }
+    #page .content:last-child {
+      margin-right: 0; }
+    #page .content:after {
+      height: 100%;
+      display: block; }
 
-.hentry {
-  margin: 0 0 1.5em; }
-
-.byline,
-.updated:not(.published) {
-  display: none; }
-
-.single .byline,
-.group-blog .byline {
-  display: inline; }
-
-.page-content,
-.entry-content,
-.entry-summary {
-  margin: 1.5em 0 0; }
-
-.page-links {
-  clear: both;
-  margin: 0 0 1.5em; }
+.site-footer {
+  margin-top: 20rem; }
 
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .posts-navigation,

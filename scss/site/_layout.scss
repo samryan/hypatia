@@ -1,28 +1,29 @@
-.sticky {
-	display: block;
+#page {
+  @include row(table);
+  position: relative;
+  $mobile: new-breakpoint(max-width 500px 4);
+  header.header {
+    @include pad(0 2rem 0 0);
+    @include span-columns (3,table);
+    background-color: $color__background-menu;
+    text-align: right;
+    position: fixed;
+    height: 99999px;
+    @include media($mobile) {
+      @include row();
+      position: relative;
+      height: auto;
+      text-align: center;
+    }
+  }
+  .content {
+    @include pad(0 0 0 1rem);
+    @include span-columns (9,table);
+    @include omega();
+    max-width: 700px !important;
+  }
 }
 
-.hentry {
-	margin: 0 0 1.5em;
-}
-
-.byline,
-.updated:not(.published){
-	display: none;
-}
-
-.single .byline,
-.group-blog .byline {
-	display: inline;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
-}
-
-.page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+.site-footer {
+  margin-top: 20rem;
 }
