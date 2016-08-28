@@ -20,7 +20,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Eczar:500,600,700';
 html {
   box-sizing: border-box; }
 
@@ -212,7 +212,10 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Playfair Display", Georgia, serif; }
+  font-family: "Inconsolata", Consolas, "Andale Mono", monospace; }
+
+h1 {
+  font-size: 22px; }
 
 p {
   margin-bottom: 1.5em; }
@@ -262,7 +265,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: rgba(0, 150, 200, 0.25); }
+  background: rgba(0, 150, 200, 0.2); }
 
 blockquote, q {
   quotes: "" ""; }
@@ -562,7 +565,7 @@ a {
     padding: 0 2rem 0 0;
     display: table-cell;
     width: 25%;
-    background-color: #07255a;
+    background-color: rgba(7, 37, 90, 0.8);
     text-align: right;
     position: fixed;
     height: 99999px; }

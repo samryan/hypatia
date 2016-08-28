@@ -1,7 +1,7 @@
-@import 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Eczar:500,600,700';
 
 $font__main: "Inconsolata", Consolas, "Andale Mono", monospace;
-$font__headings: "Playfair Display", Georgia, serif;
+$font__headings: $font__main;
 $font__code: "Inconsolata", Consolas, "Andale Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__line-height-body: 1.5;
