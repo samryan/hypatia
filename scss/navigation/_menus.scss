@@ -40,6 +40,18 @@
   }
 }
 
+input[type=search] {
+  max-width: 100%;
+  font-family: $font__main;
+  background-color: transparent;
+  border-width: 0px;
+  text-align: right;
+  color: #fff !important;
+  @include placeholder {
+    color: #fff;
+  }
+}
+
 .comment-navigation,
 .posts-navigation,
 .post-navigation {

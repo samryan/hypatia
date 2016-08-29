@@ -16,13 +16,6 @@ if ( ! function_exists( 'hypatia_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function hypatia_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Sample Theme, use a find and replace
-	 * to change 'hypatia' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'hypatia', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -69,18 +62,6 @@ endif;
 add_action( 'after_setup_theme', 'hypatia_setup' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function hypatia_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'hypatia_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'hypatia_content_width', 0 );
-
-/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -117,16 +98,9 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-
 
 /**
  * Stop printing non-useful wordpress stuff in the <head> tag.
