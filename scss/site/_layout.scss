@@ -1,29 +1,37 @@
 #page {
   @include row(table);
   position: relative;
-  $mobile: new-breakpoint(max-width 500px 4);
   header.header {
-    @include pad(0 2rem 0 0);
-    @include span-columns (3,table);
     background-color: $color__background-menu;
-    text-align: right;
-    position: fixed;
-    height: 99999px;
-    @include media($mobile) {
-      @include row();
-      position: relative;
-      height: auto;
-      text-align: center;
+    .site-title {
+      margin: 0;
+    }
+    text-align: center;
+    @include media($screen-sm-min) {
+      @include pad(0 2rem 0 0);
+      @include span-columns (3,table);
+      background-color: $color__background-menu;
+      text-align: right;
+      position: fixed;
+      height: 99999px;
+      .site-title {
+        margin: 0.95rem 0 2.7rem 0;
+      }
     }
   }
   .content {
-    @include pad(0 0 0 1rem);
-    @include span-columns (9,table);
-    @include omega();
-    max-width: 700px !important;
+    @include pad(0 1rem);
+    @include media($screen-sm-min) {
+      @include pad(0 0 0 1rem);
+      @include span-columns (9,table);
+      @include omega();
+      .content-area {
+        max-width: 700px !important;
+      }
+    }
   }
 }
 
 .site-footer {
   margin-top: 20rem;
-}
+} 
