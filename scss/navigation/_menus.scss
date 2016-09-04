@@ -41,16 +41,44 @@
 }
 
 input[type=search] {
-  max-width: 100%;
   font-family: $font__main;
   background-color: transparent;
   border-width: 0px;
-  text-align: right;
   color: #fff !important;
+  text-align: center;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    font-size: 120%;
+    padding: 0.2rem;
+  }
   @include placeholder {
     color: #fff;
+    transition: opacity 0.3s ease-in-out;
+  }
+  @include media($screen-sm-min) {
+    text-align: right;
+    max-width: 90%;
+    padding: 0;
   }
 }
+
+input[type=search]:hover::-webkit-input-placeholder { text-decoration: underline; }
+input[type=search]:hover:-moz-placeholder { text-decoration: underline; }
+input[type=search]:hover::-moz-placeholder { text-decoration: underline; }
+input[type=search]:hover:-ms-input-placeholder { text-decoration: underline; }
+input[type=search]:hover::-ms-input-placeholder { text-decoration: underline; }
+
+
+input[type=search]:focus::-webkit-input-placeholder { opacity: 0; }
+input[type=search]:focus:-moz-placeholder { opacity: 0; }
+input[type=search]:focus::-moz-placeholder { opacity: 0; }
+input[type=search]:focus:-ms-input-placeholder { opacity: 0; }
+input[type=search]:focus::-ms-input-placeholder { opacity: 0; }
+ 
 
 .comment-navigation,
 .posts-navigation,

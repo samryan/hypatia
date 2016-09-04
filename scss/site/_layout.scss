@@ -7,6 +7,7 @@
       margin: 0;
     }
     text-align: center;
+    padding-bottom: 1rem;
     @include media($screen-sm-min) {
       @include pad(0 2rem 0 0);
       @include span-columns (3,table);
@@ -22,7 +23,7 @@
   .content {
     @include pad(0 1rem);
     @include media($screen-sm-min) {
-      @include pad(0 0 0 1rem);
+      @include pad(0 1rem);
       @include span-columns (9,table);
       @include omega();
       .content-area {
@@ -30,6 +31,11 @@
       }
     }
   }
+}
+
+.break-padding {
+  @include margin(0 -1rem);
+  max-width: 100%;
 }
 
 .site-footer {

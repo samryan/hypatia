@@ -133,7 +133,6 @@ function remove_wp_junk() {
   add_filter('the_generator', '__return_false');
   add_filter('emoji_svg_url', '__return_false');
   add_filter('embed_oembed_discover', '__return_false');
-  add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
   add_filter('json_enabled', '__return_false');
   add_filter('json_jsonp_enabled', '__return_false');
   add_filter('rest_enabled', '__return_false');
