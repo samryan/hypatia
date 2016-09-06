@@ -1,0 +1,44 @@
+.books header {
+  margin: 0 -1rem 0 -1rem;
+  width: auto;  
+  .book-cover {
+    @include row(table);
+    @include pad(2rem);
+    position: relative;
+    .book-data {
+      @include span-columns(7, table);
+      @include pad(0 1rem 0 1rem);
+      @include omega();
+      vertical-align: middle;
+      h1, h2 {
+        color: #fff;
+        display: inline-block;
+        float: left;
+        clear: both;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+      }
+      h1 {
+        font-size: 160%;
+        background-color: rgba(0,0,0,0.8);
+        -webkit-transform: rotate(2deg);
+      }
+      h2 {
+        margin-top: 1rem;
+        font-size: 120%;
+        background-color: rgba(0,0,0,0.6);
+        -webkit-transform: rotate(-1deg);
+      }
+    }
+    a {
+      @include span-columns(5, table);
+      @include pad(1rem);
+      img {
+        @include box-shadow(
+          0 1px 8px rgba(0,0,0,0.3)
+        );
+      }
+    }
+  }
+}
