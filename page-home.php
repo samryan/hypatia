@@ -18,27 +18,24 @@ get_header(); ?>
         <main id="main" class="site-main" role="main">
           <section class="home intro">
           </section>
+          <h3>Projects</h3>
           <section class="home projects">
-            <h3>Projects</h3>
           </section>
+          <h3>Recently read</h3>
           <section class="home books">
-            <h3>Recently read</h3>
-            <ul>
             <?php
-              $args = array( 'posts_per_page' => 5, 'post_type' => 'books' );
+              $args = array( 'posts_per_page' => 15, 'post_type' => 'books' );
               $myposts = get_posts( $args );
               foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
-
-              <li class="book_cover">
-                <a href="<?php the_permalink(); ?>">
-                  <?php the_post_thumbnail(); ?><br>
-                  <span class="title"><?php the_title() ?></span>
-                  <span class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></span>
-                </a>
-              </li>
+              <a href="<?php the_permalink(); ?>" class="book-cover">
+                <div class="img-container"><?php the_post_thumbnail(); ?></div>
+                <div class="metadata">
+                  <div class="title"><?php the_title() ?></div>
+                  <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
+                </div>
+              </a>
             <?php endforeach;
             wp_reset_postdata();?>
-            </ul>
           </section>
         </main>
       </div>

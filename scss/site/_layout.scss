@@ -43,16 +43,43 @@
 } 
 
 .home.books {
-  @include clearfix();
   @include fill-parent();
-  ul {
-    list-style: none;
-    padding: 0;
-    li {
-      float: left;
-      display: inline-block;
-      width: 25%;
-      margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    width: 50%;
+    @include media($screen-sm-min) {
+      width: 33%;
     }
+    font-size: 90%;
+    line-height: 1.2;
+    margin-top: 2rem;
+    text-decoration: none;
+    .img-container {
+      width: 100%;
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
+      img {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60%;
+        margin-bottom: 0.5rem;
+        transition: opacity 0.15s ease-in;
+        -webkit-transition: opacity 0.15s ease-in;
+        -moz-transition: opacity 0.15s ease-in;
+        -ms-transition: opacity 0.15s ease-in;
+        @include box-shadow(
+          0 1px 3px rgba(0,0,0,0.3)
+        );
+      }
+    }
+    .title {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      padding-right: 2rem;
+    }      
   }
 }
