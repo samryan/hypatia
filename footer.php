@@ -18,9 +18,13 @@
   </div>
 </div>
 <?php wp_footer(); ?>
-
-<!--     BENE LEGERE SAECLA VINCERE     -->
-<!-- to read well is to master the ages -->
+<script>
+  window.addEventListener('load', function(){ Grade(document.querySelectorAll('.grade')); });
+  var navigation = responsiveNav("site-navigation", {customToggle: ".nav-toggle"});
+</script>
+<!--
+BENE LEGERE SAECLA VINCERE
+-->
 
 </body>
 </html>

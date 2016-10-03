@@ -1,5 +1,5 @@
 .books header {
-  margin: 0 -1rem 0 -1rem;
+  margin: 0 -2rem;
   width: auto;  
   .book-cover {
     @include row(table);
@@ -9,6 +9,9 @@
       @include span-columns(7, table);
       @include pad(0 1rem 0 1rem);
       @include omega();
+      @include media($screen-sm-max) {
+        font-size: 80%;
+      }
       vertical-align: middle;
       h1, h2 {
         color: #fff;
@@ -23,12 +26,18 @@
         font-size: 160%;
         background-color: rgba(0,0,0,0.8);
         -webkit-transform: rotate(2deg);
+        @include media($screen-sm-max) {
+          -webkit-transform: rotate(1deg);
+        }
       }
       h2 {
         margin-top: 1rem;
         font-size: 120%;
         background-color: rgba(0,0,0,0.6);
         -webkit-transform: rotate(-1deg);
+        @include media($screen-sm-max) {
+          -webkit-transform: rotate(0);
+        }
       }
     }
     a {
@@ -39,6 +48,25 @@
           0 1px 8px rgba(0,0,0,0.3)
         );
       }
+    }
+  }
+}
+
+.books .stars {}
+.books ul.book_links {
+  @include margin(1rem 0);
+  list-style: none;
+  padding: 0;
+  li {
+  padding: 0;
+    display: block;
+    a {
+      color: $color__text-main;
+      text-decoration: none;
+      border: 1px solid $color__text-main;
+      border-radius: 3px;
+      @include pad(0.5rem 1rem);
+      @include margin(1rem 1rem 1rem 0);
     }
   }
 }

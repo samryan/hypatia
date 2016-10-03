@@ -1,62 +1,138 @@
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  @include media($screen-sm-max) {
+  overflow: hidden;
+  }
+  zoom: 1;
+}
+
+.nav-collapse.opened {
+  max-height: 9999px;
+}
+
+.nav-collapse {
+  background-color: $color__background-menu;
+}
+
+.nav-toggle {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  @include user-select(none);
+  text-decoration: none;
+  text-indent: -999px;
+  position: absolute;
+  overflow: hidden;
+  width: 50px;
+  height: 55px;
+  display: block;
+  top: 0;
+  left: 0;
+}
+.nav-toggle:before {
+  color: $color__link-menu;
+  font-family: "responsivenav";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-size: 28px;
+  text-transform: none;
+  position: absolute;
+  content: "\2261";
+  text-indent: 0;
+  text-align: center;
+  line-height: 48px;
+  speak: none;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.nav-toggle.active:before {
+  font-size: 24px;
+  content: "\78";
+}
+
+@include media($screen-sm-min) {
+  .js .nav-collapse {
+    position: relative;
+  }
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@mixin active-menu {
+  font-weight: bold;
+  &:hover {
+   text-decoration: none;
+  }
+  @include media($screen-sm-min) {
+    &:after {
+      content: " ▸";
+      margin-right: -1rem;
+    }
+  }
+}
+
+
 .main-navigation {
+  font-family: $font__menu;
 	clear: both;
 	display: block;
 	float: left;
 	width: 100%;
-
 	ul {
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
 	}
-
 	li {
+	  @include font-size(1);
 		&:hover > a,
 		&.focus > a {
 		  text-decoration: underline; 
 		}
 	}
-
 	a {
-		color: #fff;
+		color: $color__link-menu;
 		display: block;
 		text-decoration: none;
 	}
-
-	.current_page_item > a,
+	.current-page-item > a,
 	.current-menu-item > a,
-	.current_page_ancestor > a,
+	.current-page-ancestor > a,
 	.current-menu-ancestor > a {
-	  font-weight: bold;
-    &:hover {
-      text-decoration: none;
-    }
-    @include media($screen-sm-min) {
-      &:after {
-        content: " ▸";
-        margin-right: -1rem;
-      }
-  	}
+	  @include active-menu;
   }
 }
 
+.single-books #menu-item-1039 > a {
+  @include active-menu;
+} 
+
 header.header {
-    input[type=search] {
-    font-family: $font__main;
+  input[type=search] {
+	  font-family: $font__menu;
+	  @include font-size(1);
     background-color: transparent;
     border-width: 0px;
-    color: #fff !important;
+    color: $color__link-menu !important;
     text-align: center;
     padding: 0;
+    margin-bottom: 1rem;
     transition: all 0.3s ease-in-out;
     &:hover {
       cursor: pointer;
       text-decoration: underline;
     }
-    &:focus {
-    }
     @include placeholder {
-      color: #fff;
+      color: $color__link-menu;
       transition: opacity 0.3s ease-in-out;
     }
     @include media($screen-sm-min) {
@@ -72,7 +148,6 @@ header.header {
   input[type=search]:hover:-ms-input-placeholder { text-decoration: underline; }
   input[type=search]:hover::-ms-input-placeholder { text-decoration: underline; }
 
-
   input[type=search]:focus::-webkit-input-placeholder { opacity: 0; }
   input[type=search]:focus:-moz-placeholder { opacity: 0; }
   input[type=search]:focus::-moz-placeholder { opacity: 0; }
@@ -84,7 +159,7 @@ header.header {
 body.search header.header form[role=search] {
   font-weight: bold;
   &:before {
-    color: #fff;
+    color: $color__link-menu;
     font-size: 90%;
     content: "search for: ";
   }
@@ -93,17 +168,14 @@ body.search header.header form[role=search] {
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
-
 	.site-main & {
 		margin: 0 0 1.5em;
 		overflow: hidden;
 	}
-
 	.nav-previous {
 		float: left;
 		width: 50%;
 	}
-
 	.nav-next {
 		float: right;
 		text-align: right;

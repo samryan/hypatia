@@ -20,13 +20,19 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Eczar:500,600,700';
+@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700|Alegreya:400,400i,700,700i';
 html {
   box-sizing: border-box; }
 
 *, *::after, *::before {
   box-sizing: inherit; }
 
+@font-face {
+  font-family: "responsivenav";
+  src: url("./icons/responsivenav.eot");
+  src: url("./icons/responsivenav.eot?#iefix") format("embedded-opentype"), url("./icons/responsivenav.ttf") format("truetype"), url("./icons/responsivenav.woff") format("woff"), url("./icons/responsivenav.svg#responsivenav") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -210,18 +216,23 @@ button,
 input,
 select,
 textarea {
-  color: #07255a;
-  font-family: "Inconsolata", Consolas, "Andale Mono", monospace;
-  font-size: 16px;
-  font-size: 1rem;
+  color: #eeeeee;
+  font-family: "Alegreya", Georgia, sans-serif;
+  font-size: 17.6px;
+  font-size: 1.1rem;
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Inconsolata", Consolas, "Andale Mono", monospace; }
+  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif; }
 
 h1 {
-  font-size: 22px; }
+  font-size: 28.8px;
+  font-size: 1.8rem; }
+
+h2 {
+  font-size: 24px;
+  font-size: 1.5rem; }
 
 p {
   margin-bottom: 1.5em; }
@@ -237,7 +248,7 @@ address {
 
 pre {
   background: #eeeeee;
-  font-family: "Courier 10 Pitch", Courier, monospace;
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 15px;
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -247,7 +258,7 @@ pre {
   padding: 1.6em; }
 
 code, kbd, tt, var {
-  font-family: "Inconsolata", Consolas, "Andale Mono", monospace;
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 15px;
   font-size: 0.9375rem; }
 
@@ -256,7 +267,7 @@ abbr, acronym {
   cursor: help; }
 
 mark, ins {
-  background: #fff9c0;
+  background: #3a3c83;
   text-decoration: none; }
 
 big {
@@ -271,7 +282,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: white; }
+  background: #444444; }
 
 blockquote, q {
   quotes: "" ""; }
@@ -387,28 +398,106 @@ select {
 textarea {
   width: 100%; }
 
-.site-title a {
-  color: #fff;
-  text-decoration: none; }
-  .site-title a:active, .site-title a:visited, .site-title a:hover {
-    color: #fff; }
+.site-title {
+  font-family: "Alegreya", Georgia, sans-serif;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 2;
+  margin: 0; }
+  @media screen and (min-width: 600px) {
+    .site-title {
+      line-height: 1;
+      font-size: 28.8px;
+      font-size: 1.8rem;
+      margin: 8rem 0 3rem 0; } }
+  .site-title a {
+    color: #fff;
+    text-decoration: none; }
+    .site-title a:active, .site-title a:visited, .site-title a:hover {
+      color: #fff; }
 
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: #ff8181; }
   a:visited {
-    color: purple; }
+    color: #ff8181; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #eeeeee; }
   a:hover, a:active {
     outline: 0; }
 
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  zoom: 1; }
+  @media screen and (max-width: 600px) {
+    .js .nav-collapse {
+      overflow: hidden; } }
+
+.nav-collapse.opened {
+  max-height: 9999px; }
+
+.nav-collapse {
+  background-color: #333333; }
+
+.nav-toggle {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  text-indent: -999px;
+  position: absolute;
+  overflow: hidden;
+  width: 50px;
+  height: 55px;
+  display: block;
+  top: 0;
+  left: 0; }
+
+.nav-toggle:before {
+  color: #eeeeee;
+  font-family: "responsivenav";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-size: 28px;
+  text-transform: none;
+  position: absolute;
+  content: "\2261";
+  text-indent: 0;
+  text-align: center;
+  line-height: 48px;
+  speak: none;
+  width: 100%;
+  top: 0;
+  left: 0; }
+
+.nav-toggle.active:before {
+  font-size: 24px;
+  content: "\78"; }
+
+@media screen and (min-width: 600px) {
+  .js .nav-collapse {
+    position: relative; }
+
+  .js .nav-collapse.closed {
+    max-height: none; }
+
+  .nav-toggle {
+    display: none; } }
 .main-navigation {
+  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
   clear: both;
   display: block;
   float: left;
@@ -417,52 +506,67 @@ a {
     list-style: none;
     margin: 0;
     padding-left: 0; }
-  .main-navigation li:hover > a, .main-navigation li.focus > a {
-    text-decoration: underline; }
+  .main-navigation li {
+    font-size: 16px;
+    font-size: 1rem; }
+    .main-navigation li:hover > a, .main-navigation li.focus > a {
+      text-decoration: underline; }
   .main-navigation a {
-    color: #fff;
+    color: #eeeeee;
     display: block;
     text-decoration: none; }
-  .main-navigation .current_page_item > a,
+  .main-navigation .current-page-item > a,
   .main-navigation .current-menu-item > a,
-  .main-navigation .current_page_ancestor > a,
+  .main-navigation .current-page-ancestor > a,
   .main-navigation .current-menu-ancestor > a {
     font-weight: bold; }
-    .main-navigation .current_page_item > a:hover,
+    .main-navigation .current-page-item > a:hover,
     .main-navigation .current-menu-item > a:hover,
-    .main-navigation .current_page_ancestor > a:hover,
+    .main-navigation .current-page-ancestor > a:hover,
     .main-navigation .current-menu-ancestor > a:hover {
       text-decoration: none; }
     @media screen and (min-width: 600px) {
-      .main-navigation .current_page_item > a:after,
+      .main-navigation .current-page-item > a:after,
       .main-navigation .current-menu-item > a:after,
-      .main-navigation .current_page_ancestor > a:after,
+      .main-navigation .current-page-ancestor > a:after,
       .main-navigation .current-menu-ancestor > a:after {
         content: " ▸";
         margin-right: -1rem; } }
 
+.single-books #menu-item-1039 > a {
+  font-weight: bold; }
+  .single-books #menu-item-1039 > a:hover {
+    text-decoration: none; }
+  @media screen and (min-width: 600px) {
+    .single-books #menu-item-1039 > a:after {
+      content: " ▸";
+      margin-right: -1rem; } }
+
 header.header input[type=search] {
-  font-family: "Inconsolata", Consolas, "Andale Mono", monospace;
+  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
   background-color: transparent;
   border-width: 0px;
-  color: #fff !important;
+  color: #eeeeee !important;
   text-align: center;
   padding: 0;
+  margin-bottom: 1rem;
   transition: all 0.3s ease-in-out; }
   header.header input[type=search]:hover {
     cursor: pointer;
     text-decoration: underline; }
   header.header input[type=search]::-webkit-input-placeholder {
-    color: #fff;
+    color: #eeeeee;
     transition: opacity 0.3s ease-in-out; }
   header.header input[type=search]::-moz-placeholder {
-    color: #fff;
+    color: #eeeeee;
     transition: opacity 0.3s ease-in-out; }
   header.header input[type=search]:-moz-placeholder {
-    color: #fff;
+    color: #eeeeee;
     transition: opacity 0.3s ease-in-out; }
   header.header input[type=search]:-ms-input-placeholder {
-    color: #fff;
+    color: #eeeeee;
     transition: opacity 0.3s ease-in-out; }
   @media screen and (min-width: 600px) {
     header.header input[type=search] {
@@ -493,7 +597,7 @@ header.header input[type=search]:focus::-ms-input-placeholder {
 body.search header.header form[role=search] {
   font-weight: bold; }
   body.search header.header form[role=search]:before {
-    color: #fff;
+    color: #eeeeee;
     font-size: 90%;
     content: "search for: "; }
 
@@ -522,11 +626,11 @@ body.search header.header form[role=search] {
   width: 1px;
   overflow: hidden; }
   .screen-reader-text:focus {
-    background-color: #f1f1f1;
+    background-color: #3a3c83;
     border-radius: 3px;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
     clip: auto !important;
-    color: #07255a;
+    color: #eeeeee;
     display: block;
     font-size: 14px;
     font-size: 0.875rem;
@@ -617,8 +721,6 @@ body.search header.header form[role=search] {
     background-color: #333333;
     text-align: center;
     padding-bottom: 1rem; }
-    #page header.header .site-title {
-      margin: 0; }
     @media screen and (min-width: 600px) {
       #page header.header {
         padding: 0 2rem 0 0;
@@ -627,14 +729,12 @@ body.search header.header form[role=search] {
         background-color: #333333;
         text-align: right;
         position: fixed;
-        height: 99999px; }
-        #page header.header .site-title {
-          margin: 0.95rem 0 2.7rem 0; } }
+        height: 99999px; } }
   #page .content {
     padding: 0 1rem; }
     @media screen and (min-width: 600px) {
       #page .content {
-        padding: 0 1rem;
+        padding: 0 2rem;
         display: table-cell;
         width: 75%;
         margin-right: 0; }
@@ -655,7 +755,7 @@ body.search header.header form[role=search] {
   .home.books a {
     width: 50%;
     font-size: 90%;
-    line-height: 1.2;
+    line-height: 1.3;
     margin-top: 2rem;
     text-decoration: none; }
     @media screen and (min-width: 600px) {
@@ -665,7 +765,8 @@ body.search header.header form[role=search] {
       width: 100%;
       position: relative;
       height: 0;
-      padding-bottom: 100%; }
+      padding-bottom: 100%;
+      display: none; }
       .home.books a .img-container img {
         display: block;
         position: absolute;
@@ -681,12 +782,20 @@ body.search header.header form[role=search] {
         -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
     .home.books a .title {
-      font-weight: bold;
+      border-top: 1px solid #eeeeee;
+      padding-top: 1rem;
+      font-style: italic;
       margin-bottom: 0.2rem;
-      padding-right: 2rem; }
+      margin-right: 2rem; }
+    .home.books a .author {
+      margin-right: 2rem; }
+    .home.books a .rating {
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      display: none; }
 
 .books header {
-  margin: 0 -1rem 0 -1rem;
+  margin: 0 -2rem;
   width: auto; }
   .books header .book-cover {
     display: table;
@@ -700,6 +809,9 @@ body.search header.header form[role=search] {
       padding: 0 1rem 0 1rem;
       margin-right: 0;
       vertical-align: middle; }
+      @media screen and (max-width: 600px) {
+        .books header .book-cover .book-data {
+          font-size: 80%; } }
       .books header .book-cover .book-data h1, .books header .book-cover .book-data h2 {
         color: #fff;
         display: inline-block;
@@ -712,11 +824,17 @@ body.search header.header form[role=search] {
         font-size: 160%;
         background-color: rgba(0, 0, 0, 0.8);
         -webkit-transform: rotate(2deg); }
+        @media screen and (max-width: 600px) {
+          .books header .book-cover .book-data h1 {
+            -webkit-transform: rotate(1deg); } }
       .books header .book-cover .book-data h2 {
         margin-top: 1rem;
         font-size: 120%;
         background-color: rgba(0, 0, 0, 0.6);
         -webkit-transform: rotate(-1deg); }
+        @media screen and (max-width: 600px) {
+          .books header .book-cover .book-data h2 {
+            -webkit-transform: rotate(0); } }
     .books header .book-cover a {
       display: table-cell;
       width: 41.66667%;
@@ -725,6 +843,21 @@ body.search header.header form[role=search] {
         -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
+
+.books ul.book_links {
+  margin: 1rem 0;
+  list-style: none;
+  padding: 0; }
+  .books ul.book_links li {
+    padding: 0;
+    display: block; }
+    .books ul.book_links li a {
+      color: #eeeeee;
+      text-decoration: none;
+      border: 1px solid #eeeeee;
+      border-radius: 3px;
+      padding: 0.5rem 1rem;
+      margin: 1rem 1rem 1rem 0; }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,

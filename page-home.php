@@ -21,7 +21,7 @@ get_header(); ?>
           <h3>Projects</h3>
           <section class="home projects">
           </section>
-          <h3>Recently read</h3>
+          <h3>Recently finished books</h3>
           <section class="home books">
             <?php
               $args = array( 'posts_per_page' => 15, 'post_type' => 'books' );
@@ -32,6 +32,7 @@ get_header(); ?>
                 <div class="metadata">
                   <div class="title"><?php the_title() ?></div>
                   <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
+                  <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
                 </div>
               </a>
             <?php endforeach;

@@ -19,9 +19,6 @@
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php hypatia_posted_on(); ?>
-		</div>
 		<?php
 		endif; ?>
 	</header>
@@ -41,7 +38,4 @@
 		?>
 	</div>
 
-	<footer class="entry-footer">
-		<?php hypatia_entry_footer(); ?>
-	</footer>
 </article>
