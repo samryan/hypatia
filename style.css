@@ -734,7 +734,7 @@ body.search header.header form[role=search] {
     padding: 0 1rem; }
     @media screen and (min-width: 600px) {
       #page .content {
-        padding: 0 2rem;
+        padding: 4.5rem 2rem;
         display: table-cell;
         width: 75%;
         margin-right: 0; }
@@ -819,22 +819,30 @@ body.search header.header form[role=search] {
         clear: both;
         margin: 0;
         padding: 0.5rem 1rem;
-        border-radius: 4px; }
+        font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+        font-weight: normal;
+        /*
+        border-radius: 4px;
+        */ }
       .books header .book-cover .book-data h1 {
         font-size: 160%;
         background-color: rgba(0, 0, 0, 0.8);
-        -webkit-transform: rotate(2deg); }
-        @media screen and (max-width: 600px) {
-          .books header .book-cover .book-data h1 {
-            -webkit-transform: rotate(1deg); } }
+        /*
+        -webkit-transform: rotate(2deg);
+        @include media($screen-sm-max) {
+          -webkit-transform: rotate(1deg);
+        }
+        */ }
       .books header .book-cover .book-data h2 {
         margin-top: 1rem;
         font-size: 120%;
         background-color: rgba(0, 0, 0, 0.6);
-        -webkit-transform: rotate(-1deg); }
-        @media screen and (max-width: 600px) {
-          .books header .book-cover .book-data h2 {
-            -webkit-transform: rotate(0); } }
+        /*
+        -webkit-transform: rotate(-1deg);
+        @include media($screen-sm-max) {
+          -webkit-transform: rotate(0);
+        }
+        */ }
     .books header .book-cover a {
       display: table-cell;
       width: 41.66667%;

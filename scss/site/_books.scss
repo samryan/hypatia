@@ -1,6 +1,6 @@
 .books header {
   margin: 0 -2rem;
-  width: auto;  
+  width: auto;
   .book-cover {
     @include row(table);
     @include pad(2rem);
@@ -20,24 +20,32 @@
         clear: both;
         margin: 0;
         padding: 0.5rem 1rem;
+        font-family: $font__pre;
+        font-weight: normal;
+        /*
         border-radius: 4px;
+        */
       }
       h1 {
         font-size: 160%;
         background-color: rgba(0,0,0,0.8);
+        /*
         -webkit-transform: rotate(2deg);
         @include media($screen-sm-max) {
           -webkit-transform: rotate(1deg);
         }
+        */
       }
       h2 {
         margin-top: 1rem;
         font-size: 120%;
         background-color: rgba(0,0,0,0.6);
+        /*
         -webkit-transform: rotate(-1deg);
         @include media($screen-sm-max) {
           -webkit-transform: rotate(0);
         }
+        */
       }
     }
     a {
