@@ -1,8 +1,8 @@
-@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700|Alegreya:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i|Inconsolata:400,700';
 $font__main: "Alegreya", Georgia, sans-serif;
 $font__title: $font__main;
-$font__headings: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
-$font__menu: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
+$font__headings: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+$font__menu: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
 $font__code: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
 $font__pre: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
 $font__line-height-body: 1.5;

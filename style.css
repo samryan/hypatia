@@ -20,7 +20,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700|Alegreya:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i|Inconsolata:400,700';
 html {
   box-sizing: border-box; }
 
@@ -224,11 +224,13 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif; }
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-weight: normal; }
 
 h1 {
   font-size: 28.8px;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  font-weight: bold; }
 
 h2 {
   font-size: 24px;
@@ -497,7 +499,7 @@ a {
   .nav-toggle {
     display: none; } }
 .main-navigation {
-  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   clear: both;
   display: block;
   float: left;
@@ -543,7 +545,7 @@ a {
       margin-right: -0.6rem; } }
 
 header.header input[type=search] {
-  font-family: "Alegreya Sans", "Trebuchet MS", Arial, sans-serif;
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 16px;
   font-size: 1rem;
   background-color: transparent;
@@ -820,29 +822,14 @@ body.search header.header form[role=search] {
         margin: 0;
         padding: 0.5rem 1rem;
         font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-        font-weight: normal;
-        /*
-        border-radius: 4px;
-        */ }
+        font-weight: normal; }
       .books header .book-cover .book-data h1 {
         font-size: 160%;
-        background-color: rgba(0, 0, 0, 0.8);
-        /*
-        -webkit-transform: rotate(2deg);
-        @include media($screen-sm-max) {
-          -webkit-transform: rotate(1deg);
-        }
-        */ }
+        background-color: rgba(0, 0, 0, 0.8); }
       .books header .book-cover .book-data h2 {
         margin-top: 1rem;
         font-size: 120%;
-        background-color: rgba(0, 0, 0, 0.6);
-        /*
-        -webkit-transform: rotate(-1deg);
-        @include media($screen-sm-max) {
-          -webkit-transform: rotate(0);
-        }
-        */ }
+        background-color: rgba(0, 0, 0, 0.6); }
     .books header .book-cover a {
       display: table-cell;
       width: 41.66667%;
