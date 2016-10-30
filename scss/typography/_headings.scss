@@ -5,16 +5,31 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 4rem;
 }
 
+.site-title {
+  font-family: $font__logo;
+  @include font-size(1.5);
+  line-height: 2;
+  margin: 0;
+  @include media($screen-sm-min) {
+    line-height: 1;
+    @include font-size(1.5);
+    margin: 6rem 0 3rem 0;
+  }
+  a {
+    color: $color__logo;
+    text-decoration: none;
+    &:active,
+    &:visited,
+    &:hover {
+      color: $color__logo;
+    }
+  }
+}
+
 h1 {
 	@include font-size(1.8);
-	font-weight: bold;
 }
 
 h2 {
 	@include font-size(1.5);
-}
-
-h2.entry-title {
-	background-color: rgba(0,0,0,0.9);
-	@include pad(0.5rem 1rem);
 }

@@ -5,7 +5,7 @@
     <h3>Projects</h3>
     <section class="home projects">
       <?php
-        $mypages = get_pages( array( 'child_of' => '193', 'sort_column' => 'post_title', 'sort_order' => 'desc' ) ); // get pages underneath the Projects page (193 in my site's db)
+        $mypages = get_pages( array( 'child_of' => '193', 'post_tag' => 'featured', 'sort_column' => 'post_title', 'sort_order' => 'desc' ) ); // get pages underneath the Projects page (193 in my site's db)
         foreach( $mypages as $page ) {		
           $content = $page->post_content;
           if ( ! $content )

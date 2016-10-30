@@ -1,24 +1,3 @@
-.site-title {
-  font-family: $font__title;
-  @include font-size(1.5);
-  line-height: 2;
-  margin: 0;
-  @include media($screen-sm-min) {
-    line-height: 1;
-    @include font-size(1.8);
-    margin: 6rem 0 3rem 0;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
-    &:active,
-    &:visited,
-    &:hover {
-      color: #fff;
-    }
-  }
-}
-
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/

@@ -2,7 +2,7 @@
 	<header class="entry-header">
 		<?php if (is_single()) : ?>
       <?php if (has_post_thumbnail()) :?>
-        <div class="book-cover grade">
+        <div class="book-cover">
           <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">
             <?php the_post_thumbnail(); ?>
           </a>
@@ -22,7 +22,7 @@
 		<?php endif; ?>
 	</header>
 
-  <?php if ( is_search() ) :?>
+  <?php if ( is_search() ) : // Only display Excerpts for Search ?>
   <?php else : ?>
   <?php if (has_post_thumbnail()) :?>
     <div class="book-cover">
