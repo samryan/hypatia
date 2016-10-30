@@ -2,6 +2,7 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
   font-family: $font--headings;
   font-weight: normal;
+	margin-top: 4rem;
 }
 
 h1 {
@@ -11,4 +12,9 @@ h1 {
 
 h2 {
 	@include font-size(1.5);
+}
+
+h2.entry-title {
+	background-color: rgba(0,0,0,0.9);
+	@include pad(0.5rem 1rem);
 }

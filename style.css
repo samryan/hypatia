@@ -225,7 +225,8 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   clear: both;
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-  font-weight: normal; }
+  font-weight: normal;
+  margin-top: 4rem; }
 
 h1 {
   font-size: 28.8px;
@@ -235,6 +236,10 @@ h1 {
 h2 {
   font-size: 24px;
   font-size: 1.5rem; }
+
+h2.entry-title {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 0.5rem 1rem; }
 
 p {
   margin-bottom: 1.5em; }
@@ -736,7 +741,7 @@ body.search header.header form[role=search] {
     padding: 0 1rem; }
     @media screen and (min-width: 600px) {
       #page .content {
-        padding: 4.5rem 2rem;
+        padding: 0 2rem;
         display: table-cell;
         width: 75%;
         margin-right: 0; }
