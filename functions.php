@@ -52,11 +52,6 @@ function hypatia_setup() {
 		'caption',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'hypatia_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
 endif;
 add_action( 'after_setup_theme', 'hypatia_setup' );
@@ -88,28 +83,13 @@ function hypatia_scripts() {
 add_action( 'wp_enqueue_scripts', 'hypatia_scripts' );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
  * Stop printing non-useful wordpress stuff in the <head> tag.
  */
 
 function remove_wp_junk() {
   remove_action('wp_head', 'rsd_link');
   remove_action('wp_head', 'wp_generator');
-  remove_action('wp_head', 'feed_links', 2);
+//  remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'index_rel_link');
   remove_action('wp_head', 'wlwmanifest_link');
   remove_action('wp_head', 'feed_links_extra', 3);

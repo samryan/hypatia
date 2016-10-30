@@ -1,14 +1,3 @@
-<?php
-/**
- * Template part for displaying books.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package hypatia
- */
-
-?>
-
 <article id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/Book" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php if (is_single()) : ?>
@@ -33,10 +22,7 @@
 		<?php endif; ?>
 	</header>
 
-  <?php if ( is_search() ) : // Only display Excerpts for Search ?>
-    <div class="entry-summary">
-      <?php the_excerpt(); ?>
-    </div>
+  <?php if ( is_search() ) :?>
   <?php else : ?>
   <?php if (has_post_thumbnail()) :?>
     <div class="book-cover">
