@@ -538,7 +538,7 @@ a {
       .main-navigation .current-page-ancestor > a:after,
       .main-navigation .current-menu-ancestor > a:after {
         content: " ▸";
-        margin-right: -0.6rem; } }
+        margin-right: -1rem; } }
 
 .single-books #menu-item-1039 > a {
   font-weight: bold; }
@@ -547,7 +547,7 @@ a {
   @media screen and (min-width: 600px) {
     .single-books #menu-item-1039 > a:after {
       content: " ▸";
-      margin-right: -0.6rem; } }
+      margin-right: -1rem; } }
 
 header.header input[type=search] {
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
