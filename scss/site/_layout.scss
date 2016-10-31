@@ -2,13 +2,16 @@
   @include row(table);
   position: relative;
   header.header {
+    @include linear-gradient(to top, #fff, #ddd);
     background-color: $color__background-menu;
-    text-align: center;
-    padding-bottom: 1rem;
+    @include media($screen-sm-max) {
+      padding-left: 60px;
+    }
     @include media($screen-sm-min) {
-      @include pad(0 2rem 0 0);
+      @include pad(100px 2rem 0 0);
       @include span-columns (3,table);
       background-color: $color__background-menu;
+      @include linear-gradient(to left, #fff, #ddd);
       text-align: right;
       position: fixed;
       height: 99999px;
@@ -17,7 +20,7 @@
   .content {
     @include pad(0 1rem);
     @include media($screen-sm-min) {
-      @include pad(4.5rem 2rem);
+      @include pad(100px 2rem 0 2rem);
       @include span-columns (9,table);
       @include omega();
       .content-area {
@@ -35,6 +38,10 @@
 .site-footer {
   margin-top: 20rem;
 } 
+
+.home section {
+  margin-bottom: 6rem;
+}
 
 .home.books {
   @include fill-parent();

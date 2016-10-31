@@ -4,7 +4,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php wp_head(); ?>
-  <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/grade.js"></script>
+  <?php /*<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/grade.js"></script>*/ ?>
   <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/responsive-nav.min.js"></script>
 </head>
 <body <?php body_class(); ?>>

@@ -225,8 +225,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   clear: both;
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-  font-weight: normal;
-  margin-top: 4rem; }
+  font-weight: normal; }
 
 .site-title {
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
@@ -239,7 +238,7 @@ h1, h2, h3, h4, h5, h6 {
       line-height: 1;
       font-size: 24px;
       font-size: 1.5rem;
-      margin: 6rem 0 3rem 0; } }
+      margin-bottom: 2rem; } }
   .site-title a {
     color: #555555;
     text-decoration: none; }
@@ -446,9 +445,6 @@ a {
 .nav-collapse.opened {
   max-height: 9999px; }
 
-.nav-collapse {
-  background-color: #efefef; }
-
 .nav-toggle {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -473,7 +469,7 @@ a {
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-size: 28px;
+  font-size: 18px;
   text-transform: none;
   position: absolute;
   content: "\2261";
@@ -486,7 +482,7 @@ a {
   left: 0; }
 
 .nav-toggle.active:before {
-  font-size: 24px;
+  font-size: 18px;
   content: "\78"; }
 
 @media screen and (min-width: 600px) {
@@ -551,7 +547,7 @@ header.header input[type=search] {
   background-color: transparent;
   border-width: 0px;
   color: #555555 !important;
-  text-align: center;
+  text-align: left;
   padding: 0;
   margin-bottom: 1rem;
   transition: all 0.3s ease-in-out; }
@@ -720,15 +716,22 @@ body.search header.header form[role=search] {
   table-layout: fixed;
   position: relative; }
   #page header.header {
-    background-color: #efefef;
-    text-align: center;
-    padding-bottom: 1rem; }
+    background-color: white;
+    background-image: -webkit-linear-gradient(bottom, white, #dddddd);
+    background-image: linear-gradient(to top,white, #dddddd);
+    background-color: white; }
+    @media screen and (max-width: 600px) {
+      #page header.header {
+        padding-left: 60px; } }
     @media screen and (min-width: 600px) {
       #page header.header {
-        padding: 0 2rem 0 0;
+        padding: 100px 2rem 0 0;
         display: table-cell;
         width: 25%;
-        background-color: #efefef;
+        background-color: white;
+        background-color: white;
+        background-image: -webkit-linear-gradient(right, white, #dddddd);
+        background-image: linear-gradient(to left,white, #dddddd);
         text-align: right;
         position: fixed;
         height: 99999px; } }
@@ -736,7 +739,7 @@ body.search header.header form[role=search] {
     padding: 0 1rem; }
     @media screen and (min-width: 600px) {
       #page .content {
-        padding: 4.5rem 2rem;
+        padding: 100px 2rem 0 2rem;
         display: table-cell;
         width: 75%;
         margin-right: 0; }
@@ -749,6 +752,9 @@ body.search header.header form[role=search] {
 
 .site-footer {
   margin-top: 20rem; }
+
+.home section {
+  margin-bottom: 6rem; }
 
 .home.books {
   width: 100%;

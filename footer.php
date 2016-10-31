@@ -7,7 +7,6 @@
 </div>
 <?php wp_footer(); ?>
 <script>
-  window.addEventListener('load', function(){ Grade(document.querySelectorAll('.grade')); });
   var navigation = responsiveNav("site-navigation", {customToggle: ".nav-toggle"});
 </script>
 <!--

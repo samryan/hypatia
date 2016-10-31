@@ -4,7 +4,7 @@
   position: absolute;
   display: block;
   @include media($screen-sm-max) {
-  overflow: hidden;
+    overflow: hidden;
   }
   zoom: 1;
 }
@@ -13,9 +13,6 @@
   max-height: 9999px;
 }
 
-.nav-collapse {
-  background-color: $color__background-menu;
-}
 
 .nav-toggle {
   -webkit-font-smoothing: antialiased;
@@ -38,7 +35,7 @@
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-size: 28px;
+  font-size: 18px;
   text-transform: none;
   position: absolute;
   content: "\2261";
@@ -51,7 +48,7 @@
   left: 0;
 }
 .nav-toggle.active:before {
-  font-size: 24px;
+  font-size: 18px;
   content: "\78";
 }
 
@@ -123,7 +120,7 @@ header.header {
     background-color: transparent;
     border-width: 0px;
     color: $color__link-menu !important;
-    text-align: center;
+    text-align: left;
     padding: 0;
     margin-bottom: 1rem;
     transition: all 0.3s ease-in-out;
