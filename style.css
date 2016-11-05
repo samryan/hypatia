@@ -438,7 +438,7 @@ a {
   position: absolute;
   display: block;
   zoom: 1; }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 599px) {
     .js .nav-collapse {
       overflow: hidden; } }
 
@@ -460,7 +460,7 @@ a {
   width: 50px;
   height: 55px;
   display: block;
-  top: 0;
+  top: 9px;
   left: 0; }
 
 .nav-toggle:before {
@@ -710,6 +710,27 @@ body.search header.header form[role=search] {
   clear: both;
   margin: 0 0 1.5em; }
 
+body:before {
+  content: "";
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+  z-index: 100; }
+
+body {
+  border-style: solid;
+  border-color: #b990fc;
+  border-width: 0; }
+  @media screen and (max-width: 599px) {
+    body {
+      border-top-width: 6px; } }
+  @media screen and (min-width: 600px) {
+    body {
+      border-left-width: 8px; } }
+
 #page {
   display: table;
   width: 100%;
@@ -717,21 +738,20 @@ body.search header.header form[role=search] {
   position: relative; }
   #page header.header {
     background-color: white;
-    background-image: -webkit-linear-gradient(bottom, white, #dddddd);
-    background-image: linear-gradient(to top,white, #dddddd);
-    background-color: white; }
-    @media screen and (max-width: 600px) {
+    border-style: solid;
+    border-color: #d9c2fd;
+    border-width: 0; }
+    @media screen and (max-width: 599px) {
       #page header.header {
-        padding-left: 60px; } }
+        padding-left: 60px;
+        border-top-width: 6px; } }
     @media screen and (min-width: 600px) {
       #page header.header {
         padding: 100px 2rem 0 0;
         display: table-cell;
         width: 25%;
         background-color: white;
-        background-color: white;
-        background-image: -webkit-linear-gradient(right, white, #dddddd);
-        background-image: linear-gradient(to left,white, #dddddd);
+        border-left-width: 8px;
         text-align: right;
         position: fixed;
         height: 99999px; } }
@@ -751,7 +771,9 @@ body.search header.header form[role=search] {
   max-width: 100%; }
 
 .site-footer {
-  margin-top: 20rem; }
+  margin-top: 20rem;
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 80%; }
 
 .home section {
   margin-bottom: 6rem; }
@@ -799,8 +821,7 @@ body.search header.header form[role=search] {
       margin-right: 2rem; }
     .home.books a .rating {
       line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      display: none; }
+      -webkit-font-smoothing: antialiased; }
 
 .books header {
   margin: 0 -2rem;
@@ -817,7 +838,7 @@ body.search header.header form[role=search] {
       padding: 0 1rem 0 1rem;
       margin-right: 0;
       vertical-align: middle; }
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 599px) {
         .books header .book-cover .book-data {
           font-size: 80%; } }
       .books header .book-cover .book-data h1, .books header .book-cover .book-data h2 {
