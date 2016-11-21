@@ -722,14 +722,7 @@ body:before {
 
 body {
   border-style: solid;
-  border-color: #b990fc;
   border-width: 0; }
-  @media screen and (max-width: 599px) {
-    body {
-      border-top-width: 6px; } }
-  @media screen and (min-width: 600px) {
-    body {
-      border-left-width: 8px; } }
 
 #page {
   display: table;
@@ -739,19 +732,19 @@ body {
   #page header.header {
     background-color: white;
     border-style: solid;
-    border-color: #d9c2fd;
+    border-color: #a978fb;
     border-width: 0; }
     @media screen and (max-width: 599px) {
       #page header.header {
         padding-left: 60px;
-        border-top-width: 6px; } }
+        border-top-width: 8px; } }
     @media screen and (min-width: 600px) {
       #page header.header {
         padding: 100px 2rem 0 0;
         display: table-cell;
         width: 25%;
         background-color: white;
-        border-left-width: 8px;
+        border-left-width: 10px;
         text-align: right;
         position: fixed;
         height: 99999px; } }
@@ -775,8 +768,51 @@ body {
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 80%; }
 
+.home h1:nth-child(1),
+.home h2:nth-child(1),
+.home h3:nth-child(1) {
+  margin-top: 0; }
+
 .home section {
   margin-bottom: 6rem; }
+
+.home.projects {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+
+.home.projects a {
+  width: 49%;
+  position: relative;
+  margin-right: 2%;
+  margin-top: 2%;
+  display: inline-block;
+  overflow: hidden;
+  position: relative; }
+
+.home.projects a:nth-child(1), .home.projects a:nth-child(2) {
+  margin-top: 0; }
+
+.home.projects a:nth-child(2n) {
+  margin-right: 0; }
+
+.home.projects a span {
+  transition: opacity 0.1s ease-in; }
+
+.home.projects a img {
+  display: block;
+  width: 100%;
+  height: auto; }
+
+.home.projects a span {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 90%;
+  display: block;
+  text-align: right;
+  opacity: 0; }
+
+.home.projects a:hover span {
+  opacity: 1; }
 
 .home.books {
   width: 100%;
@@ -791,26 +827,6 @@ body {
     @media screen and (min-width: 600px) {
       .home.books a {
         width: 33%; } }
-    .home.books a .img-container {
-      width: 100%;
-      position: relative;
-      height: 0;
-      padding-bottom: 100%;
-      display: none; }
-      .home.books a .img-container img {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60%;
-        margin-bottom: 0.5rem;
-        transition: opacity 0.15s ease-in;
-        -webkit-transition: opacity 0.15s ease-in;
-        -moz-transition: opacity 0.15s ease-in;
-        -ms-transition: opacity 0.15s ease-in;
-        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
     .home.books a .title {
       border-top: 1px solid #555555;
       padding-top: 1rem;
@@ -822,6 +838,13 @@ body {
     .home.books a .rating {
       line-height: 1.8;
       -webkit-font-smoothing: antialiased; }
+
+table.specs {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 90%; }
+  table.specs td, table.specs th {
+    border: 1px solid #ccc;
+    padding: 0.3rem; }
 
 .books header {
   margin: 0 -2rem;

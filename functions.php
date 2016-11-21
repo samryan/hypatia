@@ -123,7 +123,7 @@ add_action('after_setup_theme', 'remove_wp_junk');
 // add tag and category support to pages
 function tags_categories_support_all() {
   register_taxonomy_for_object_type('post_tag', 'page');
-  register_taxonomy_for_object_type('category', 'page');  
+  register_taxonomy_for_object_type('category', 'page');
 }
 
 // ensure all tags and categories are included in queries
