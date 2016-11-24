@@ -428,6 +428,13 @@ a {
     color: #111111; }
   a:hover, a:active {
     outline: 0; }
+  a.button {
+    color: #fff !important;
+    background-color: #8a46fa;
+    border-radius: 0.4rem;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
 
 /*--------------------------------------------------------------
 ## Menus
@@ -780,39 +787,34 @@ body {
   width: 100%;
   display: flex;
   flex-wrap: wrap; }
-
-.home.projects a {
-  width: 49%;
-  position: relative;
-  margin-right: 2%;
-  margin-top: 2%;
-  display: inline-block;
-  overflow: hidden;
-  position: relative; }
-
-.home.projects a:nth-child(1), .home.projects a:nth-child(2) {
-  margin-top: 0; }
-
-.home.projects a:nth-child(2n) {
-  margin-right: 0; }
-
-.home.projects a span {
-  transition: opacity 0.1s ease-in; }
-
-.home.projects a img {
-  display: block;
-  width: 100%;
-  height: auto; }
-
-.home.projects a span {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-  font-size: 90%;
-  display: block;
-  text-align: right;
-  opacity: 0; }
-
-.home.projects a:hover span {
-  opacity: 1; }
+  .home.projects a {
+    width: 49%;
+    position: relative;
+    margin-right: 2%;
+    margin-top: 2%;
+    display: inline-block; }
+    .home.projects a span {
+      font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+      font-size: 80%; }
+    .home.projects a img {
+      display: block;
+      width: 100%;
+      height: auto; }
+    @media screen and (max-width: 599px) {
+      .home.projects a {
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 1rem auto;
+        float: none;
+        clear: both; }
+        .home.projects a img {
+          width: 100%; } }
+  @media screen and (min-width: 600px) {
+    .home.projects a:nth-child(1), .home.projects a:nth-child(2) {
+      margin-top: 0; }
+    .home.projects a:nth-child(2n) {
+      margin-right: 0; } }
 
 .home.books {
   width: 100%;
@@ -899,6 +901,21 @@ table.specs {
       border-radius: 3px;
       padding: 0.5rem 1rem;
       margin: 1rem 1rem 1rem 0; }
+
+.books .book_quotes .book_quote {
+  border-top: 5px solid #c9a9fd;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 0.5rem 1rem 3rem; }
+  .books .book_quotes .book_quote::before {
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #d9c2fd;
+    content: '\201c';
+    float: left;
+    margin-left: -2rem;
+    margin-top: -0.75rem; }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,

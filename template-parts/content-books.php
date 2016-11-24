@@ -13,7 +13,7 @@
         </div>
       <?php else : ?>
   		    <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
-          <h2 itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></h2>          
+          <h2 itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></h2>
       <?php endif; ?>
 		<?php else : ?>
 			<h1 class="entry-title">
@@ -22,7 +22,7 @@
 		<?php endif; ?>
 	</header>
 
-  <?php if ( is_search() ) : // Only display Excerpts for Search ?>
+  <?php if ( is_search() ) : ?>
   <?php else : ?>
   <?php if (has_post_thumbnail()) :?>
     <div class="book-cover">
@@ -40,17 +40,14 @@
 			  <?php the_content(); ?>
 			</span>
 			<div class="stars">
-				<span itemprop="reviewRating"><?php echo get_post_meta($post->ID, 'rating', true); ?></span><?php if ( is_single() ) : // show year lists if single page ?>, <a href="http://samryan.net/books/list-<?php echo get_post_meta($post->ID, 'year_read', true); ?>"><?php echo get_post_meta($post->ID, 'year_read', true); ?></a><?php endif; ?>
+				<span itemprop="reviewRating"><?php echo get_post_meta($post->ID, 'rating', true); ?></span><?php if ( is_single() ) : // show year lists if single page ?>, <a href="/books/list-<?php echo get_post_meta($post->ID, 'year_read', true); ?>"><?php echo get_post_meta($post->ID, 'year_read', true); ?></a><?php endif; ?>
 			</div>
 			<ul class="book_links">
         <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
-    		<li><a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Purchase</a></li>
+    		<li><a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>" class="button">Purchase</a></li>
         <?php endif; ?>
         <?php if ( get_post_meta($post->ID, 'book_source', true) ) : ?>
-         <li><a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>">Full text</a></li>
-        <?php endif; ?>
-        <?php if ( get_post_meta($post->ID, 'ebook_highlights', true) ) : ?>
-    		<li><a href="<?php echo get_post_meta($post->ID, 'ebook_highlights', true); ?>">My ebook highlights</a></li>
+         <li><a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>" class="button">Full text</a></li>
         <?php endif; ?>
 			</ul>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'hypatia' ), 'after' => '</div>' ) ); ?>

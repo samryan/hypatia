@@ -74,44 +74,41 @@ body {
   @include fill-parent();
   display: flex;
   flex-wrap: wrap;
-}
-.home.projects a {
-	width: 49%;
-	position: relative;
-	margin-right: 2%;
-	margin-top: 2%;
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-}
-
-.home.projects a:nth-child(1), .home.projects a:nth-child(2) {
-		margin-top: 0;
-}
-
-.home.projects a:nth-child(2n) {
-	margin-right: 0;
-}
-
-.home.projects a span {
-	transition: opacity 0.1s ease-in;
-}
-
-.home.projects a img {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
-.home.projects a span {
-  font-family: $font__mono;
-  font-size: 90%;
-  display: block;
-	text-align: right;
-	opacity: 0;
-}
-.home.projects a:hover span {
-	opacity: 1;
+  a {
+ 	  width: 49%;
+ 	  position: relative;
+ 	  margin-right: 2%;
+ 	  margin-top: 2%;
+    display: inline-block;
+    span {
+      font-family: $font__mono;
+      font-size: 80%;
+    }
+    img {
+    	display: block;
+    	width: 100%;
+    	height: auto;
+    }
+    @include media($screen-sm-max) {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 1rem auto;
+      float: none;
+      clear: both;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  @include media($screen-sm-min) {
+    a:nth-child(1), a:nth-child(2) {
+      margin-top: 0;
+    }
+    a:nth-child(2n) {
+    	margin-right: 0;
+    }
+  }
 }
 
 .home.books {

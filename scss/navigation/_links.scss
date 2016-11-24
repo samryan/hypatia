@@ -1,6 +1,5 @@
 a {
 	color: $color__link;
-
 	&:visited {
 		color: $color__link-visited;
 	}
@@ -13,4 +12,12 @@ a {
 	&:active {
 		outline: 0;
 	}
+  &.button {
+    color: #fff !important;
+    background-color: $color__link;
+    border-radius: 0.4rem;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-family: $font__mono;
+  }
 }

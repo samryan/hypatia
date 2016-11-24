@@ -59,3 +59,24 @@
     }
   }
 }
+
+.books .book_quotes {
+  .book_quote {
+    border-top: 5px solid lighten($color__link, 20%);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0.5rem 1rem 3rem;
+    &::before {
+    	font-family:"Georgia";
+    	font-weight: bold;
+    	font-size: 2.5rem;
+    	color: lighten($color__link, 25%);
+    	content: '\201c';
+    	float: left;
+    	margin-left: -2rem;
+    	margin-top: -0.75rem;
+    }
+    div { }
+    cite { }
+  }
+}
