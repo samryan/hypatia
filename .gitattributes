@@ -1,0 +1,9 @@
+* text=auto
+/.gitattributes export-ignore
+/scss           export-ignore
+/legacy         export-ignore
+/.jshintignore  export-ignore
+/.jscsrc        export-ignore
+/.git           export-ignore
+/.gitignore     export-ignore
+/README.md      export-ignore
