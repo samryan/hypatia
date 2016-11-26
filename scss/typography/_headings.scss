@@ -6,12 +6,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-title {
   font-family: $font__logo;
-  @include font-size(1.5);
-  line-height: 2;
+  @include font-size(1.75);
+  font-weight: bold;
+  line-height: 1.9;
   margin: 0;
   @include media($screen-sm-min) {
     line-height: 1;
-    @include font-size(1.5);
+    @include font-size(1.8);
     margin-bottom: 2rem;
   }
   a {

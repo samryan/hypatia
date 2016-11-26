@@ -228,16 +228,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
 .site-title {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 2;
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 28px;
+  font-size: 1.75rem;
+  font-weight: bold;
+  line-height: 1.9;
   margin: 0; }
   @media screen and (min-width: 600px) {
     .site-title {
       line-height: 1;
-      font-size: 24px;
-      font-size: 1.5rem;
+      font-size: 28.8px;
+      font-size: 1.8rem;
       margin-bottom: 2rem; } }
   .site-title a {
     color: #555555;
@@ -752,7 +753,7 @@ body {
     border-width: 0; }
     @media screen and (max-width: 599px) {
       #page header.header {
-        padding-left: 60px;
+        padding-left: 50px;
         border-top-width: 8px; } }
     @media screen and (min-width: 600px) {
       #page header.header {

@@ -1,12 +1,15 @@
 <?php get_header(); ?>
 <div id="primary" class="content-area">
+  <?php
+    get_template_part( 'template-parts/content', 'page' );
+  ?>
   <h3>Recently finished books</h3>
   <section class="home books">
     <?php
-      $args = array( 'posts_per_page' => 15, 'post_type' => 'books' );
+      $args = array( 'posts_per_page' => 12, 'post_type' => 'books' );
       $myposts = get_posts( $args );
       foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
-      <a href="<?php the_permalink(); ?>" class="book-cover">
+      <a href="<?php the_permalink(); ?>">
         <div class="metadata">
           <div class="title"><?php the_title() ?></div>
           <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>

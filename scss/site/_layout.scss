@@ -23,7 +23,7 @@ body {
     border-color: lighten($color__link, 10%);
     border-width: 0;
     @include media($screen-sm-max) {
-      padding-left: 60px;
+      padding-left: 50px;
       border-top-width: 8px;
     }
     @include media($screen-sm-min) {
