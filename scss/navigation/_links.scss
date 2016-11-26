@@ -15,7 +15,8 @@ a {
   &.button {
     color: #fff !important;
     background-color: $color__link;
-    border-radius: 0.4rem;
+    border-radius: 0.3rem;
+    border-width: 0;
     padding: 8px 14px;
     text-decoration: none;
     font-family: $font__mono;

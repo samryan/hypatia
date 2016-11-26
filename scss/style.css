@@ -428,6 +428,14 @@ a {
     color: #111111; }
   a:hover, a:active {
     outline: 0; }
+  a.button {
+    color: #fff !important;
+    background-color: #8a46fa;
+    border-radius: 0.3rem;
+    border-width: 0;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
 
 /*--------------------------------------------------------------
 ## Menus
@@ -599,22 +607,30 @@ body.search header.header form[role=search] {
     font-size: 90%;
     content: "search for: "; }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
+.comment-navigation,
+.posts-navigation,
 .post-navigation {
-  margin: 0 0 1.5em;
-  overflow: hidden; }
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  float: left;
-  width: 50%; }
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 90%; }
+  .site-main .comment-navigation, .site-main
+  .posts-navigation, .site-main
+  .post-navigation {
+    margin: 0 0 1.5em;
+    overflow: hidden; }
+  .comment-navigation .nav-previous,
+  .posts-navigation .nav-previous,
+  .post-navigation .nav-previous {
+    float: left;
+    width: 50%; }
+  .comment-navigation .nav-next,
+  .posts-navigation .nav-next,
+  .post-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%; }
+
+.post-navigation .nav-links {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -732,7 +748,7 @@ body {
   #page header.header {
     background-color: white;
     border-style: solid;
-    border-color: #b990fc;
+    border-color: #a978fb;
     border-width: 0; }
     @media screen and (max-width: 599px) {
       #page header.header {
@@ -744,7 +760,7 @@ body {
         display: table-cell;
         width: 25%;
         background-color: white;
-        border-left-width: 12px;
+        border-left-width: 10px;
         text-align: right;
         position: fixed;
         height: 99999px; } }
@@ -768,8 +784,46 @@ body {
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 80%; }
 
+.home h1:nth-child(1),
+.home h2:nth-child(1),
+.home h3:nth-child(1) {
+  margin-top: 0; }
+
 .home section {
   margin-bottom: 6rem; }
+
+.home.projects {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .home.projects a {
+    width: 49%;
+    position: relative;
+    margin-right: 2%;
+    margin-top: 2%;
+    display: inline-block; }
+    .home.projects a span {
+      font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+      font-size: 80%; }
+    .home.projects a img {
+      display: block;
+      width: 100%;
+      height: auto; }
+    @media screen and (max-width: 599px) {
+      .home.projects a {
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 1rem auto;
+        float: none;
+        clear: both; }
+        .home.projects a img {
+          width: 100%; } }
+  @media screen and (min-width: 600px) {
+    .home.projects a:nth-child(1), .home.projects a:nth-child(2) {
+      margin-top: 0; }
+    .home.projects a:nth-child(2n) {
+      margin-right: 0; } }
 
 .home.books {
   width: 100%;
@@ -784,26 +838,6 @@ body {
     @media screen and (min-width: 600px) {
       .home.books a {
         width: 33%; } }
-    .home.books a .img-container {
-      width: 100%;
-      position: relative;
-      height: 0;
-      padding-bottom: 100%;
-      display: none; }
-      .home.books a .img-container img {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60%;
-        margin-bottom: 0.5rem;
-        transition: opacity 0.15s ease-in;
-        -webkit-transition: opacity 0.15s ease-in;
-        -moz-transition: opacity 0.15s ease-in;
-        -ms-transition: opacity 0.15s ease-in;
-        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
     .home.books a .title {
       border-top: 1px solid #555555;
       padding-top: 1rem;
@@ -815,6 +849,13 @@ body {
     .home.books a .rating {
       line-height: 1.8;
       -webkit-font-smoothing: antialiased; }
+
+table.specs {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 90%; }
+  table.specs td, table.specs th {
+    border: 1px solid #ccc;
+    padding: 0.3rem; }
 
 .books header {
   margin: 0 -2rem;
@@ -862,13 +903,21 @@ body {
   .books ul.book_links li {
     padding: 0;
     display: block; }
-    .books ul.book_links li a {
-      color: #555555;
-      text-decoration: none;
-      border: 1px solid #555555;
-      border-radius: 3px;
-      padding: 0.5rem 1rem;
-      margin: 1rem 1rem 1rem 0; }
+
+.books .book_quotes .book_quote {
+  border-top: 5px solid #c9a9fd;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 0.5rem 1rem 3rem; }
+  .books .book_quotes .book_quote::before {
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #d9c2fd;
+    content: '\201c';
+    float: left;
+    margin-left: -2rem;
+    margin-top: -0.75rem; }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,

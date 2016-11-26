@@ -93,7 +93,7 @@
 	  @include font-size(1);
 		&:hover > a,
 		&.focus > a {
-		  text-decoration: underline; 
+		  text-decoration: underline;
 		}
 	}
 	a {
@@ -111,7 +111,7 @@
 
 .single-books #menu-item-1039 > a {
   @include active-menu;
-} 
+}
 
 header.header {
   input[type=search] {
@@ -165,6 +165,8 @@ body.search header.header form[role=search] {
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
+  font-family: $font__mono;
+  font-size: 90%;
 	.site-main & {
 		margin: 0 0 1.5em;
 		overflow: hidden;
@@ -178,4 +180,11 @@ body.search header.header form[role=search] {
 		text-align: right;
 		width: 50%;
 	}
+}
+
+.post-navigation {
+  .nav-links {
+    font-family: $font__mono;
+
+  }
 }
