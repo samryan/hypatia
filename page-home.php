@@ -1,8 +1,42 @@
 <?php get_header(); ?>
 <div id="primary" class="content-area">
-  <?php
-    get_template_part( 'template-parts/content', 'page' );
-  ?>
+  <section class="home intro">
+    <h3>I&rsquo;m a UX designer working at Amazon.com in Seattle. I like thinking about screens, history, and the future. <a href="/about">More about me &raquo;</a></h3>
+  </section>
+  <h3>Projects</h3>
+  <section class="home projects-list">
+    <ul>
+    <?php
+      global $post;
+      $projects_query_args = array(
+        'post_type'   => 'page',
+        'post_parent' => '193',
+        'orderby'     => 'post_name',
+        'order'        => 'ASC'
+      );
+      $projects = new WP_Query( $projects_query_args );
+      if ( $projects->have_posts() ) : while ( $projects->have_posts() ) : $projects->the_post();
+      if ( has_post_thumbnail () ) {
+    ?>
+    <!--
+    <a href="<?php the_permalink(); ?>" class="project">
+      <img src="<?php the_post_thumbnail_url('full'); ?>" />
+      <span class="metadata">
+        <?php the_title(); ?>
+      </span>
+    </a>-->
+    <li>
+      <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+    </li>
+    <?php
+      }
+    ?>
+    <?php
+      endwhile; endif;
+      wp_reset_postdata();
+    ?>
+  </ul>
+  </section>
   <h3>Recently finished books</h3>
   <section class="home books">
     <?php
@@ -18,34 +52,6 @@
       </a>
     <?php
       endforeach;
-      wp_reset_postdata();
-    ?>
-  </section>
-  <h3>Recent projects</h3>
-  <section class="home projects">
-    <?php
-      global $post;
-      $projects_query_args = array(
-        'post_type'   => 'page',
-        'post_parent' => '193',
-        'orderby'     => 'post_name',
-        'order'        => 'ASC'
-      );
-      $projects = new WP_Query( $projects_query_args );
-      if ( $projects->have_posts() ) : while ( $projects->have_posts() ) : $projects->the_post();
-      if ( has_post_thumbnail () ) {
-    ?>
-    <a href="<?php the_permalink(); ?>" class="project">
-      <img src="<?php the_post_thumbnail_url('full'); ?>" />
-      <span class="metadata">
-        <?php the_title(); ?>
-      </span>
-    </a>
-    <?php
-      }
-    ?>
-    <?php
-      endwhile; endif;
       wp_reset_postdata();
     ?>
   </section>

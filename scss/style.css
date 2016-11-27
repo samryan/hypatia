@@ -227,25 +227,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
   font-weight: normal; }
 
-.site-title {
-  font-family: "Alegreya", Georgia, serif;
-  font-size: 28px;
-  font-size: 1.75rem;
-  font-weight: bold;
-  line-height: 1.9;
-  margin: 0; }
-  @media screen and (min-width: 600px) {
-    .site-title {
-      line-height: 1;
-      font-size: 28.8px;
-      font-size: 1.8rem;
-      margin-bottom: 2rem; } }
-  .site-title a {
-    color: #555555;
-    text-decoration: none; }
-    .site-title a:active, .site-title a:visited, .site-title a:hover {
-      color: #555555; }
-
 h1 {
   font-size: 28.8px;
   font-size: 1.8rem; }
@@ -253,6 +234,25 @@ h1 {
 h2 {
   font-size: 24px;
   font-size: 1.5rem; }
+
+.site-title {
+  line-height: 2.5;
+  font-size: 1.3rem;
+  margin: 0; }
+  @media screen and (min-width: 600px) {
+    .site-title {
+      line-height: 1;
+      margin-bottom: 2rem;
+      display: inline-block; } }
+  .site-title a {
+    font-size: 1.3rem;
+    color: #555555;
+    text-decoration: none; }
+    @media screen and (min-width: 600px) {
+      .site-title a {
+        font-size: 1rem !important; } }
+    .site-title a:active, .site-title a:visited, .site-title a:hover {
+      color: #555555; }
 
 p {
   margin-bottom: 1.5em; }
@@ -793,39 +793,52 @@ body {
 .home section {
   margin-bottom: 6rem; }
 
-.home.projects {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap; }
-  .home.projects a {
-    width: 49%;
-    position: relative;
-    margin-right: 2%;
-    margin-top: 2%;
-    display: inline-block; }
-    .home.projects a span {
-      font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-      font-size: 80%; }
-    .home.projects a img {
-      display: block;
-      width: 100%;
-      height: auto; }
-    @media screen and (max-width: 599px) {
-      .home.projects a {
-        width: 100%;
-        max-width: 300px;
-        display: block;
-        margin: 1rem auto;
-        float: none;
-        clear: both; }
-        .home.projects a img {
-          width: 100%; } }
-  @media screen and (min-width: 600px) {
-    .home.projects a:nth-child(1), .home.projects a:nth-child(2) {
-      margin-top: 0; }
-    .home.projects a:nth-child(2n) {
-      margin-right: 0; } }
+.home.projects-list ul {
+  list-style-type: none;
+  padding: 0; }
 
+/*
+.home.projects {
+  @include fill-parent();
+  display: flex;
+  flex-wrap: wrap;
+  a {
+ 	  width: 49%;
+ 	  position: relative;
+ 	  margin-right: 2%;
+ 	  margin-top: 2%;
+    display: inline-block;
+    span {
+      font-family: $font__mono;
+      font-size: 80%;
+    }
+    img {
+    	display: block;
+    	width: 100%;
+    	height: auto;
+    }
+    @include media($screen-sm-max) {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 1rem auto;
+      float: none;
+      clear: both;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  @include media($screen-sm-min) {
+    a:nth-child(1), a:nth-child(2) {
+      margin-top: 0;
+    }
+    a:nth-child(2n) {
+    	margin-right: 0;
+    }
+  }
+}
+*/
 .home.books {
   width: 100%;
   display: flex;

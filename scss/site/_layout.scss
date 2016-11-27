@@ -70,6 +70,14 @@ body {
   margin-bottom: 6rem;
 }
 
+.home.projects-list {
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+/*
 .home.projects {
   @include fill-parent();
   display: flex;
@@ -110,7 +118,7 @@ body {
     }
   }
 }
-
+*/
 .home.books {
   @include fill-parent();
   display: flex;
