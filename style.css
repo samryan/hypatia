@@ -21,12 +21,19 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 @import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i|Inconsolata:400,700';
+@import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i';
 html {
   box-sizing: border-box; }
 
 *, *::after, *::before {
   box-sizing: inherit; }
 
+/* PURPLE
+
+$color__link: #8a46fa;
+
+*/
 @font-face {
   font-family: "responsivenav";
   src: url("./icons/responsivenav.eot");
@@ -217,33 +224,15 @@ input,
 select,
 textarea {
   color: #555555;
-  font-family: "Alegreya", Georgia, serif;
+  font-family: "Lora", "Alegreya", Georgia, serif;
   font-size: 17.6px;
   font-size: 1.1rem;
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: "Lora", "Alegreya", Georgia, serif;
   font-weight: normal; }
-
-.site-title {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 2;
-  margin: 0; }
-  @media screen and (min-width: 600px) {
-    .site-title {
-      line-height: 1;
-      font-size: 24px;
-      font-size: 1.5rem;
-      margin-bottom: 2rem; } }
-  .site-title a {
-    color: #555555;
-    text-decoration: none; }
-    .site-title a:active, .site-title a:visited, .site-title a:hover {
-      color: #555555; }
 
 h1 {
   font-size: 28.8px;
@@ -252,6 +241,26 @@ h1 {
 h2 {
   font-size: 24px;
   font-size: 1.5rem; }
+
+.site-title {
+  font-weight: bold;
+  line-height: 2.5;
+  font-size: 1.3rem;
+  margin: 0; }
+  @media screen and (min-width: 600px) {
+    .site-title {
+      line-height: 1;
+      margin-bottom: 2rem;
+      display: inline-block; } }
+  .site-title a {
+    font-size: 1.3rem;
+    color: #555555;
+    text-decoration: none; }
+    @media screen and (min-width: 600px) {
+      .site-title a {
+        font-size: 1rem !important; } }
+    .site-title a:active, .site-title a:visited, .site-title a:hover {
+      color: #555555; }
 
 p {
   margin-bottom: 1.5em; }
@@ -421,17 +430,18 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: #8a46fa; }
+  color: #84c9bd; }
   a:visited {
-    color: #8a46fa; }
+    color: #84c9bd; }
   a:hover, a:focus, a:active {
     color: #111111; }
   a:hover, a:active {
     outline: 0; }
   a.button {
     color: #fff !important;
-    background-color: #8a46fa;
-    border-radius: 0.4rem;
+    background-color: #84c9bd;
+    border-radius: 0.3rem;
+    border-width: 0;
     padding: 8px 14px;
     text-decoration: none;
     font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
@@ -502,7 +512,7 @@ a {
   .nav-toggle {
     display: none; } }
 .main-navigation {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: "Lora", "Alegreya", Georgia, serif;
   clear: both;
   display: block;
   float: left;
@@ -548,7 +558,7 @@ a {
       margin-right: -1rem; } }
 
 header.header input[type=search] {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: "Lora", "Alegreya", Georgia, serif;
   font-size: 16px;
   font-size: 1rem;
   background-color: transparent;
@@ -606,22 +616,30 @@ body.search header.header form[role=search] {
     font-size: 90%;
     content: "search for: "; }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
+.comment-navigation,
+.posts-navigation,
 .post-navigation {
-  margin: 0 0 1.5em;
-  overflow: hidden; }
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  float: left;
-  width: 50%; }
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-size: 90%; }
+  .site-main .comment-navigation, .site-main
+  .posts-navigation, .site-main
+  .post-navigation {
+    margin: 0 0 1.5em;
+    overflow: hidden; }
+  .comment-navigation .nav-previous,
+  .posts-navigation .nav-previous,
+  .post-navigation .nav-previous {
+    float: left;
+    width: 50%; }
+  .comment-navigation .nav-next,
+  .posts-navigation .nav-next,
+  .post-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%; }
+
+.post-navigation .nav-links {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -739,11 +757,11 @@ body {
   #page header.header {
     background-color: white;
     border-style: solid;
-    border-color: #a978fb;
+    border-color: #a7d9d0;
     border-width: 0; }
     @media screen and (max-width: 599px) {
       #page header.header {
-        padding-left: 60px;
+        padding-left: 50px;
         border-top-width: 8px; } }
     @media screen and (min-width: 600px) {
       #page header.header {
@@ -783,38 +801,16 @@ body {
 .home section {
   margin-bottom: 6rem; }
 
-.home.projects {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap; }
-  .home.projects a {
-    width: 49%;
-    position: relative;
-    margin-right: 2%;
-    margin-top: 2%;
-    display: inline-block; }
-    .home.projects a span {
-      font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-      font-size: 80%; }
-    .home.projects a img {
-      display: block;
-      width: 100%;
-      height: auto; }
-    @media screen and (max-width: 599px) {
-      .home.projects a {
-        width: 100%;
-        max-width: 300px;
-        display: block;
-        margin: 1rem auto;
-        float: none;
-        clear: both; }
-        .home.projects a img {
-          width: 100%; } }
-  @media screen and (min-width: 600px) {
-    .home.projects a:nth-child(1), .home.projects a:nth-child(2) {
-      margin-top: 0; }
-    .home.projects a:nth-child(2n) {
-      margin-right: 0; } }
+.home.intro h1 {
+  font-size: 2rem; }
+.home.intro h3 {
+  font-size: 1.1rem; }
+.home.intro p {
+  font-size: 1rem; }
+
+.projects-list ul {
+  list-style-type: none;
+  padding: 0; }
 
 .home.books {
   width: 100%;
@@ -894,16 +890,9 @@ table.specs {
   .books ul.book_links li {
     padding: 0;
     display: block; }
-    .books ul.book_links li a {
-      color: #555555;
-      text-decoration: none;
-      border: 1px solid #555555;
-      border-radius: 3px;
-      padding: 0.5rem 1rem;
-      margin: 1rem 1rem 1rem 0; }
 
 .books .book_quotes .book_quote {
-  border-top: 5px solid #c9a9fd;
+  border-top: 5px solid #cbe8e3;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem 0.5rem 1rem 3rem; }
@@ -911,7 +900,7 @@ table.specs {
     font-family: "Georgia";
     font-weight: bold;
     font-size: 2.5rem;
-    color: #d9c2fd;
+    color: #ddf0ed;
     content: '\201c';
     float: left;
     margin-left: -2rem;

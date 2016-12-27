@@ -70,55 +70,25 @@ body {
   margin-bottom: 6rem;
 }
 
-.home.projects-list {
+.home.intro {
+  h1 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+.projects-list {
   ul {
     list-style-type: none;
     padding: 0;
   }
 }
 
-/*
-.home.projects {
-  @include fill-parent();
-  display: flex;
-  flex-wrap: wrap;
-  a {
- 	  width: 49%;
- 	  position: relative;
- 	  margin-right: 2%;
- 	  margin-top: 2%;
-    display: inline-block;
-    span {
-      font-family: $font__mono;
-      font-size: 80%;
-    }
-    img {
-    	display: block;
-    	width: 100%;
-    	height: auto;
-    }
-    @include media($screen-sm-max) {
-      width: 100%;
-      max-width: 300px;
-      display: block;
-      margin: 1rem auto;
-      float: none;
-      clear: both;
-      img {
-        width: 100%;
-      }
-    }
-  }
-  @include media($screen-sm-min) {
-    a:nth-child(1), a:nth-child(2) {
-      margin-top: 0;
-    }
-    a:nth-child(2n) {
-    	margin-right: 0;
-    }
-  }
-}
-*/
 .home.books {
   @include fill-parent();
   display: flex;

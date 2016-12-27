@@ -1,6 +1,6 @@
   <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="site-info">
-      <p>2007&ndash;<?php echo date('Y');?>. Thanks for visiting.</p>
+      <p>Words &amp;c. by Sam Ryan, 2007&ndash;<?php echo date('Y');?>. Thanks for visiting.</p>
     </div>
   </footer>
   </div>
