@@ -15,18 +15,8 @@ h2 {
 .site-title {
   font-weight: bold;
   line-height: 2.5;
-  font-size: 1.3rem;
-  margin: 0;
-  @include media($screen-sm-min) {
-    line-height: 1;
-    margin-bottom: 2rem;
-    display: inline-block;
-  }
+  font-size: 1rem;
   a {
-    font-size: 1.3rem;
-    @include media($screen-sm-min) {
-      font-size: 1rem !important;
-    }
     color: $color__logo;
     text-decoration: none;
     &:active,

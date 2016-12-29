@@ -1,82 +1,9 @@
-.js .nav-collapse {
-  clip: rect(0 0 0 0);
-  max-height: 0;
-  position: absolute;
-  display: block;
-  @include media($screen-sm-max) {
-    overflow: hidden;
-  }
-  zoom: 1;
-}
-
-.nav-collapse.opened {
-  max-height: 9999px;
-}
-
-
-.nav-toggle {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-touch-callout: none;
-  @include user-select(none);
-  text-decoration: none;
-  text-indent: -999px;
-  position: absolute;
-  overflow: hidden;
-  width: 50px;
-  height: 55px;
-  display: block;
-  top: 9px;
-  left: 0;
-}
-.nav-toggle:before {
-  color: $color__link-menu;
-  font-family: "responsivenav";
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  font-size: 18px;
-  text-transform: none;
-  position: absolute;
-  content: "\2261";
-  text-indent: 0;
-  text-align: center;
-  line-height: 48px;
-  speak: none;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-.nav-toggle.active:before {
-  font-size: 18px;
-  content: "\78";
-}
-
-@include media($screen-sm-min) {
-  .js .nav-collapse {
-    position: relative;
-  }
-  .js .nav-collapse.closed {
-    max-height: none;
-  }
-  .nav-toggle {
-    display: none;
-  }
-}
-
 @mixin active-menu {
   font-weight: bold;
   &:hover {
    text-decoration: none;
   }
-  @include media($screen-sm-min) {
-    &:after {
-      content: " ▸";
-      margin-right: -1rem;
-    }
-  }
 }
-
 
 .main-navigation {
   font-family: $font__menu;

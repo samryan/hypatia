@@ -15,6 +15,5 @@
         <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 	      <?php get_search_form(); ?>
       </nav>
-      <a href="#nav" class="nav-toggle" aria-hidden="false">Menu</a>
     </header>
     <div class="content">

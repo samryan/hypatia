@@ -2,12 +2,14 @@
 <div id="primary" class="content-area">
   <section class="home intro">
     <h1>Hi!</h1>
-    <h3>I&rsquo;m a UX designer working at Amazon.com in Seattle. I like thinking about screens, history, and the future.</h3>
-    <p>I grew up here but I&rsquo;ve also spent time in San Diego and Berkeley. I hold a BA in history from the University of California at Berkeley and an MS in Information Management from the University of Washington iSchool.</p>
+    <h3>I&rsquo;m a user experience designer from Seattle. I like thinking about screens, history, and the future.</h3>
+    <p>I studied history at UC Berkeley, and then Information Management at the University of Washington iSchool.</p>
     <p>I write here pretty infrequently, but when I get something stuck in my head, it&rsquo;s nice to have a blog. Whenever I have time, I read books, and that list gets updated a lot more often than the rest of the site.</p>
   </section>
-  <h3>Projects</h3>
   <section class="home projects-list">
+    <header>
+      <h3>Projects</h3>
+    </header>
     <p>I work on Amazon&rsquo;s display advertising UX team, trying to make web and mobile ads more interesting and better for customers. Some of my recent projects include:</p>
     <ul>
     <?php
@@ -22,15 +24,11 @@
       if ( $projects->have_posts() ) : while ( $projects->have_posts() ) : $projects->the_post();
       if ( has_post_thumbnail () ) {
     ?>
-    <!--
-    <a href="<?php the_permalink(); ?>" class="project">
-      <img src="<?php the_post_thumbnail_url('full'); ?>" />
-      <span class="metadata">
+    <li class="project">
+      <a href="<?php the_permalink(); ?>">
+        <img src="<?php the_post_thumbnail_url('full'); ?>" />
         <?php the_title(); ?>
-      </span>
-    </a>-->
-    <li>
-      <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+      </a>
     </li>
     <?php
       }
@@ -41,8 +39,10 @@
     ?>
   </ul>
   </section>
-  <h3>Recently finished books</h3>
   <section class="home books">
+    <header>
+      <h3>Recently finished books</h3>
+    </header>
     <?php
       $args = array( 'posts_per_page' => 12, 'post_type' => 'books' );
       $myposts = get_posts( $args );

@@ -50,7 +50,6 @@
          <li><a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>" class="button">Full text</a></li>
         <?php endif; ?>
 			</ul>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'hypatia' ), 'after' => '</div>' ) ); ?>
 		</div>
 		<?php endif; ?>
 		<div style="clear:both;display:block;height:1px;"></div>
