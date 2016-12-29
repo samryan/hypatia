@@ -7,9 +7,7 @@
     <p>I write here pretty infrequently, but when I get something stuck in my head, it&rsquo;s nice to have a blog. Whenever I have time, I read books, and that list gets updated a lot more often than the rest of the site.</p>
   </section>
   <section class="home projects-list">
-    <header>
-      <h3>Projects</h3>
-    </header>
+    <h3>Projects</h3>
     <p>I work on Amazon&rsquo;s display advertising UX team, trying to make web and mobile ads more interesting and better for customers. Some of my recent projects include:</p>
     <ul>
     <?php
@@ -40,9 +38,8 @@
   </ul>
   </section>
   <section class="home books">
-    <header>
-      <h3>Recently finished books</h3>
-    </header>
+    <h3>Recently finished books</h3>
+    <div class="list">
     <?php
       $args = array( 'posts_per_page' => 12, 'post_type' => 'books' );
       $myposts = get_posts( $args );
@@ -58,6 +55,7 @@
       endforeach;
       wp_reset_postdata();
     ?>
+    </div>
   </section>
 </div>
 <?php

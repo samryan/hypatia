@@ -49,7 +49,7 @@
   }
 }
 
-.home.books {
+.home.books .list {
   @include fill-parent();
   display: flex;
   flex-wrap: wrap;
