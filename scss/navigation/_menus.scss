@@ -1,92 +1,115 @@
-@mixin active-menu {
-  font-weight: bold;
-  &:hover {
-   text-decoration: none;
-  }
-}
-
-.main-navigation {
+nav {
+  position: relative;
+  height: 50px;
   font-family: $font__menu;
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
-	ul {
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-	}
-	li {
-	  @include font-size(1);
-		&:hover > a,
-		&.focus > a {
-		  text-decoration: underline;
-		}
-	}
-	a {
-		color: $color__link-menu;
-		display: block;
-		text-decoration: none;
-	}
-	.current-page-item > a,
-	.current-menu-item > a,
-	.current-page-ancestor > a,
-	.current-menu-ancestor > a {
-	  @include active-menu;
+  &:before, &:after {
+    content: "";
+    display: table;
+    clear: both;
   }
-}
-
-.single-books #menu-item-1039 > a {
-  @include active-menu;
-}
-
-header.header {
-  input[type=search] {
-	  font-family: $font__menu;
-	  @include font-size(1);
-    background-color: transparent;
-    border-width: 0px;
-    color: $color__link-menu !important;
-    text-align: left;
-    padding: 0;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease-in-out;
+  .logo {
+    font-size: 1.4rem;
+    display: block;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    font-family: $font__logo;
+    text-decoration: none;
+    color: $color__logo !important;
     &:hover {
+      color: $color__logo !important;
+    }
+    @include media($screen-sm-max) {
+      float: none;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    height: auto !important;
+    list-style: none;
+    @include media($screen-sm-max) {
+      display: none;
+      float: left;
+    }
+    li {
+      float: left;
+      margin: 0;
+      padding: 0;
+      text-align: center;
       cursor: pointer;
-      text-decoration: underline;
+      @include media($screen-sm-max) {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+      a {
+        color: $color__link-menu;
+        margin-right: 1.4rem;
+        vertical-align: middle;
+        line-height: 50px;
+        height: 50px;
+        text-decoration: none;
+        @include media($screen-sm-max) {
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+  input[type=search] {
+    background-color: rgba(255,255,255,0.5);
+    font-family: $font__menu;
+    line-height: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    @include media($screen-sm-max) {
+      height: 30px;
+      line-height: 30px;
+      margin-left: -0.5rem;
     }
     @include placeholder {
       color: $color__link-menu;
-      transition: opacity 0.3s ease-in-out;
+      &::before {
+        content: " ";
+      }
     }
-    @include media($screen-sm-min) {
-      text-align: right;
-      max-width: 90%;
-      padding: 0;
+    &:focus,
+    &:active {
     }
   }
-
-  input[type=search]:hover::-webkit-input-placeholder { text-decoration: underline; }
-  input[type=search]:hover:-moz-placeholder { text-decoration: underline; }
-  input[type=search]:hover::-moz-placeholder { text-decoration: underline; }
-  input[type=search]:hover:-ms-input-placeholder { text-decoration: underline; }
-  input[type=search]:hover::-ms-input-placeholder { text-decoration: underline; }
-
-  input[type=search]:focus::-webkit-input-placeholder { opacity: 0; }
-  input[type=search]:focus:-moz-placeholder { opacity: 0; }
-  input[type=search]:focus::-moz-placeholder { opacity: 0; }
-  input[type=search]:focus:-ms-input-placeholder { opacity: 0; }
-  input[type=search]:focus::-ms-input-placeholder { opacity: 0; }
-
 }
 
-body.search header.header form[role=search] {
-  font-weight: bold;
-  &:before {
-    color: $color__link-menu;
-    font-size: 90%;
-    content: "search for: ";
+#toggle-menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 0 1rem;
+  line-height: 50px;
+  height: 50px;
+  @include media($screen-sm-max) {
+    display: block;
   }
+}
+
+header.site-header {
+  font-family: $font__menu;
+/*	.current-page-item > a,
+	.current-menu-item > a,
+	.current-page-ancestor > a,
+	.current-menu-ancestor > a {
+
+  }
+  */
+}
+.single-books #menu-item-1039 > a {
+/* select the Reading List item from a single book page */
 }
 
 .comment-navigation,
@@ -112,6 +135,5 @@ body.search header.header form[role=search] {
 .post-navigation {
   .nav-links {
     font-family: $font__mono;
-
   }
 }

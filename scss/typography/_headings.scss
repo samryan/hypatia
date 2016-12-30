@@ -3,26 +3,3 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font__headings;
   font-weight: normal;
 }
-
-h1 {
-	@include font-size(1.8);
-}
-
-h2 {
-	@include font-size(1.5);
-}
-
-.site-title {
-  font-weight: bold;
-  line-height: 2.5;
-  font-size: 1rem;
-  a {
-    color: $color__logo;
-    text-decoration: none;
-    &:active,
-    &:visited,
-    &:hover {
-      color: $color__logo;
-    }
-  }
-}

@@ -1,5 +1,7 @@
 $color__purple: #8a46fa;
-$color__teal: #84C98D;
+$color__green: #84C98D;
+$color__brown: #c0ab88;
+$color__blue: #3e459a;
 
 $color__background-body: #fff;
 $color__background-menu: #fff;
@@ -13,14 +15,58 @@ $color__text-main: #555;
 $color__text-screen: $color__text-main;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: $color__purple;
+$color__link: #00f;
 $color__link-visited: $color__link;
 $color__link-hover: #111;
 $color__link-menu: #555;
-$color__logo: $color__text-main;
+$color__logo: darken($color__green, 25%);
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+
+.bg-brown {
+  background-color: $color__brown;
+  color: $color__text-main;
+  a {
+    color: $color__text-main !important;
+    &:hover {
+      color: #000 !important;
+    }
+  }
+}
+
+.bg-green {
+  background-color: $color__green;
+  color: $color__text-main;
+  a {
+    color: $color__text-main !important;
+    &:hover {
+      color: #000 !important;
+    }
+  }
+}
+
+.bg-blue {
+  background-color: $color__blue;
+  color: #fff;
+  a {
+    color: #fff !important;
+    &:hover {
+      color: #ccc !important;
+    }
+  }
+}
+
+.bg-gray {
+  background-color: #eee;
+  color: $color__text-main;
+  a {
+    color: $color__text-main !important;
+    &:hover {
+      color: #000 !important;
+    }
+  }
+}

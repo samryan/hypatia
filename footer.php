@@ -1,17 +1,13 @@
-  <footer id="colophon" class="site-footer" role="contentinfo">
-    <div class="site-info">
-      <p>Most content by Sam Ryan, 2007&ndash;<?php echo date('Y');?>. Thanks for visiting.</p>
-    </div>
-  </footer>
+    <footer id="colophon" class="site-footer" role="contentinfo">
+      <div class="site-info container">
+        <p>Most content is by Sam Ryan, 2007&ndash;<?php echo date('Y'); ?>. Most of the Amazon links use an <a href="https://affiliate-program.amazon.com">affiliate code</a>. Thanks for visiting.</p>
+      </div>
+    </footer>
   </div>
 </div>
 <?php wp_footer(); ?>
-<script>
-  var navigation = responsiveNav("site-navigation", {customToggle: ".nav-toggle"});
-</script>
 <!--
 BENE LEGERE SAECLA VINCERE
 -->
-
 </body>
 </html>
