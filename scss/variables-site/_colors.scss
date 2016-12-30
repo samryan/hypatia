@@ -2,9 +2,11 @@ $color__purple: #8a46fa;
 $color__green: #84C98D;
 $color__brown: #c0ab88;
 $color__blue: #3e459a;
+$color__light-gray: #efefef;
+$color__offwhite: #faf7eb;
 
 $color__background-body: #fff;
-$color__background-menu: #fff;
+$color__background-menu: $color__light-gray;
 $color__background-screen: #3A3C83;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -19,7 +21,7 @@ $color__link: #00f;
 $color__link-visited: $color__link;
 $color__link-hover: #111;
 $color__link-menu: #555;
-$color__logo: darken($color__green, 25%);
+$color__logo: $color__link-menu;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
@@ -28,6 +30,7 @@ $color__border-input: #ccc;
 $color__border-abbr: #666;
 
 .bg-brown {
+  @include linear-gradient(to bottom, $color__brown, lighten($color__brown, 5%));
   background-color: $color__brown;
   color: $color__text-main;
   a {
@@ -39,6 +42,7 @@ $color__border-abbr: #666;
 }
 
 .bg-green {
+  @include linear-gradient(to bottom, $color__green, lighten($color__green, 5%));
   background-color: $color__green;
   color: $color__text-main;
   a {
@@ -50,6 +54,7 @@ $color__border-abbr: #666;
 }
 
 .bg-blue {
+  @include linear-gradient(to bottom, $color__blue, lighten($color__blue, 5%));
   background-color: $color__blue;
   color: #fff;
   a {
@@ -60,8 +65,8 @@ $color__border-abbr: #666;
   }
 }
 
-.bg-gray {
-  background-color: #eee;
+.bg-default {
+  background-color: $color__offwhite;
   color: $color__text-main;
   a {
     color: $color__text-main !important;

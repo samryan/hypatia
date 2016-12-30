@@ -1,14 +1,11 @@
 $(document).ready(function(){
-  var w = $(window).width(),
-  menuToggle = $('#toggle-menu'),
-  menu = $('nav ul'),
-  hasChild = $('.has-child'),
-  dropdown = $('.dropdown');
-  $(function() {
-    $(menuToggle).on('click', function(e) {
-      e.preventDefault();
-      menu.toggle();
-    });
-  });
   
+    $('#toggle-menu').on('click', function(e) {
+      e.preventDefault();
+      $('nav ul').slideToggle(100);
+    });
+
+  window.addEventListener('load', function(){
+    Grade(document.querySelectorAll('.bg-grade'))
+  });
 });

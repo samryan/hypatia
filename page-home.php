@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <section class="home intro bg-gray">
+  <section class="home intro bg-default">
     <div class="container">
       <h1>Hi!</h1>
       <h3>I&rsquo;m a user experience designer from Seattle.</h3>
@@ -10,7 +10,7 @@
   <section class="home projects-list bg-green">
     <div class="container">
       <h3 class="clear">Projects</h3>
-      <p class="clear">I work on Amazon&rsquo;s display advertising UX team, trying to make web and mobile ads more interesting and better for customers. Some of my recent projects include:</p>
+      <p class="clear">I work on Amazon&rsquo;s display advertising UX <a href="https://www.amazon.jobs/axt">team</a>, trying to make web and mobile ads more interesting and better for customers. Some of my recent projects include:</p>
 
       <?php
         global $post;
@@ -35,7 +35,7 @@
       ?>
     </div>
   </section>
-  <section class="home books bg-gray">
+  <section class="home books bg-default">
     <div class="container">
       <h3 class="clear">Reading list</h3>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>

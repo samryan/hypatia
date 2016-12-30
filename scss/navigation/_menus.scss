@@ -1,3 +1,14 @@
+header.site-header {
+  font-family: $font__menu;
+/*	.current-page-item > a,
+	.current-menu-item > a,
+	.current-page-ancestor > a,
+	.current-menu-ancestor > a {
+
+  }
+  */
+}
+
 nav {
   position: relative;
   height: 50px;
@@ -14,6 +25,7 @@ nav {
     height: 50px;
     line-height: 50px;
     font-family: $font__logo;
+    font-weight: bold;
     text-decoration: none;
     color: $color__logo !important;
     &:hover {
@@ -27,8 +39,11 @@ nav {
     margin: 0;
     padding: 0;
     float: right;
-    height: auto !important;
+    height: auto;
     list-style: none;
+    @include media($screen-sm-min) {
+      display: block !important;
+    }
     @include media($screen-sm-max) {
       display: none;
       float: left;
@@ -62,23 +77,19 @@ nav {
   input[type=search] {
     background-color: rgba(255,255,255,0.5);
     font-family: $font__menu;
-    line-height: 50px;
-    height: 50px;
-    transition: all 0.3s ease;
+    line-height: 40px;
+    height: 40px;
+    margin-top: 5px;
     border-radius: 6px;
     @include media($screen-sm-max) {
       height: 30px;
       line-height: 30px;
       margin-left: -0.5rem;
     }
+    text-indent: 0.5rem;
     @include placeholder {
-      color: $color__link-menu;
-      &::before {
-        content: " ";
-      }
-    }
-    &:focus,
-    &:active {
+
+
     }
   }
 }
@@ -98,16 +109,6 @@ nav {
   }
 }
 
-header.site-header {
-  font-family: $font__menu;
-/*	.current-page-item > a,
-	.current-menu-item > a,
-	.current-page-ancestor > a,
-	.current-menu-ancestor > a {
-
-  }
-  */
-}
 .single-books #menu-item-1039 > a {
 /* select the Reading List item from a single book page */
 }

@@ -1,6 +1,4 @@
-.books header {
-  margin: 0 -2rem;
-  width: auto;
+.books {
   .book-cover {
     @include row(table);
     @include pad(2rem);

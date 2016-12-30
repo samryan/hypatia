@@ -10,9 +10,14 @@ footer {
   margin: 0;
   padding: 2rem 1rem;
 }
+@include media($screen-sm-max) {
+  header {
+    padding: 0 1rem;
+  }
+}
 div.container {
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 54rem;
 }
 .home.intro {
   h1 {
@@ -30,7 +35,7 @@ div.container {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 2rem;
-  a {
+  a.project {
     width: 50%;
     @include media($screen-sm-min) {
       width: 33%;

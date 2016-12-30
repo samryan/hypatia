@@ -30,6 +30,9 @@ html {
 
 .bg-brown {
   background-color: #c0ab88;
+  background-image: -webkit-linear-gradient(top, #c0ab88, #c9b799);
+  background-image: linear-gradient(to bottom,#c0ab88, #c9b799);
+  background-color: #c0ab88;
   color: #555555; }
   .bg-brown a {
     color: #555555 !important; }
@@ -37,6 +40,9 @@ html {
       color: #000 !important; }
 
 .bg-green {
+  background-color: #84c98d;
+  background-image: -webkit-linear-gradient(top, #84c98d, #96d19d);
+  background-image: linear-gradient(to bottom,#84c98d, #96d19d);
   background-color: #84c98d;
   color: #555555; }
   .bg-green a {
@@ -46,18 +52,21 @@ html {
 
 .bg-blue {
   background-color: #3e459a;
+  background-image: -webkit-linear-gradient(top, #3e459a, #454dac);
+  background-image: linear-gradient(to bottom,#3e459a, #454dac);
+  background-color: #3e459a;
   color: #fff; }
   .bg-blue a {
     color: #fff !important; }
     .bg-blue a:hover {
       color: #ccc !important; }
 
-.bg-gray {
-  background-color: #eee;
+.bg-default {
+  background-color: #faf7eb;
   color: #555555; }
-  .bg-gray a {
+  .bg-default a {
     color: #555555 !important; }
-    .bg-gray a:hover {
+    .bg-default a:hover {
       color: #000 !important; }
 
 /* @import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i|Inconsolata:400,700'; */
@@ -446,6 +455,16 @@ a {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+header.site-header {
+  font-family: "Lora", "Alegreya", Georgia, serif;
+  /*	.current-page-item > a,
+  	.current-menu-item > a,
+  	.current-page-ancestor > a,
+  	.current-menu-ancestor > a {
+  
+    }
+    */ }
+
 nav {
   position: relative;
   height: 50px;
@@ -461,10 +480,11 @@ nav {
     height: 50px;
     line-height: 50px;
     font-family: "Lora", "Alegreya", Georgia, serif;
+    font-weight: bold;
     text-decoration: none;
-    color: #3f8f49 !important; }
+    color: #555555 !important; }
     nav .logo:hover {
-      color: #3f8f49 !important; }
+      color: #555555 !important; }
     @media screen and (max-width: 599px) {
       nav .logo {
         float: none; } }
@@ -472,8 +492,11 @@ nav {
     margin: 0;
     padding: 0;
     float: right;
-    height: auto !important;
+    height: auto;
     list-style: none; }
+    @media screen and (min-width: 600px) {
+      nav ul {
+        display: block !important; } }
     @media screen and (max-width: 599px) {
       nav ul {
         display: none;
@@ -504,31 +527,16 @@ nav {
   nav input[type=search] {
     background-color: rgba(255, 255, 255, 0.5);
     font-family: "Lora", "Alegreya", Georgia, serif;
-    line-height: 50px;
-    height: 50px;
-    transition: all 0.3s ease;
-    border-radius: 6px; }
+    line-height: 40px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 6px;
+    text-indent: 0.5rem; }
     @media screen and (max-width: 599px) {
       nav input[type=search] {
         height: 30px;
         line-height: 30px;
         margin-left: -0.5rem; } }
-    nav input[type=search]::-webkit-input-placeholder {
-      color: #555555; }
-      nav input[type=search]::-webkit-input-placeholder::before {
-        content: " "; }
-    nav input[type=search]::-moz-placeholder {
-      color: #555555; }
-      nav input[type=search]::-moz-placeholder::before {
-        content: " "; }
-    nav input[type=search]:-moz-placeholder {
-      color: #555555; }
-      nav input[type=search]:-moz-placeholder::before {
-        content: " "; }
-    nav input[type=search]:-ms-input-placeholder {
-      color: #555555; }
-      nav input[type=search]:-ms-input-placeholder::before {
-        content: " "; }
 
 #toggle-menu {
   position: absolute;
@@ -543,16 +551,6 @@ nav {
   @media screen and (max-width: 599px) {
     #toggle-menu {
       display: block; } }
-
-header.site-header {
-  font-family: "Lora", "Alegreya", Georgia, serif;
-  /*	.current-page-item > a,
-  	.current-menu-item > a,
-  	.current-page-ancestor > a,
-  	.current-menu-ancestor > a {
-  
-    }
-    */ }
 
 .single-books #menu-item-1039 > a {
   /* select the Reading List item from a single book page */ }
@@ -688,9 +686,12 @@ footer {
   margin: 0;
   padding: 2rem 1rem; }
 
+@media screen and (max-width: 599px) {
+  header {
+    padding: 0 1rem; } }
 div.container {
   margin: 0 auto;
-  max-width: 50rem; }
+  max-width: 54rem; }
 
 .home.intro h1 {
   font-size: 2rem; }
@@ -704,13 +705,13 @@ div.container {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 2rem; }
-  .projects-list .container a {
+  .projects-list .container a.project {
     width: 50%;
     padding-top: 1rem;
     padding-right: 2rem;
     margin-bottom: 0.2rem; }
     @media screen and (min-width: 600px) {
-      .projects-list .container a {
+      .projects-list .container a.project {
         width: 33%; } }
 
 .home.books .list {
@@ -745,44 +746,41 @@ table.specs {
     border: 1px solid #ccc;
     padding: 0.3rem; }
 
-.books header {
-  margin: 0 -2rem;
-  width: auto; }
-  .books header .book-cover {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    padding: 2rem;
-    position: relative; }
-    .books header .book-cover .book-data {
-      display: table-cell;
-      width: 58.33333%;
-      padding: 0 1rem 0 1rem;
-      margin-right: 0;
-      vertical-align: middle; }
-      @media screen and (max-width: 599px) {
-        .books header .book-cover .book-data {
-          font-size: 80%; } }
-      .books header .book-cover .book-data h1, .books header .book-cover .book-data h2 {
-        display: inline-block;
-        float: left;
-        clear: both;
-        margin: 0;
-        padding: 0.5rem 1rem;
-        font-weight: normal; }
-      .books header .book-cover .book-data h1 {
-        font-size: 160%; }
-      .books header .book-cover .book-data h2 {
-        margin-top: 1rem;
-        font-size: 120%; }
-    .books header .book-cover a {
-      display: table-cell;
-      width: 41.66667%;
-      padding: 1rem; }
-      .books header .book-cover a img {
-        -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
+.books .book-cover {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  padding: 2rem;
+  position: relative; }
+  .books .book-cover .book-data {
+    display: table-cell;
+    width: 58.33333%;
+    padding: 0 1rem 0 1rem;
+    margin-right: 0;
+    vertical-align: middle; }
+    @media screen and (max-width: 599px) {
+      .books .book-cover .book-data {
+        font-size: 80%; } }
+    .books .book-cover .book-data h1, .books .book-cover .book-data h2 {
+      display: inline-block;
+      float: left;
+      clear: both;
+      margin: 0;
+      padding: 0.5rem 1rem;
+      font-weight: normal; }
+    .books .book-cover .book-data h1 {
+      font-size: 160%; }
+    .books .book-cover .book-data h2 {
+      margin-top: 1rem;
+      font-size: 120%; }
+  .books .book-cover a {
+    display: table-cell;
+    width: 41.66667%;
+    padding: 1rem; }
+    .books .book-cover a img {
+      -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
 
 .books ul.book_links {
   margin: 1rem 0;
