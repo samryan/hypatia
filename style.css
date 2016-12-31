@@ -44,11 +44,11 @@ html {
   background-image: -webkit-linear-gradient(top, #84c98d, #96d19d);
   background-image: linear-gradient(to bottom,#84c98d, #96d19d);
   background-color: #84c98d;
-  color: #555555; }
+  color: #2f2f2f; }
   .bg-green a {
-    color: #555555 !important; }
+    color: #2f2f2f !important; }
     .bg-green a:hover {
-      color: #000 !important; }
+      color: #000; }
 
 .bg-blue {
   background-color: #3e459a;
@@ -444,13 +444,10 @@ a {
   a:hover, a:active {
     outline: 0; }
   a.button {
-    color: #fff !important;
-    background-color: blue;
     border-radius: 0.3rem;
     border-width: 0;
     padding: 8px 14px;
-    text-decoration: none;
-    font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
+    text-decoration: none; }
 
 /*--------------------------------------------------------------
 ## Menus
@@ -684,7 +681,13 @@ section,
 footer {
   width: 100%;
   margin: 0;
-  padding: 2rem 1rem; }
+  padding: 2rem 2rem; }
+
+section section,
+section header,
+section footer,
+header section {
+  padding: 0; }
 
 @media screen and (max-width: 599px) {
   header {
@@ -709,10 +712,13 @@ div.container {
     width: 50%;
     padding-top: 1rem;
     padding-right: 2rem;
-    margin-bottom: 0.2rem; }
+    margin-bottom: 1rem;
+    text-decoration: none; }
     @media screen and (min-width: 600px) {
       .projects-list .container a.project {
         width: 33%; } }
+    .projects-list .container a.project b {
+      text-decoration: underline; }
 
 .home.books .list {
   width: 100%;
@@ -752,6 +758,19 @@ table.specs {
   table-layout: fixed;
   padding: 2rem;
   position: relative; }
+  .books .book-cover .adjust {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1 !important;
+    background-color: transparent; }
+  .books .book-cover .container {
+    position: relative;
+    z-index: 10 !important; }
   .books .book-cover .book-data {
     display: table-cell;
     width: 58.33333%;
@@ -761,18 +780,28 @@ table.specs {
     @media screen and (max-width: 599px) {
       .books .book-cover .book-data {
         font-size: 80%; } }
-    .books .book-cover .book-data h1, .books .book-cover .book-data h2 {
+    .books .book-cover .book-data h1, .books .book-cover .book-data h2, .books .book-cover .book-data h3 {
       display: inline-block;
       float: left;
       clear: both;
       margin: 0;
       padding: 0.5rem 1rem;
-      font-weight: normal; }
+      font-weight: normal;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.2);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); }
     .books .book-cover .book-data h1 {
-      font-size: 160%; }
+      font-size: 160%;
+      transform: rotate(1deg); }
     .books .book-cover .book-data h2 {
       margin-top: 1rem;
-      font-size: 120%; }
+      font-size: 120%;
+      transform: rotate(-1deg); }
+    .books .book-cover .book-data h3.stars {
+      margin-top: 1rem;
+      font-size: 90%;
+      letter-spacing: 0.4rem;
+      transform: rotate(0deg); }
   .books .book-cover a {
     display: table-cell;
     width: 41.66667%;
@@ -781,6 +810,19 @@ table.specs {
       -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
       -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
       box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
+.books .books-meta-table {
+  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace !important;
+  font-size: 90%; }
+  .books .books-meta-table tr,
+  .books .books-meta-table td,
+  .books .books-meta-table th {
+    text-align: left;
+    vertical-align: top; }
+  .books .books-meta-table .book-tags {
+    list-style: none;
+    font-size: 90%; }
+    .books .books-meta-table .book-tags li {
+      display: inline; }
 
 .books ul.book_links {
   margin: 1rem 0;
@@ -791,7 +833,7 @@ table.specs {
     display: block; }
 
 .books .book_quotes .book_quote {
-  border-top: 2px solid #3333ff;
+  border-top: 2px solid #bbbbbb;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem 0.5rem 1rem 3rem; }
@@ -799,7 +841,7 @@ table.specs {
     font-family: "Georgia";
     font-weight: bold;
     font-size: 2.5rem;
-    color: #1a1aff;
+    color: #7b7b7b;
     content: '\201c';
     float: left;
     margin-left: -2rem;

@@ -8,7 +8,13 @@ section,
 footer {
   width: 100%;
   margin: 0;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
+}
+section section,
+section header,
+section footer,
+header section {
+  padding: 0;
 }
 @include media($screen-sm-max) {
   header {
@@ -42,7 +48,11 @@ div.container {
     }
     padding-top: 1rem;
     padding-right: 2rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    b {
+      text-decoration: underline;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
   <section class="home intro bg-default">
     <div class="container">
-      <h1>Hi!</h1>
+      <h1>Hello!</h1>
       <h3>I&rsquo;m a user experience designer from Seattle.</h3>
       <p> I like thinking about screens, history, and the future. I have an undergrad degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
       <p>I don&rsquo;t write here very often, but when I get something stuck in my head, it&rsquo;s nice to have <a href="/blog">a blog</a>.</p>
@@ -9,35 +9,43 @@
   </section>
   <section class="home projects-list bg-green">
     <div class="container">
-      <h3 class="clear">Projects</h3>
-      <p class="clear">I work on Amazon&rsquo;s display advertising UX <a href="https://www.amazon.jobs/axt">team</a>, trying to make web and mobile ads more interesting and better for customers. Some of my recent projects include:</p>
-
-      <?php
-        global $post;
-        $projects_query_args = array(
-          'post_type'   => 'page',
-          'post_parent' => '193',
-          'orderby'     => 'post_name',
-          'order'        => 'ASC'
-        );
-        $projects = new WP_Query( $projects_query_args );
-        if ( $projects->have_posts() ) : while ( $projects->have_posts() ) : $projects->the_post();
-        if ( has_post_thumbnail () ) {
-      ?>
-        <a class="project" href="<?php the_permalink(); ?>">
-          <?php /* <img src="<?php the_post_thumbnail_url('full'); ?>" /> */ ?>
-          <?php the_title(); ?>
-        </a>
-      <?php } ?>
-      <?php
-        endwhile; endif;
-        wp_reset_postdata();
-      ?>
+      <h2 class="clear">Projects</h2>
+      <p class="clear">I work for Amazon&rsquo;s <a href="https://www.amazon.jobs/axt">Advertising Experience &amp; Technology</a> group, making our ad business more interesting and better for customers. Some of my projects at Amazon include:</p>
+      <a class="project" href="/projects/ad-landing-pages">
+        <b>Ad Landing Pages</b>
+        <br>
+        <span>An internal tool for Amazon designers to make landing pages without writing any code.</span>
+      </a>
+      <a class="project" href="/projects/advertise-your-app">
+        <b>Advertise Your App</b>
+        <br>
+        <span>Do-it-yourself ad campaigns for app developers. Featured in TechCrunch!</span>
+      </a>
+      <a class="project" href="/projects/amazon-mobile-ad-placements">
+        <b>Amazon Mobile ad placements</b>
+        <br>
+        <span>Scaling a worldwide ads business as our customers migrate to mobile shopping.</span>
+      </a>
+      <a class="project" href="/projects/mobile-add-to-cart">
+        <b>Mobile Add to Cart ad format</b>
+        <br>
+        <span>A new eCommerce-enabled ad format, unique to Amazon.</span>
+      </a>
+      <a class="project" href="/projects/mobile-interstitial-ads">
+        <b>Mobile interstitial ad format</b>
+        <br>
+        <span>Iterative design and development of a &lsquo;least bad&rsquo; ad format for third-party apps.</span>
+      </a>
+      <a class="project" href="/projects/fit-ratings">
+        <b>Fit ratings (internship project)</b>
+        <br>
+        <span>A detail page feature that helps you pick the right size for clothes.</span>
+      </a>
     </div>
   </section>
   <section class="home books bg-default">
     <div class="container">
-      <h3 class="clear">Reading list</h3>
+      <h2 class="clear">Reading</h2>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
       <p>These are the last six books I finished:</p>
       <div class="list">

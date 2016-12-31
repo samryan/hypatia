@@ -44,11 +44,11 @@ $color__border-abbr: #666;
 .bg-green {
   @include linear-gradient(to bottom, $color__green, lighten($color__green, 5%));
   background-color: $color__green;
-  color: $color__text-main;
+  color: darken($color__text-main, 15%);
   a {
-    color: $color__text-main !important;
+    color: darken($color__text-main, 15%) !important;
     &:hover {
-      color: #000 !important;
+      color: #000;
     }
   }
 }

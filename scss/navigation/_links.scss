@@ -12,13 +12,10 @@ a {
 	&:active {
 		outline: 0;
 	}
-  &.button {
-    color: #fff !important;
-    background-color: $color__link;
+  &.button {  
     border-radius: 0.3rem;
     border-width: 0;
     padding: 8px 14px;
     text-decoration: none;
-    font-family: $font__mono;
   }
 }

@@ -7,7 +7,14 @@
       <?php } ?>
     	<?php
     		while ( have_posts() ) : the_post();
-    			get_template_part( 'template-parts/content', 'page' );
+      ?>
+        <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+        <div class="entry-content">
+          <?php
+            the_content();
+          ?>
+          </div>
+      <?php
     		endwhile; // End of the loop.
     	?>
     </div>
