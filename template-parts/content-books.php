@@ -28,12 +28,13 @@
   <?php if ($post->post_content != '') : ?>
     <section class="review bg-green">
       <div class="container">
-        <h3><b>Review</b></h3>
+        <h3><b>Review:</b></h3>
         <div class="entry-content" itemprop="review" itemscope itemtype="http://schema.org/Review">
           <span itemprop="reviewBody">
             <?php the_content(); ?>
           </span>
         </div>
+        <?php echo get_post_meta($post->ID, 'rating', true); ?>
       </div>
     </section>
   <?php endif; ?>

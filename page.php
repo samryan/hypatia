@@ -1,6 +1,5 @@
 <?php get_header(); ?>
-<div id="primary" class="content-area">
-  <section>
+  <section class="bg-default">
     <div class="container">
       <?php if ( has_post_thumbnail() ) { ?>
         <img src="<?php the_post_thumbnail_url('full'); ?>" />
@@ -19,6 +18,5 @@
     	?>
     </div>
   </section>
-</div>
 <?php
 get_footer();

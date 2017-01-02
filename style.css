@@ -835,6 +835,8 @@ table.specs {
     margin-left: -2rem;
     margin-top: -0.75rem; }
   .books .book_quotes .book_quote cite {
+    font-size: 90%;
+    margin-top: 1rem;
     display: block; }
 
 /* Make sure embeds and iframes fit their containers. */
