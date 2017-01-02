@@ -61,6 +61,16 @@ html {
     .bg-blue a:hover {
       color: #ccc !important; }
 
+.bg-gray {
+  background-color: #444444;
+  color: #ccc; }
+  .bg-gray th {
+    color: #fff; }
+  .bg-gray a {
+    color: #eee !important; }
+    .bg-gray a:hover {
+      color: #fff !important; }
+
 .bg-default {
   background-color: #faf7eb;
   color: #555555; }
@@ -522,18 +532,21 @@ nav {
             height: 30px;
             line-height: 30px; } }
   nav input[type=search] {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0);
     font-family: "Lora", "Alegreya", Georgia, serif;
     line-height: 40px;
     height: 40px;
     margin-top: 5px;
     border-radius: 6px;
+    transition: 0.2s background-color ease-in;
     text-indent: 0.5rem; }
     @media screen and (max-width: 599px) {
       nav input[type=search] {
         height: 30px;
         line-height: 30px;
         margin-left: -0.5rem; } }
+    nav input[type=search]:focus, nav input[type=search]:active {
+      background-color: white; }
 
 #toggle-menu {
   position: absolute;
@@ -651,9 +664,6 @@ nav {
 .sticky {
   display: block; }
 
-.hentry {
-  margin: 0 0 1.5em; }
-
 .byline,
 .updated:not(.published) {
   display: none; }
@@ -661,11 +671,6 @@ nav {
 .single .byline,
 .group-blog .byline {
   display: inline; }
-
-.page-content,
-.entry-content,
-.entry-summary {
-  margin: 1.5em 0 0; }
 
 .page-links {
   clear: both;
@@ -691,7 +696,11 @@ header section {
 
 @media screen and (max-width: 599px) {
   header {
-    padding: 0 1rem; } }
+    padding: 0 1rem; }
+
+  section,
+  footer {
+    padding: 1rem; } }
 div.container {
   margin: 0 auto;
   max-width: 54rem; }
@@ -756,8 +765,10 @@ table.specs {
   display: table;
   width: 100%;
   table-layout: fixed;
-  padding: 2rem;
   position: relative; }
+  @media screen and (min-width: 600px) {
+    .books .book-cover {
+      padding: 2rem; } }
   .books .book-cover .adjust {
     position: absolute;
     top: 0;
@@ -785,52 +796,29 @@ table.specs {
       float: left;
       clear: both;
       margin: 0;
-      padding: 0.5rem 1rem;
-      font-weight: normal;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.2);
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); }
+      padding: 0.5rem 1rem; }
     .books .book-cover .book-data h1 {
-      font-size: 160%;
-      transform: rotate(1deg); }
+      font-size: 160%; }
     .books .book-cover .book-data h2 {
-      margin-top: 1rem;
-      font-size: 120%;
-      transform: rotate(-1deg); }
+      font-size: 120%; }
     .books .book-cover .book-data h3.stars {
       margin-top: 1rem;
       font-size: 90%;
-      letter-spacing: 0.4rem;
-      transform: rotate(0deg); }
+      letter-spacing: 0.2rem; }
   .books .book-cover a {
     display: table-cell;
     width: 41.66667%;
-    padding: 1rem; }
+    padding: 0; }
     .books .book-cover a img {
       -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
       -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
       box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
-.books .books-meta-table {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace !important;
-  font-size: 90%; }
-  .books .books-meta-table tr,
-  .books .books-meta-table td,
-  .books .books-meta-table th {
-    text-align: left;
-    vertical-align: top; }
-  .books .books-meta-table .book-tags {
-    list-style: none;
-    font-size: 90%; }
-    .books .books-meta-table .book-tags li {
-      display: inline; }
-
-.books ul.book_links {
-  margin: 1rem 0;
-  list-style: none;
-  padding: 0; }
-  .books ul.book_links li {
-    padding: 0;
-    display: block; }
+.books .books-meta-table tr,
+.books .books-meta-table td,
+.books .books-meta-table th {
+  text-align: left;
+  vertical-align: top;
+  padding: 0 1rem 0 0; }
 
 .books .book_quotes .book_quote {
   border-top: 2px solid #bbbbbb;
@@ -846,6 +834,8 @@ table.specs {
     float: left;
     margin-left: -2rem;
     margin-top: -0.75rem; }
+  .books .book_quotes .book_quote cite {
+    display: block; }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,

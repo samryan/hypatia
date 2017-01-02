@@ -3,6 +3,7 @@ $color__green: #84C98D;
 $color__brown: #c0ab88;
 $color__blue: #3e459a;
 $color__light-gray: #efefef;
+$color__gray: #444;
 $color__offwhite: #faf7eb;
 
 $color__background-body: #fff;
@@ -61,6 +62,19 @@ $color__border-abbr: #666;
     color: #fff !important;
     &:hover {
       color: #ccc !important;
+    }
+  }
+}
+.bg-gray {
+  background-color: $color__gray;
+  color: #ccc;
+  th {
+    color: #fff;
+  }
+  a {
+    color: #eee !important;
+    &:hover {
+      color: #fff !important;
     }
   }
 }

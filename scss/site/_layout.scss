@@ -20,6 +20,10 @@ header section {
   header {
     padding: 0 1rem;
   }
+  section,
+  footer {
+    padding: 1rem;
+  }
 }
 div.container {
   margin: 0 auto;

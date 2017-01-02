@@ -34,7 +34,7 @@
       <a class="project" href="/projects/mobile-interstitial-ads">
         <b>Mobile interstitial ad format</b>
         <br>
-        <span>Iterative design and development of a &lsquo;least bad&rsquo; ad format for third-party apps.</span>
+        <span>Iterative design and development of a full screen ad format for third-party apps.</span>
       </a>
       <a class="project" href="/projects/fit-ratings">
         <b>Fit ratings (internship project)</b>

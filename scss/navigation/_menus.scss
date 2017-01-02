@@ -75,12 +75,13 @@ nav {
     }
   }
   input[type=search] {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0);
     font-family: $font__menu;
     line-height: 40px;
     height: 40px;
     margin-top: 5px;
     border-radius: 6px;
+    transition: 0.2s background-color ease-in;
     @include media($screen-sm-max) {
       height: 30px;
       line-height: 30px;
@@ -89,6 +90,9 @@ nav {
     text-indent: 0.5rem;
     @include placeholder {
 
+    }
+    &:focus, &:active {
+      background-color: rgba(255,255,255,1);
 
     }
   }

@@ -1,7 +1,9 @@
 .books {
   .book-cover {
     @include row(table);
-    @include pad(2rem);
+    @include media($screen-sm-min) {
+      @include pad(2rem);
+    }
     position: relative;
     .adjust {
       position: absolute;
@@ -23,7 +25,7 @@
       @include pad(0 1rem 0 1rem);
       @include omega();
       @include media($screen-sm-max) {
-        font-size: 80%;
+      font-size: 80%;
       }
       vertical-align: middle;
       h1, h2, h3 {
@@ -32,30 +34,24 @@
         clear: both;
         margin: 0;
         padding: 0.5rem 1rem;
-        font-weight: normal;
-        color: #fff;
-        background: transparentize(#000, .8);
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
       }
       h1 {
         font-size: 160%;
-        transform: rotate(1deg);
+
       }
       h2 {
-        margin-top: 1rem;
         font-size: 120%;
-        transform: rotate(-1deg);
       }
       h3.stars {
         margin-top: 1rem;
         font-size: 90%;
-        letter-spacing: 0.4rem;
-        transform: rotate(0deg);
+        letter-spacing: 0.2rem;
+
       }
     }
     a {
       @include span-columns(5, table);
-      @include pad(1rem);
+      @include pad(0);
       img {
         @include box-shadow(
           0 1px 8px rgba(0,0,0,0.3)
@@ -64,32 +60,13 @@
     }
   }
   .books-meta-table {
-    font-family: $font__mono !important;
-    font-size: 90%;
     tr,
     td,
     th {
       text-align: left;
       vertical-align: top;
+      padding: 0 1rem 0 0;
     }
-    .book-tags {
-      list-style: none;
-      font-size: 90%;
-      li {
-        display: inline;
-      }
-    }
-  }
-}
-
-.books .stars {}
-.books ul.book_links {
-  @include margin(1rem 0);
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 0;
-    display: block;
   }
 }
 
@@ -110,6 +87,8 @@
     	margin-top: -0.75rem;
     }
     div { }
-    cite { }
+    cite {
+      display: block;
+    }
   }
 }

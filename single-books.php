@@ -4,11 +4,6 @@
 		while ( have_posts() ) : the_post();
 			get_template_part( 'template-parts/content-books', get_post_format() );
     ?>
-    <section class="bg-default">
-      <div class="container">
-        <?php the_post_navigation(); ?>
-      </div>
-    </section>
     <?php
 		  endwhile;
 		?>
