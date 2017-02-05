@@ -31,7 +31,7 @@ Page template for the main projects page.
       <a class="project" href="/projects/amazon-mobile-ad-placements">
         <b>Amazon Mobile ad placements</b>
         <br>
-        <span>Scaling a worldwide ads business as our customers migrate to mobile shopping.</span>
+        <span>Helping to scale a worldwide ads business as our customers migrate to mobile shopping.</span>
       </a>
       <a class="project" href="/projects/mobile-add-to-cart">
         <b>Mobile Add to Cart ad format</b>
@@ -70,6 +70,10 @@ Page template for the main projects page.
         <br>
         <span>In my final year at Berkeley, I taught a class about Bob Dylan in the English department.</span>
       </a>
+    </div>
+    <div class="container">
+      <h3><b>Essays &amp; Articles</b></h3>
+      <p>Some of the stuff I wrote in my college career, in PDF format: <a href="/essays-articles">Essays &amp; Articles</a></p>
     </div>
   </section>
 
