@@ -19,7 +19,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import url("https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i");
 @import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i';
 @import 'http://weloveiconfonts.com/api/?family=entypo';
 html {
@@ -461,14 +461,12 @@ a {
 ## Menus
 --------------------------------------------------------------*/
 header.site-header {
-  font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
-  /*	.current-page-item > a,
-  	.current-menu-item > a,
-  	.current-page-ancestor > a,
-  	.current-menu-ancestor > a {
-  
-    }
-    */ }
+  font-family: "Rubik", "Lucida Grande", Arial, sans-serif; }
+  header.site-header .current-page-item > a,
+  header.site-header .current-menu-item > a,
+  header.site-header .current-page-ancestor > a,
+  header.site-header .current-menu-ancestor > a {
+    font-weight: 500; }
 
 nav {
   position: relative;
@@ -479,14 +477,14 @@ nav {
     display: table;
     clear: both; }
   nav .logo {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     display: block;
     float: left;
     height: 50px;
     line-height: 50px;
-    font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
+    font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
     color: #555555 !important; }
     nav .logo:hover {
       color: #555555 !important; }
@@ -542,7 +540,8 @@ nav {
       nav input[type=search] {
         height: 30px;
         line-height: 30px;
-        margin-left: -0.5rem; } }
+        margin-left: -0.5rem;
+        margin-bottom: 1rem; } }
     nav input[type=search]:focus, nav input[type=search]:active {
       background-color: white; }
 

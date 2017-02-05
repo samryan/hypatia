@@ -1,12 +1,11 @@
 header.site-header {
   font-family: $font__menu;
-/*	.current-page-item > a,
+  .current-page-item > a,
 	.current-menu-item > a,
 	.current-page-ancestor > a,
 	.current-menu-ancestor > a {
-
+    font-weight: 500;
   }
-  */
 }
 
 nav {
@@ -19,14 +18,14 @@ nav {
     clear: both;
   }
   .logo {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     display: block;
     float: left;
     height: 50px;
     line-height: 50px;
-    font-family: $font__logo;
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
+    font-family: $font__logo;
     color: $color__logo !important;
     &:hover {
       color: $color__logo !important;
@@ -86,6 +85,7 @@ nav {
       height: 30px;
       line-height: 30px;
       margin-left: -0.5rem;
+      margin-bottom: 1rem;
     }
     text-indent: 0.5rem;
     @include placeholder {
