@@ -59,7 +59,15 @@ div.container {
     }
   }
 }
-
+.blog-list {
+  ul {
+    li {
+      span {
+        font-size: 90%;
+      }
+    }
+  }
+}
 .books .list {
   @include fill-parent();
   display: flex;

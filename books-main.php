@@ -14,7 +14,7 @@ Page template for the main books page. Includes custom DB query to get favorites
       <p>Since 2009, I’ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them.</p>
     </div>
   </section>
-  <section class="bg-gray">
+  <section class="bg-green">
     <div class="container">
       <div id="books-years">
         <h3><b>Yearly lists</b></h3>
@@ -32,7 +32,7 @@ Page template for the main books page. Includes custom DB query to get favorites
       </div>
     </div>
   </section>
-  <section class="bg-green">
+  <section class="bg-brown">
     <div class="container">
       <div class="books" id="books-recent">
         <h3><b>Recently finished</b></h3>
@@ -43,7 +43,7 @@ Page template for the main books page. Includes custom DB query to get favorites
           foreach ( $myposts as $post ) : setup_postdata( $post );
         ?>
           <a href="<?php the_permalink(); ?>">
-            <!--<img src="<?php the_post_thumbnail_url('full'); ?>" />-->
+            <img src="<?php the_post_thumbnail_url('full'); ?>" />
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
               <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
@@ -75,7 +75,7 @@ Page template for the main books page. Includes custom DB query to get favorites
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <?php if (has_post_thumbnail()) :?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" width="100" />
+            <img src="<?php the_post_thumbnail_url('full'); ?>" />
             <div class="title"><?php the_title() ?></div>
             <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
           </a>

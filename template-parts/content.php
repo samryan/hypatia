@@ -11,8 +11,7 @@
 		endif; ?>
 	</header>
 	<div class="entry-content">
-		<?php
-			the_content();
-		?>
+		<?php the_content(); ?>
 	</div>
+  <div class="entry-date">Posted <?php echo get_the_date(); ?></div>
 </article>

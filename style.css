@@ -661,10 +661,20 @@ nav {
   clear: both;
   margin: 0 0 1.5em; }
 
+.entry-date {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 1rem 0; }
+
 article.post {
   margin-bottom: 8rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid #777777; }
+  padding-bottom: 2rem; }
+  article.post .entry-content {
+    border-bottom: 2px solid #d4d4d4; }
+  article.post blockquote {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: 2px solid #d4d4d4; }
 
 .site-footer {
   padding-top: 10rem;
@@ -718,6 +728,9 @@ div.container {
         width: 33%; } }
     .projects-list .container a.project b {
       text-decoration: underline; }
+
+.blog-list ul li span {
+  font-size: 90%; }
 
 .books .list {
   width: 100%;
