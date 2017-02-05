@@ -60,7 +60,7 @@ div.container {
   }
 }
 
-.home.books .list {
+.books .list {
   @include fill-parent();
   display: flex;
   flex-wrap: wrap;
