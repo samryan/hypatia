@@ -70,12 +70,12 @@ Page template for the main projects page.
         <br>
         <span>In my final year at Berkeley, I taught a class about Bob Dylan in the English department.</span>
       </a>
-    </div>
+    </div><!--
     <div class="container">
       <h3><b>Essays &amp; Articles</b></h3>
       <hr style="width:100%;visibility:hidden;height:0;margin:0;">
       <p>Some of the stuff I wrote in my college career, in PDF format: <a href="/essays-articles">Essays &amp; Articles</a></p>
-    </div>
+    </div>-->
   </section>
 
 
