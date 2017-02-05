@@ -12,7 +12,10 @@ Page template for the main books page. Includes custom DB query to get favorites
     <div class="container">
       <h2 class="entry-title">Reading</h2>
       <p>Since 2009, I’ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them.</p>
-      <hr>
+    </div>
+  </section>
+  <section class="bg-gray">
+    <div class="container">
       <div id="books-years">
         <h3><b>Yearly lists</b></h3>
         <ul>
@@ -27,7 +30,10 @@ Page template for the main books page. Includes custom DB query to get favorites
           <li><a href="/books/list-2009">Books Read in 2009</a> (101)</li>
         </ul>
       </div>
-      <hr>
+    </div>
+  </section>
+  <section class="bg-green">
+    <div class="container">
       <div class="books" id="books-recent">
         <h3><b>Recently finished</b></h3>
         <div class="list">
@@ -50,10 +56,13 @@ Page template for the main books page. Includes custom DB query to get favorites
         ?>
         </div>
       </div>
-      <hr>
+    </div>
+  </section>
+  <section class="bg-default">
+    <div class="container">
       <div class="books" id="books-favorites">
         <h3><b>Favorites</b></h3>
-        <p>Some books that I would recommend to most people, or that made an impact on how I think about the world:</p>
+        <p>These are some books that I would recommend to most people, or that made an impact on how I think about the world:</p>
         <?php
           $args = array(
             'post_type' => 'books',
