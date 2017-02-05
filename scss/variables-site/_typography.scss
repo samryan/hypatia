@@ -1,4 +1,5 @@
 /* @import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i|Inconsolata:400,700'; */
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i');
 @import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i';
 /* @import 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i'; */
@@ -6,11 +7,11 @@
 
 $font__serif: "Lora", "Alegreya", Georgia, serif;
 $font__mono: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
-$font__sans: "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
-$font__main: $font__serif;
-$font__logo: $font__serif;
+$font__sans: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
+$font__main: $font__sans;
+$font__logo: $font__sans;
 $font__headings: $font__serif;
-$font__menu: $font__serif;
+$font__menu: $font__sans;
 $font__footer: $font__serif;
 $font__code: $font__mono;
 $font__pre: $font__mono;

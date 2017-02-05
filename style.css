@@ -19,6 +19,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i");
 @import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i';
 @import 'http://weloveiconfonts.com/api/?family=entypo';
@@ -265,7 +266,7 @@ input,
 select,
 textarea {
   color: #555555;
-  font-family: "Lora", "Alegreya", Georgia, serif;
+  font-family: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
@@ -463,7 +464,7 @@ a {
 ## Menus
 --------------------------------------------------------------*/
 header.site-header {
-  font-family: "Lora", "Alegreya", Georgia, serif;
+  font-family: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
   /*	.current-page-item > a,
   	.current-menu-item > a,
   	.current-page-ancestor > a,
@@ -475,7 +476,7 @@ header.site-header {
 nav {
   position: relative;
   height: 50px;
-  font-family: "Lora", "Alegreya", Georgia, serif; }
+  font-family: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif; }
   nav:before, nav:after {
     content: "";
     display: table;
@@ -486,7 +487,7 @@ nav {
     float: left;
     height: 50px;
     line-height: 50px;
-    font-family: "Lora", "Alegreya", Georgia, serif;
+    font-family: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
     font-weight: bold;
     text-decoration: none;
     color: #555555 !important; }
@@ -533,7 +534,7 @@ nav {
             line-height: 30px; } }
   nav input[type=search] {
     background-color: rgba(255, 255, 255, 0);
-    font-family: "Lora", "Alegreya", Georgia, serif;
+    font-family: "Rubik", "Open Sans", "Roboto", "Lucida Grande", Arial, sans-serif;
     line-height: 40px;
     height: 40px;
     margin-top: 5px;
