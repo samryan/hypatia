@@ -19,8 +19,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import url("https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i");
-@import 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i|Lora:400,400i,700,700i';
 @import 'http://weloveiconfonts.com/api/?family=entypo';
 html {
   box-sizing: border-box; }
@@ -273,7 +272,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Lora", "Alegreya", Georgia, serif;
+  font-family: "Lora", Georgia, serif;
   font-weight: normal; }
 
 p {
@@ -290,7 +289,7 @@ address {
 
 pre {
   background: #eeeeee;
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 15px;
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -300,7 +299,7 @@ pre {
   padding: 1.6em; }
 
 code, kbd, tt, var {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 15px;
   font-size: 0.9375rem; }
 
@@ -565,7 +564,7 @@ nav {
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 90%; }
   .site-main .comment-navigation, .site-main
   .posts-navigation, .site-main
@@ -585,7 +584,7 @@ nav {
     width: 50%; }
 
 .post-navigation .nav-links {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace; }
+  font-family: Consolas, "Andale Mono", "Monaco", monospace; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -675,7 +674,7 @@ nav {
 
 .site-footer {
   padding-top: 10rem;
-  font-family: "Lora", "Alegreya", Georgia, serif;
+  font-family: "Lora", Georgia, serif;
   font-size: 80%; }
 
 header,
@@ -752,7 +751,7 @@ div.container {
       -webkit-font-smoothing: antialiased; }
 
 table.specs {
-  font-family: "Inconsolata", Consolas, "Andale Mono", "Monaco", monospace;
+  font-family: Consolas, "Andale Mono", "Monaco", monospace;
   font-size: 90%; }
   table.specs td, table.specs th {
     border: 1px solid #ccc;
