@@ -73,6 +73,7 @@ Page template for the main projects page.
     </div>
     <div class="container">
       <h3><b>Essays &amp; Articles</b></h3>
+      <hr style="width:100%;visibility:hidden;height:0;margin:0;">
       <p>Some of the stuff I wrote in my college career, in PDF format: <a href="/essays-articles">Essays &amp; Articles</a></p>
     </div>
   </section>
