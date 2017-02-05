@@ -94,15 +94,18 @@
       </div>
     </section>
 	<?php endif; ?>
-  <?php ?>
+  <?php if( get_previous_post() ): ?>
   <section class="clear bg-gray">
     <div class="container">
       <?php previous_post_link( 'Previous: <i>%link</i> by ' ); echo get_previous_post()->book_author; ?>
     </div>
   </section>
+<?php endif; ?>
+  <?php if( get_next_post() ): ?>
   <section class="clear bg-gray">
     <div class="container">
       <?php next_post_link( 'Next: <i>%link</i> by ' ); echo get_next_post()->book_author; ?>
     </div>
   </section>
+<?php endif; ?>
 </article>
