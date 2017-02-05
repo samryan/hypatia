@@ -558,33 +558,22 @@ nav {
     #toggle-menu {
       display: block; } }
 
-.single-books #menu-item-1039 > a {
-  /* select the Reading List item from a single book page */ }
-
-.comment-navigation,
-.posts-navigation,
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
 .post-navigation {
-  font-family: Consolas, "Andale Mono", "Monaco", monospace;
-  font-size: 90%; }
-  .site-main .comment-navigation, .site-main
-  .posts-navigation, .site-main
-  .post-navigation {
-    margin: 0 0 1.5em;
-    overflow: hidden; }
-  .comment-navigation .nav-previous,
-  .posts-navigation .nav-previous,
-  .post-navigation .nav-previous {
-    float: left;
-    width: 50%; }
-  .comment-navigation .nav-next,
-  .posts-navigation .nav-next,
-  .post-navigation .nav-next {
-    float: right;
-    text-align: right;
-    width: 50%; }
-
-.post-navigation .nav-links {
-  font-family: Consolas, "Andale Mono", "Monaco", monospace; }
+  margin: 0 0 1.5em;
+  overflow: hidden; }
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  float: left;
+  width: 50%; }
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -671,6 +660,11 @@ nav {
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+article.post {
+  margin-bottom: 8rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #777777; }
 
 .site-footer {
   padding-top: 10rem;

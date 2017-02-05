@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 	<div id="primary" class="content-area">
-    <section>
+    <section class="bg-default">
       <div class="container">
     		<?php
     		if ( have_posts() ) :

@@ -17,3 +17,9 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+article.post {
+  margin-bottom: 8rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid lighten($color__gray, 20%);
+}
