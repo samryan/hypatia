@@ -8,7 +8,7 @@ Include a hero image for projects.
 
 <?php get_header(); ?>
 <?php if ( has_post_thumbnail() ) { ?>
-<section class="bg-grade">
+<section class="bg-gray">
   <div class="container">
     <img src="<?php the_post_thumbnail_url('full'); ?>" />
   </div>
