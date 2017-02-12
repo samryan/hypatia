@@ -28,7 +28,6 @@
         <nav id="site-navigation" class="container main-navigation" role="navigation">
           <span class="entypo-menu" id="toggle-menu"></span>
           <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-          <?php /* wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) );  */ ?>
           <ul>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/books">Reading</a></li>
