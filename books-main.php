@@ -19,20 +19,20 @@ Page template for the main books page. Includes custom DB query to get favorites
       <div id="books-years">
         <h3><b>Yearly lists</b></h3>
         <ul>
-          <li><a href="/books/list-2017">Books Read in 2017</a> (work in progress)</li>
-          <li><a href="/books/list-2016">Books Read in 2016</a> (47)</li>
-          <li><a href="/books/list-2015">Books Read in 2015</a> (86)</li>
-          <li><a href="/books/list-2014">Books Read in 2014</a> (52)</li>
-          <li><a href="/books/list-2013">Books Read in 2013</a> (67)</li>
-          <li><a href="/books/list-2012">Books Read in 2012</a> (66)</li>
-          <li><a href="/books/list-2011">Books Read in 2011</a> (79)</li>
-          <li><a href="/books/list-2010">Books Read in 2010</a> (131)</li>
-          <li><a href="/books/list-2009">Books Read in 2009</a> (101)</li>
+          <li><a href="/books/list-2017">Books read in 2017</a> (work in progress)</li>
+          <li><a href="/books/list-2016">Books read in 2016</a> (47)</li>
+          <li><a href="/books/list-2015">Books read in 2015</a> (86)</li>
+          <li><a href="/books/list-2014">Books read in 2014</a> (52)</li>
+          <li><a href="/books/list-2013">Books read in 2013</a> (67)</li>
+          <li><a href="/books/list-2012">Books read in 2012</a> (66)</li>
+          <li><a href="/books/list-2011">Books read in 2011</a> (79)</li>
+          <li><a href="/books/list-2010">Books read in 2010</a> (131)</li>
+          <li><a href="/books/list-2009">Books read in 2009</a> (101)</li>
         </ul>
       </div>
     </div>
   </section>
-  <section class="bg-brown">
+  <section class="bg-default">
     <div class="container">
       <div class="books" id="books-recent">
         <h3><b>Recently finished</b></h3>
