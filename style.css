@@ -729,8 +729,12 @@ div.container {
     .projects-list .container a.project b {
       text-decoration: underline; }
 
-.blog-list ul li span {
-  font-size: 90%; }
+.blog-list ul {
+  list-style: none;
+  padding-left: 0; }
+  .blog-list ul li span {
+    width: 5rem;
+    display: inline-block; }
 
 .books .list {
   width: 100%;

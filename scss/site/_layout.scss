@@ -61,9 +61,12 @@ div.container {
 }
 .blog-list {
   ul {
+    list-style: none;
+    padding-left: 0;
     li {
       span {
-        font-size: 90%;
+        width: 5rem;
+        display: inline-block;
       }
     }
   }
