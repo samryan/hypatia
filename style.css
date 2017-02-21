@@ -729,12 +729,10 @@ div.container {
     .projects-list .container a.project b {
       text-decoration: underline; }
 
-.blog-list ul {
-  list-style: none;
-  padding-left: 0; }
-  .blog-list ul li span {
-    width: 5rem;
-    display: inline-block; }
+.blog-list table {
+  border-width: 0; }
+  .blog-list table tr td {
+    padding: 0.25rem; }
 
 .books .list {
   width: 100%;
