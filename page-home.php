@@ -3,7 +3,7 @@
     <div class="container">
       <h1>Hello!</h1>
       <h3>I&rsquo;m a user experience designer from Seattle.</h3>
-      <p> I like thinking about screens, history, and the future. I have an undergrad degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
+      <p> I like thinking about screens, history, and the future. I have an undergraduate degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
     </div>
   </section>
   <section class="home projects-list bg-green">
