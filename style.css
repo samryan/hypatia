@@ -19,8 +19,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import 'https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i|Lora:400,400i,700,700i';
 @import 'http://weloveiconfonts.com/api/?family=entypo';
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i|Lora:400,400i,700,700i");
 html {
   box-sizing: border-box; }
 
@@ -71,7 +71,7 @@ html {
       color: #fff !important; }
 
 .bg-default {
-  background-color: #faf7eb;
+  background-color: #fff !important;
   color: #555555; }
   .bg-default a {
     color: #555555 !important; }
@@ -262,7 +262,7 @@ input,
 select,
 textarea {
   color: #555555;
-  font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
+  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
@@ -460,17 +460,17 @@ a {
 ## Menus
 --------------------------------------------------------------*/
 header.site-header {
-  font-family: "Rubik", "Lucida Grande", Arial, sans-serif; }
+  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif; }
   header.site-header .current-page-item > a,
   header.site-header .current-menu-item > a,
   header.site-header .current-page-ancestor > a,
   header.site-header .current-menu-ancestor > a {
-    font-weight: 500; }
+    font-weight: bold; }
 
 nav {
   position: relative;
   height: 50px;
-  font-family: "Rubik", "Lucida Grande", Arial, sans-serif; }
+  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif; }
   nav:before, nav:after {
     content: "";
     display: table;
@@ -483,10 +483,10 @@ nav {
     line-height: 50px;
     font-weight: 500;
     text-decoration: none;
-    font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
-    color: #555555 !important; }
+    font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+    color: white !important; }
     nav .logo:hover {
-      color: #555555 !important; }
+      color: white !important; }
     @media screen and (max-width: 599px) {
       nav .logo {
         float: none; } }
@@ -516,19 +516,21 @@ nav {
           width: 100%;
           text-align: left; } }
       nav ul li a {
-        color: #555555;
+        color: white !important;
         margin-right: 1.4rem;
         vertical-align: middle;
         line-height: 50px;
         height: 50px;
         text-decoration: none; }
+        nav ul li a:hover {
+          color: white !important; }
         @media screen and (max-width: 599px) {
           nav ul li a {
             height: 30px;
             line-height: 30px; } }
   nav input[type=search] {
-    background-color: rgba(255, 255, 255, 0);
-    font-family: "Rubik", "Lucida Grande", Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.05);
+    font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
     line-height: 40px;
     height: 40px;
     margin-top: 5px;
@@ -553,7 +555,8 @@ nav {
   font-size: 1.5em;
   padding: 0 1rem;
   line-height: 50px;
-  height: 50px; }
+  height: 50px;
+  color: white; }
   @media screen and (max-width: 599px) {
     #toggle-menu {
       display: block; } }
@@ -675,6 +678,21 @@ article.post {
     padding-left: 1rem;
     margin-left: 1rem;
     border-left: 2px solid #d4d4d4; }
+
+h2.entry-title-project {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0; }
+  h2.entry-title-project:before {
+    content: "PROJECT: ";
+    opacity: 0.8; }
+
+header.site-header {
+  background-color: #444444 !important; }
 
 .site-footer {
   padding-top: 10rem;
