@@ -11,7 +11,7 @@ Page template for the main projects page.
   <section class="bg-default">
     <div class="container">
       <h2 class="entry-title">Projects</h2>
-      <p>I&rsquo;m a professional user experience designer and a self-taught front-end web developer. I&rsquo;ve taken graduate classes in information architecture, project management, and UX design. I&rsquo;m good at working with diverse groups of people to execute complex projects at scale. This page has links to some of the recent projects I&rsquo;ve done that I can talk about!</p>
+      <p>I&rsquo;m a user experience designer and a self-taught front-end web developer. I&rsquo;ve taken graduate classes in information architecture, project management, and UX design. I&rsquo;m good at working with diverse groups of people to execute complex projects at scale. This page has links to some of the recent projects I&rsquo;ve done that I can talk about!</p>
     </div>
   </section>
   <section class="bg-gray projects-list">

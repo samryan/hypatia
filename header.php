@@ -23,7 +23,7 @@
 </head>
 <body <?php body_class(); ?>>
   <div id="page">
-    <header class="site-header clear bg-default">
+    <header class="site-header clear">
       <div class="container">
         <nav id="site-navigation" class="container main-navigation" role="navigation">
           <span class="entypo-menu" id="toggle-menu"></span>

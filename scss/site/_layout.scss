@@ -1,3 +1,10 @@
+header.site-header {
+  background-color: $color__gray !important;
+  a:hover {
+    color: #fff !important;
+  }
+}
+
 .site-footer {
   padding-top: 10rem;
   font-family: $font__footer;
