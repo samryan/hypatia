@@ -20,7 +20,7 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 @import 'http://weloveiconfonts.com/api/?family=entypo';
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i|Lora:400,400i,700,700i");
 html {
   box-sizing: border-box; }
 
