@@ -2,7 +2,7 @@
 /*
 Template Name: /Project/
 
-Include a hero image for projects.
+Include a hero image for projects. If the project has an image, move the headline above it.
 */
 ?>
 
