@@ -9,7 +9,7 @@
   <section class="home projects-list bg-green">
     <div class="container">
       <h2 class="clear">Projects</h2>
-      <p class="clear">I work for Amazon&rsquo;s <a href="https://www.amazon.jobs/axt">Advertising Experience &amp; Technology</a> group, making our ad business more interesting and better for customers. Some of my projects at Amazon include:</p>
+      <p class="clear">I work for Amazon&rsquo;s <a href="https://www.amazon.jobs/advertising-ux">Advertising UX</a> group as a senior designer, making our ad business more interesting and better for customers. Some of my projects at Amazon include:</p>
       <a class="project" href="/projects/ad-landing-pages">
         <b>Ad Landing Pages</b>
         <br>
