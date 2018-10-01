@@ -1,3 +1,7 @@
+header.site-header {
+  background-color: $color__gray !important; 
+}
+
 .site-footer {
   padding-top: 10rem;
   font-family: $font__footer;
@@ -60,10 +64,11 @@ div.container {
   }
 }
 .blog-list {
-  ul {
-    li {
-      span {
-        font-size: 90%;
+  table {
+    border-width: 0;
+    tr {
+      td {
+        padding: 0.25rem;
       }
     }
   }

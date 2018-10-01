@@ -11,7 +11,7 @@ Page template for the main projects page.
   <section class="bg-default">
     <div class="container">
       <h2 class="entry-title">Projects</h2>
-      <p>I&rsquo;m a professional user experience designer and a self-taught front-end web developer. I&rsquo;ve taken graduate classes in information architecture, project management, and UX design. I&rsquo;m good at working with diverse groups of people to execute complex projects at scale. This page has links to some of the recent projects I&rsquo;ve done that I can talk about!</p>
+      <p>I&rsquo;m a user experience designer and a self-taught front-end web developer. I&rsquo;ve taken graduate classes in information architecture, project management, and UX design. I&rsquo;m good at working with diverse groups of people to execute complex projects at scale. This page has links to some of the recent projects I&rsquo;ve done that I can talk about!</p>
     </div>
   </section>
   <section class="bg-gray projects-list">
@@ -70,14 +70,11 @@ Page template for the main projects page.
         <br>
         <span>In my final year at Berkeley, I taught a class about Bob Dylan in the English department.</span>
       </a>
-    </div><!--
+    </div>
     <div class="container">
-      <h3><b>Essays &amp; Articles</b></h3>
+      <h3><b>Essays &amp; articles</b></h3>
       <hr style="width:100%;visibility:hidden;height:0;margin:0;">
-      <p>Some of the stuff I wrote in my college career, in PDF format: <a href="/essays-articles">Essays &amp; Articles</a></p>
-    </div>-->
+      <p>Some of the stuff I wrote in my college career, in PDF format: <a href="/essays-articles">essays &amp; articles</a></p>
+    </div>
   </section>
-
-
-  <?php
-get_footer();
+<?php get_footer();

@@ -4,7 +4,7 @@ header.site-header {
 	.current-menu-item > a,
 	.current-page-ancestor > a,
 	.current-menu-ancestor > a {
-    font-weight: 500;
+    font-weight: bold;
   }
 }
 
@@ -60,12 +60,15 @@ nav {
         text-align: left;
       }
       a {
-        color: $color__link-menu;
+        color: $color__link-menu !important;
         margin-right: 1.4rem;
         vertical-align: middle;
         line-height: 50px;
         height: 50px;
         text-decoration: none;
+        &:hover {
+          color: $color__link-menu !important;
+        }
         @include media($screen-sm-max) {
           height: 30px;
           line-height: 30px;
@@ -74,7 +77,7 @@ nav {
     }
   }
   input[type=search] {
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255,255,255,.05);
     font-family: $font__menu;
     line-height: 40px;
     height: 40px;
@@ -107,6 +110,7 @@ nav {
   @include media($screen-sm-max) {
     display: block;
   }
+  color: $color__link-menu;
 }
 
 .comment-navigation,

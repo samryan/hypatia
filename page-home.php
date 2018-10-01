@@ -3,7 +3,7 @@
     <div class="container">
       <h1>Hello!</h1>
       <h3>I&rsquo;m a user experience designer from Seattle.</h3>
-      <p> I like thinking about screens, history, and the future. I have an undergrad degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
+      <p> I like thinking about screens, history, and the future. I have an undergraduate degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
     </div>
   </section>
   <section class="home projects-list bg-green">
@@ -72,18 +72,22 @@
     <div class="container">
       <h2 class="clear">Blog posts</h2>
       <p>I don&rsquo;t write here very often, but when I get something stuck in my head, it&rsquo;s nice to have <a href="/blog">a blog</a>!</p>
-      <ul>
+      <table>
       <?php
         $blogPosts = new WP_Query();
         $blogPosts->query('showposts=-1&cat=CAT_ID_GOES_HERE');
         while($blogPosts->have_posts()): $blogPosts->the_post();
       ?>
-        <li>
-          <span><?php the_date('m/Y'); ?></span>
-          <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-        </li>
+        <tr>
+          <td valign="top">
+            <span><?php the_date('m/Y'); ?></span>
+          </td>
+          <td>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </td>
+        </tr>
       <?php endwhile; ?>
-      </ul>
+      </table>
     </div>
   </section>
 <?php

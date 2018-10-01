@@ -21,7 +21,7 @@ $color__text-input-focus: #111;
 $color__link: #00f;
 $color__link-visited: $color__link;
 $color__link-hover: #111;
-$color__link-menu: #555;
+$color__link-menu: #fff;
 $color__logo: $color__link-menu;
 
 $color__border-button: #ccc #ccc #bbb;
@@ -80,7 +80,8 @@ $color__border-abbr: #666;
 }
 
 .bg-default {
-  background-color: $color__offwhite;
+  // background-color: $color__offwhite;
+  background-color: #fff !important;
   color: $color__text-main;
   a {
     color: $color__text-main !important;
