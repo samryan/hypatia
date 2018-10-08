@@ -114,12 +114,14 @@ nav {
   top: 0;
   display: none;
   cursor: pointer;
-  font-size: 1.5em;
-  padding: 0 1rem;
-  line-height: 50px;
-  height: 50px;
+  padding: 0 0.5rem;
+  height: 100%;
+  svg {
+    height: 22px;
+  }
   @include media($screen-sm-max) {
-    display: block;
+    display: flex;
+    align-items: center;
   }
   color: $color__link-menu;
 }

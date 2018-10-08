@@ -9,10 +9,6 @@ textarea {
 	line-height: $font__line-height-body;
 }
 
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-}
-
 @import "headings";
 
 @import "copy";

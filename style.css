@@ -19,7 +19,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import 'http://weloveiconfonts.com/api/?family=entypo';
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i|Lora:400,400i,700,700i");
 html {
   box-sizing: border-box; }
@@ -266,9 +265,6 @@ textarea {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
-
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
@@ -560,14 +556,15 @@ nav {
   top: 0;
   display: none;
   cursor: pointer;
-  font-size: 1.5em;
-  padding: 0 1rem;
-  line-height: 50px;
-  height: 50px;
+  padding: 0 0.5rem;
+  height: 100%;
   color: white; }
+  #toggle-menu svg {
+    height: 22px; }
   @media screen and (max-width: 599px) {
     #toggle-menu {
-      display: block; } }
+      display: flex;
+      align-items: center; } }
 
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
