@@ -529,7 +529,6 @@ nav {
             height: 30px;
             line-height: 30px; } }
   nav input[type=search] {
-    background-color: rgba(255, 255, 255, 0.05);
     font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
     line-height: 40px;
     height: 40px;
@@ -537,6 +536,12 @@ nav {
     border-radius: 6px;
     transition: 0.2s background-color ease-in;
     text-indent: 0.5rem; }
+    nav input[type=search]:placeholder-shown {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #555555; }
+      nav input[type=search]:placeholder-shown::placeholder {
+        color: white;
+        opacity: 0.7; }
     @media screen and (max-width: 599px) {
       nav input[type=search] {
         height: 30px;
@@ -544,7 +549,10 @@ nav {
         margin-left: -0.5rem;
         margin-bottom: 1rem; } }
     nav input[type=search]:focus, nav input[type=search]:active {
+      color: #555555;
       background-color: white; }
+      nav input[type=search]:focus::placeholder, nav input[type=search]:active::placeholder {
+        color: #555555; }
 
 #toggle-menu {
   position: absolute;
