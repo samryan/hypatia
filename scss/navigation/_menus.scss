@@ -40,12 +40,16 @@ nav {
     float: right;
     height: auto;
     list-style: none;
+    transition: all 0.3s ease-in-out;
     @include media($screen-sm-min) {
       display: block !important;
     }
     @include media($screen-sm-max) {
       display: none;
       float: left;
+      &.visible {
+        display: block !important;
+      }
     }
     li {
       float: left;

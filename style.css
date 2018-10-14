@@ -491,14 +491,17 @@ nav {
     padding: 0;
     float: right;
     height: auto;
-    list-style: none; }
+    list-style: none;
+    transition: all 0.3s ease-in-out; }
     @media screen and (min-width: 600px) {
       nav ul {
         display: block !important; } }
     @media screen and (max-width: 599px) {
       nav ul {
         display: none;
-        float: left; } }
+        float: left; }
+        nav ul.visible {
+          display: block !important; } }
     nav ul li {
       float: left;
       margin: 0;
