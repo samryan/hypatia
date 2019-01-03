@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i|Lora:400,400i,700,700i');
-
-$font__serif: "Lora", Georgia, serif;
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i');
+//@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i|Lora:400,400i,700,700i');
+//$font__serif: "Lora", Georgia, serif;
 $font__mono: Consolas, "Andale Mono", "Monaco", monospace;
-$font__sans: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+$font__sans: "Rubik", "system-ui", Arial, sans-serif;
 $font__main: $font__sans;
 $font__logo: $font__sans;
-$font__headings: $font__serif;
+$font__headings: $font__sans;
 $font__menu: $font__sans;
-$font__footer: $font__serif;
+$font__footer: $font__sans;
 $font__code: $font__mono;
 $font__pre: $font__mono;
 $font__line-height-body: 1.5;

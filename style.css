@@ -19,63 +19,53 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,500,700,700i|Lora:400,400i,700,700i");
+/*! system-font.css v2.0.2 | CC0-1.0 License | github.com/jonathantneal/system-font-css */
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i");
+@font-face {
+  font-family: system-ui;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma"); }
+@font-face {
+  font-family: system-ui;
+  font-style: italic;
+  font-weight: 300;
+  src: local(".SFNSText-LightItalic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Light Italic"), local("Ubuntu Light Italic"), local("Roboto-LightItalic"), local("DroidSans"), local("Tahoma"); }
+@font-face {
+  font-family: system-ui;
+  font-style: normal;
+  font-weight: 400;
+  src: local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma"); }
+@font-face {
+  font-family: system-ui;
+  font-style: italic;
+  font-weight: 400;
+  src: local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma"); }
+@font-face {
+  font-family: system-ui;
+  font-style: normal;
+  font-weight: 500;
+  src: local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold"); }
+@font-face {
+  font-family: system-ui;
+  font-style: italic;
+  font-weight: 500;
+  src: local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold"); }
+@font-face {
+  font-family: system-ui;
+  font-style: normal;
+  font-weight: 700;
+  src: local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold"); }
+@font-face {
+  font-family: system-ui;
+  font-style: italic;
+  font-weight: 700;
+  src: local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold"); }
 html {
   box-sizing: border-box; }
 
 *, *::after, *::before {
   box-sizing: inherit; }
-
-.bg-brown {
-  background-color: #c0ab88;
-  background-image: -webkit-linear-gradient(top, #c0ab88, #c9b799);
-  background-image: linear-gradient(to bottom,#c0ab88, #c9b799);
-  background-color: #c0ab88;
-  color: #555555; }
-  .bg-brown a {
-    color: #555555 !important; }
-    .bg-brown a:hover {
-      color: #000 !important; }
-
-.bg-green {
-  background-color: #84c98d;
-  background-image: -webkit-linear-gradient(top, #84c98d, #96d19d);
-  background-image: linear-gradient(to bottom,#84c98d, #96d19d);
-  background-color: #84c98d;
-  color: #2f2f2f; }
-  .bg-green a {
-    color: #2f2f2f !important; }
-    .bg-green a:hover {
-      color: #000; }
-
-.bg-blue {
-  background-color: #3e459a;
-  background-image: -webkit-linear-gradient(top, #3e459a, #454dac);
-  background-image: linear-gradient(to bottom,#3e459a, #454dac);
-  background-color: #3e459a;
-  color: #fff; }
-  .bg-blue a {
-    color: #fff !important; }
-    .bg-blue a:hover {
-      color: #ccc !important; }
-
-.bg-gray {
-  background-color: #444444;
-  color: #ccc; }
-  .bg-gray th {
-    color: #fff; }
-  .bg-gray a {
-    color: #eee !important; }
-    .bg-gray a:hover {
-      color: #fff !important; }
-
-.bg-default {
-  background-color: #fff !important;
-  color: #555555; }
-  .bg-default a {
-    color: #555555 !important; }
-    .bg-default a:hover {
-      color: #000 !important; }
 
 html {
   font-family: sans-serif;
@@ -260,16 +250,15 @@ button,
 input,
 select,
 textarea {
-  color: #555555;
-  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+  color: white;
+  font-family: "Rubik", "system-ui", Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Lora", Georgia, serif;
-  font-weight: normal; }
+  font-family: "Rubik", "system-ui", Arial, sans-serif; }
 
 p {
   margin-bottom: 1.5em; }
@@ -308,7 +297,8 @@ mark, ins {
   text-decoration: none; }
 
 big {
-  font-size: 125%; }
+  font-size: 20px;
+  font-size: 1.25rem; }
 
 html {
   box-sizing: border-box; }
@@ -319,7 +309,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: white; }
+  background: #111111; }
 
 blockquote, q {
   quotes: "" ""; }
@@ -427,7 +417,7 @@ textarea {
   input[type="datetime-local"]:focus,
   input[type="color"]:focus,
   textarea:focus {
-    color: #111111; }
+    color: white; }
 
 select {
   border: 1px solid #cccccc; }
@@ -439,11 +429,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: blue; }
+  color: #f2f2f2; }
   a:visited {
-    color: blue; }
+    color: #f2f2f2; }
   a:hover, a:focus, a:active {
-    color: #111111; }
+    color: #bfbfbf; }
   a:hover, a:active {
     outline: 0; }
   a.button {
@@ -456,7 +446,7 @@ a {
 ## Menus
 --------------------------------------------------------------*/
 header.site-header {
-  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif; }
+  font-family: "Rubik", "system-ui", Arial, sans-serif; }
   header.site-header .current-page-item > a,
   header.site-header .current-menu-item > a,
   header.site-header .current-page-ancestor > a,
@@ -466,7 +456,7 @@ header.site-header {
 nav {
   position: relative;
   height: 50px;
-  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif; }
+  font-family: "Rubik", "system-ui", Arial, sans-serif; }
   nav:before, nav:after {
     content: "";
     display: table;
@@ -479,7 +469,7 @@ nav {
     line-height: 50px;
     font-weight: 500;
     text-decoration: none;
-    font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+    font-family: "Rubik", "system-ui", Arial, sans-serif;
     color: white !important; }
     nav .logo:hover {
       color: white !important; }
@@ -528,7 +518,7 @@ nav {
             height: 30px;
             line-height: 30px; } }
   nav input[type=search] {
-    font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+    font-family: "Rubik", "system-ui", Arial, sans-serif;
     line-height: 40px;
     height: 40px;
     margin-top: 5px;
@@ -537,7 +527,7 @@ nav {
     text-indent: 0.5rem; }
     nav input[type=search]:placeholder-shown {
       background-color: rgba(255, 255, 255, 0.05);
-      color: #555555; }
+      color: white; }
       nav input[type=search]:placeholder-shown::placeholder {
         color: white;
         opacity: 0.7; }
@@ -548,10 +538,12 @@ nav {
         margin-left: -0.5rem;
         margin-bottom: 1rem; } }
     nav input[type=search]:focus, nav input[type=search]:active {
-      color: #555555;
+      color: white;
+      color: #222;
       background-color: white; }
       nav input[type=search]:focus::placeholder, nav input[type=search]:active::placeholder {
-        color: #555555; }
+        color: #222;
+        color: white; }
 
 #toggle-menu {
   position: absolute;
@@ -598,7 +590,7 @@ nav {
     border-radius: 3px;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
     clip: auto !important;
-    color: #555555;
+    color: white;
     display: block;
     font-size: 14px;
     font-size: 0.875rem;
@@ -681,16 +673,16 @@ article.post {
   margin-bottom: 8rem;
   padding-bottom: 2rem; }
   article.post .entry-content {
-    border-bottom: 2px solid #d4d4d4; }
+    border-bottom: 2px solid white; }
   article.post blockquote {
     padding-left: 1rem;
     margin-left: 1rem;
-    border-left: 2px solid #d4d4d4; }
+    border-left: 2px solid white; }
 
 h2.entry-title-project {
   text-transform: uppercase;
   text-align: center;
-  font-family: "Fira Sans Condensed", "Rubik", "Lucida Grande", Arial, sans-serif;
+  font-family: "Rubik", "system-ui", Arial, sans-serif;
   font-size: 1.3em;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.9);
@@ -700,11 +692,11 @@ h2.entry-title-project {
     opacity: 0.8; }
 
 header.site-header {
-  background-color: #444444 !important; }
+  background-color: #252525 !important; }
 
 .site-footer {
   padding-top: 10rem;
-  font-family: "Lora", Georgia, serif;
+  font-family: "Rubik", "system-ui", Arial, sans-serif;
   font-size: 80%; }
 
 header,
@@ -852,7 +844,7 @@ table.specs {
   padding: 0 1rem 0 0; }
 
 .books .book_quotes .book_quote {
-  border-top: 2px solid #bbbbbb;
+  border-top: 2px solid white;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem 0.5rem 1rem 3rem; }
@@ -860,7 +852,7 @@ table.specs {
     font-family: "Georgia";
     font-weight: bold;
     font-size: 2.5rem;
-    color: #7b7b7b;
+    color: white;
     content: '\201c';
     float: left;
     margin-left: -2rem;

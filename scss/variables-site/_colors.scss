@@ -1,26 +1,22 @@
-$color__purple: #8a46fa;
-$color__green: #84C98D;
-$color__brown: #c0ab88;
-$color__blue: #3e459a;
 $color__light-gray: #efefef;
 $color__gray: #444;
 $color__offwhite: #faf7eb;
 
-$color__background-body: #fff;
-$color__background-menu: $color__light-gray;
+$color__background-body: #111;
+$color__background-menu: lighten($color__background-body, 8%);
 $color__background-screen: #3A3C83;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #3A3C83;
 
-$color__text-main: #555;
+$color__text-main: #fff;
 $color__text-screen: $color__text-main;
 $color__text-input: #666;
-$color__text-input-focus: #111;
-$color__link: #00f;
+$color__text-input-focus: $color__text-main;
+$color__link: darken($color__text-main, 5%);
 $color__link-visited: $color__link;
-$color__link-hover: #111;
+$color__link-hover: darken($color__link, 20%);
 $color__link-menu: #fff;
 $color__logo: $color__link-menu;
 
@@ -29,64 +25,3 @@ $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
-
-.bg-brown {
-  @include linear-gradient(to bottom, $color__brown, lighten($color__brown, 5%));
-  background-color: $color__brown;
-  color: $color__text-main;
-  a {
-    color: $color__text-main !important;
-    &:hover {
-      color: #000 !important;
-    }
-  }
-}
-
-.bg-green {
-  @include linear-gradient(to bottom, $color__green, lighten($color__green, 5%));
-  background-color: $color__green;
-  color: darken($color__text-main, 15%);
-  a {
-    color: darken($color__text-main, 15%) !important;
-    &:hover {
-      color: #000;
-    }
-  }
-}
-
-.bg-blue {
-  @include linear-gradient(to bottom, $color__blue, lighten($color__blue, 5%));
-  background-color: $color__blue;
-  color: #fff;
-  a {
-    color: #fff !important;
-    &:hover {
-      color: #ccc !important;
-    }
-  }
-}
-.bg-gray {
-  background-color: $color__gray;
-  color: #ccc;
-  th {
-    color: #fff;
-  }
-  a {
-    color: #eee !important;
-    &:hover {
-      color: #fff !important;
-    }
-  }
-}
-
-.bg-default {
-  // background-color: $color__offwhite;
-  background-color: #fff !important;
-  color: $color__text-main;
-  a {
-    color: $color__text-main !important;
-    &:hover {
-      color: #000 !important;
-    }
-  }
-}

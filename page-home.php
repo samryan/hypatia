@@ -1,12 +1,12 @@
 <?php get_header(); ?>
-  <section class="home intro bg-default">
+  <section class="home intro">
     <div class="container">
       <h1>Hello!</h1>
       <h3>I&rsquo;m a user experience designer from Seattle.</h3>
       <p> I like thinking about screens, history, and the future. I have an undergraduate degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
     </div>
   </section>
-  <section class="home projects-list bg-green">
+  <section class="home projects-list">
     <div class="container">
       <h2 class="clear">Projects</h2>
       <p class="clear">I work for Amazon&rsquo;s <a href="https://www.amazon.jobs/advertising-ux">Advertising UX</a> group as a senior designer, making our ad business more interesting and better for customers. Some of my projects at Amazon include:</p>
@@ -42,7 +42,7 @@
       </a>
     </div>
   </section>
-  <section class="home books bg-default">
+  <section class="home books">
     <div class="container">
       <h2 class="clear">Reading</h2>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
@@ -68,7 +68,7 @@
       </div>
     </div>
   </section>
-  <section class="home blog-list bg-gray">
+  <section class="home blog-list">
     <div class="container">
       <h2 class="clear">Blog posts</h2>
       <p>I don&rsquo;t write here very often, but when I get something stuck in my head, it&rsquo;s nice to have <a href="/blog">a blog</a>!</p>

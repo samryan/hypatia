@@ -104,8 +104,10 @@ nav {
     }
     &:focus, &:active {
       color: $color__text-main;
+      color: #222;
       background-color: rgba(255,255,255,1);
       &::placeholder {
+        color: #222;
         color: $color__text-main;
       }
     }
