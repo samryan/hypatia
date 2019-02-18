@@ -7,7 +7,7 @@
             <?php the_post_thumbnail(); ?>
           </a>
           <div class="book-data">
-    		    <h1 class="entry-title" itemprop="name"><i><?php the_title(); ?></i></h1>
+    		    <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
             <h2 itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></h2>
             <h3 class="stars">
               <?php echo get_post_meta($post->ID, 'rating', true); ?>

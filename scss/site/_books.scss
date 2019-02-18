@@ -21,7 +21,7 @@
       z-index: 10 !important;
     }
     .book-data {
-      @include span-columns(7, table);
+      @include span-columns(8, table);
       @include pad(0 1rem 0 1rem);
       @include omega();
       @include media($screen-sm-max) {
@@ -29,7 +29,6 @@
       }
       vertical-align: middle;
       h1, h2, h3 {
-        display: inline-block;
         float: left;
         clear: both;
         margin: 0;
@@ -37,22 +36,21 @@
       }
       h1 {
         font-size: 160%;
-
       }
       h2 {
         font-size: 120%;
       }
       h3.stars {
         margin-top: 1rem;
-        font-size: 90%;
+        font-size: 120%;
         letter-spacing: 0.2rem;
-
       }
     }
     a {
-      @include span-columns(5, table);
+      @include span-columns(4, table);
       @include pad(0);
       img {
+        transform: rotate(-0.8deg);
         @include box-shadow(
           0 1px 8px rgba(0,0,0,0.3)
         );
