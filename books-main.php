@@ -19,6 +19,7 @@ Page template for the main books page. Includes custom DB query to get favorites
       <div id="books-years">
         <h3><b>Yearly lists</b></h3>
         <ul>
+          <li><a href="/books/list-2020">Books read in 2020</a> (work in progress)</li>
           <li><a href="/books/list-2019">Books read in 2019</a> (work in progress)</li>
           <li><a href="/books/list-2018">Books read in 2018</a> (59)</li>
           <li><a href="/books/list-2017">Books read in 2017</a> (52)</li>
