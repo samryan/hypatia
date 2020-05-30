@@ -4,7 +4,6 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php wp_head(); ?>
-  <link rel="manifest" href="/manifest.json">
 </head>
 <body <?php body_class(); ?>>
   <div id="page">
