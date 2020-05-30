@@ -120,6 +120,12 @@ function remove_wp_junk() {
 }
 add_action('after_setup_theme', 'remove_wp_junk');
 
+function smartwp_remove_wp_block_library_css(){
+  wp_dequeue_style( 'wp-block-library' );
+  wp_dequeue_style( 'wp-block-library-theme' );
+}
+add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
+
 // add tag and category support to pages
 function tags_categories_support_all() {
   register_taxonomy_for_object_type('post_tag', 'page');
