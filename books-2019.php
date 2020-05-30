@@ -36,7 +36,7 @@ Page template for the 2019 books. Includes custom DB query to get books read in 
       foreach ( $myposts as $post ) : setup_postdata( $post );
     ?>
       <a href="<?php the_permalink(); ?>">
-        <img src="<?php the_post_thumbnail_url('full'); ?>" />
+        <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
         <div class="metadata">
           <div class="title"><?php the_title() ?></div>
           <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>

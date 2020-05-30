@@ -4,7 +4,7 @@
       <section class="book-cover bg-default">
         <div class="container">
           <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">
-            <?php the_post_thumbnail(); ?>
+            <?php the_post_thumbnail(['alt' => '']); ?>
           </a>
           <div class="book-data">
     		    <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>

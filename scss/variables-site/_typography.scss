@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i');
-//@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700,700i|Lora:400,400i,700,700i');
-//$font__serif: "Lora", Georgia, serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+$font__sans: "Inter", "system-ui", Arial, sans-serif;
 $font__mono: Consolas, "Andale Mono", "Monaco", monospace;
-$font__sans: "Rubik", "system-ui", Arial, sans-serif;
 $font__main: $font__sans;
 $font__logo: $font__sans;
 $font__headings: $font__sans;
@@ -11,4 +10,4 @@ $font__footer: $font__sans;
 $font__code: $font__mono;
 $font__pre: $font__mono;
 $font__line-height-body: 1.5;
-$font__line-height-pre: 1.6;
+$font__line-height-pre: 1.6; 

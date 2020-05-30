@@ -6,6 +6,32 @@
       <p> I like thinking about screens, history, and the future. I have an undergraduate degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
     </div>
   </section>
+  <section class="home books">
+    <div class="container">
+      <h2 class="clear">Reading list</h2>
+      <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
+      <p>These are the last six books I finished:</p>
+      <div class="list">
+        <?php
+          $args = array( 'posts_per_page' => 6, 'post_type' => 'books' );
+          $myposts = get_posts( $args );
+          foreach ( $myposts as $post ) : setup_postdata( $post );
+        ?>
+          <a href="<?php the_permalink(); ?>">
+            <img src="<?php the_post_thumbnail_url('full'); ?>" />
+            <div class="metadata">
+              <div class="title"><?php the_title() ?></div>
+              <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
+              <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
+            </div>
+          </a>
+        <?php
+          endforeach;
+          wp_reset_postdata();
+        ?>
+      </div>
+    </div>
+  </section>
   <section class="home projects-list">
     <div class="container">
       <h2 class="clear">Projects</h2>
@@ -42,32 +68,7 @@
       </a>
     </div>
   </section>
-  <section class="home books">
-    <div class="container">
-      <h2 class="clear">Reading</h2>
-      <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
-      <p>These are the last six books I finished:</p>
-      <div class="list">
-        <?php
-          $args = array( 'posts_per_page' => 6, 'post_type' => 'books' );
-          $myposts = get_posts( $args );
-          foreach ( $myposts as $post ) : setup_postdata( $post );
-        ?>
-          <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" />
-            <div class="metadata">
-              <div class="title"><?php the_title() ?></div>
-              <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
-              <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
-            </div>
-          </a>
-        <?php
-          endforeach;
-          wp_reset_postdata();
-        ?>
-      </div>
-    </div>
-  </section>
+  <?php /*
   <section class="home blog-list">
     <div class="container">
       <h2 class="clear">Blog posts</h2>
@@ -90,5 +91,6 @@
       </table>
     </div>
   </section>
+  */ ?>
 <?php
 get_footer();

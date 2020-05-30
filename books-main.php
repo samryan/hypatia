@@ -46,7 +46,7 @@ Page template for the main books page. Includes custom DB query to get favorites
           foreach ( $myposts as $post ) : setup_postdata( $post );
         ?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" />
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
               <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
@@ -78,7 +78,7 @@ Page template for the main books page. Includes custom DB query to get favorites
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <?php if (has_post_thumbnail()) :?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" />
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
             <div class="title"><?php the_title() ?></div>
             <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
           </a>

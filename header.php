@@ -16,7 +16,6 @@
           </span>
           <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
           <ul>
-            <li><a href="/blog">Blog</a></li>
             <li><a href="/books">Reading</a></li>
             <li><a href="/projects">Projects</a></li>
             <li><?php get_search_form(); ?></li>
