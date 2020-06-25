@@ -45,19 +45,23 @@ Page template for a list of all books in the DB
       $myposts = get_posts( $args );
       foreach ( $myposts as $post ) : setup_postdata( $post );
     ?>
-      <tr style="border-bottom: 1px solid #eee;"> 
-        <td style="width: 25%"><?php the_title() ?></td>
+      <tr> 
+        <td>
+          <a href="<?php the_permalink() ?>">
+            <?php the_title() ?>
+          </a>
+        </td>
         <td><?php echo get_post_meta($post->ID, 'book_author', true); ?></td>
-        <td style="width: 100px;"><?php echo get_post_meta($post->ID, 'rating', true); ?></td>
-        <td style="width: 110px;">
+        <td><?php echo get_post_meta($post->ID, 'rating', true); ?></td>
+        <td>
           <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
             <?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
           <?php else: ?>
             <?php echo get_post_meta($post->ID, 'year_read', true); ?>
           <?php endif; ?>
         </td>
-        <td style="width: 110px;"><a href="<?php the_post_thumbnail_url('full'); ?>">Cover image</a></td>
-        <td style="width: 110px;">
+        <td><a href="<?php the_post_thumbnail_url('full'); ?>">Cover image</a></td>
+        <td>
           <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
             <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Buy this book</a>
           <?php endif; ?>

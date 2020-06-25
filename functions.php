@@ -19,7 +19,6 @@ function hypatia_setup() {
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -57,24 +56,6 @@ endif;
 add_action( 'after_setup_theme', 'hypatia_setup' );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function hypatia_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'hypatia' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'hypatia' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'hypatia_widgets_init' );
-
-/**
  * Enqueue scripts and styles.
  */
 function hypatia_scripts() {
@@ -110,6 +91,7 @@ function remove_wp_junk() {
   remove_action('rest_api_init', 'wp_oembed_register_route');
   remove_action('template_redirect', 'rest_output_link_header', 11, 0);
   remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+  add_filter( 'feed_links_show_comments_feed', '__return_false' ); 
   add_filter('the_generator', '__return_false');
   add_filter('emoji_svg_url', '__return_false');
   add_filter('embed_oembed_discover', '__return_false');

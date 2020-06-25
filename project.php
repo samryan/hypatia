@@ -8,14 +8,14 @@ Include a hero image for projects. If the project has an image, move the headlin
 
 <?php get_header(); ?>
 <?php if ( has_post_thumbnail() ) { ?>
-<section class="bg-gray">
+<section>
   <div class="container">
     <?php the_title( '<h2 class="entry-title entry-title-project">', '</h2>' ); ?>
     <img src="<?php the_post_thumbnail_url('full'); ?>" />
   </div>
 </section>
 <?php } ?>
-<section class="bg-default">
+<section>
   <div class="container">
   	<?php
   		while ( have_posts() ) : the_post();

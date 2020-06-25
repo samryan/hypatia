@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <section class="bg-default">
+  <section>
     <div class="container">
       <?php if ( has_post_thumbnail() ) { ?>
         <img src="<?php the_post_thumbnail_url('full'); ?>" />

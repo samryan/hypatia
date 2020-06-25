@@ -8,34 +8,24 @@ Page template for the main books page. Includes custom DB query to get favorites
 
 <?php get_header(); ?>
 
-  <section class="bg-default">
-    <div class="container">
-      <h2 class="entry-title">Reading</h2>
-      <p>Since 2009, I’ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them.</p>
+  <section>
+    <div class="container"><?php
+  		while ( have_posts() ) : the_post();
+    ?>
+      <?php if ( has_post_thumbnail() ) { } else { ?>
+        <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+      <?php } ?>
+      <div class="entry-content">
+        <?php
+          the_content();
+        ?>
+        </div>
+    <?php
+  		endwhile; // End of the loop.
+  	?>
     </div>
   </section>
-  <section class="bg-green">
-    <div class="container">
-      <div id="books-years">
-        <h3><b>Yearly lists</b></h3>
-        <ul>
-          <li><a href="/books/list-2020">Books read in 2020</a> (work in progress)</li>
-          <li><a href="/books/list-2019">Books read in 2019</a> (52)</li>
-          <li><a href="/books/list-2018">Books read in 2018</a> (59)</li>
-          <li><a href="/books/list-2017">Books read in 2017</a> (52)</li>
-          <li><a href="/books/list-2016">Books read in 2016</a> (47)</li>
-          <li><a href="/books/list-2015">Books read in 2015</a> (86)</li>
-          <li><a href="/books/list-2014">Books read in 2014</a> (52)</li>
-          <li><a href="/books/list-2013">Books read in 2013</a> (67)</li>
-          <li><a href="/books/list-2012">Books read in 2012</a> (66)</li>
-          <li><a href="/books/list-2011">Books read in 2011</a> (79)</li>
-          <li><a href="/books/list-2010">Books read in 2010</a> (131)</li>
-          <li><a href="/books/list-2009">Books read in 2009</a> (101)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section class="bg-default">
+  <section>
     <div class="container">
       <div class="books" id="books-recent">
         <h3><b>Recently finished</b></h3>
@@ -46,7 +36,10 @@ Page template for the main books page. Includes custom DB query to get favorites
           foreach ( $myposts as $post ) : setup_postdata( $post );
         ?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
+            <div class="cover">
+              <div class="book-spine"></div>
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+            </div>
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
               <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
@@ -61,7 +54,7 @@ Page template for the main books page. Includes custom DB query to get favorites
       </div>
     </div>
   </section>
-  <section class="bg-default">
+  <section>
     <div class="container">
       <div class="books" id="books-favorites">
         <h3><b>Favorites</b></h3>
@@ -78,9 +71,14 @@ Page template for the main books page. Includes custom DB query to get favorites
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <?php if (has_post_thumbnail()) :?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
-            <div class="title"><?php the_title() ?></div>
-            <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
+            <div class="cover">
+              <div class="book-spine"></div>
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+            </div>
+            <div class="metadata">
+              <div class="title"><?php the_title() ?></div>
+              <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
+            </div>
           </a>
         <?php endif; endwhile; ?>
         <?php wp_reset_postdata(); ?>

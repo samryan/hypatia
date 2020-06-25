@@ -1,14 +1,14 @@
 <?php get_header(); ?>
   <section class="home intro">
     <div class="container">
-      <h1>Hello!</h1>
-      <h3>I&rsquo;m a user experience designer from Seattle.</h3>
-      <p> I like thinking about screens, history, and the future. I have an undergraduate degree in history from UC Berkeley, and a Master&rsquo;s in Information Management from the University of Washington iSchool.</p>
+      <?php while(have_posts()) : the_post(); ?>
+        <?php the_content(); ?>
+      <?php endwhile; ?>
     </div>
   </section>
   <section class="home books">
     <div class="container">
-      <h2 class="clear">Reading list</h2>
+      <h2>Reading list</h2>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
       <p>These are the last six books I finished:</p>
       <div class="list">
@@ -18,7 +18,10 @@
           foreach ( $myposts as $post ) : setup_postdata( $post );
         ?>
           <a href="<?php the_permalink(); ?>">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="" />
+            <div class="cover">
+              <div class="book-spine"></div>
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+            </div>
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
               <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
@@ -30,42 +33,6 @@
           wp_reset_postdata();
         ?>
       </div>
-    </div>
-  </section>
-  <section class="home projects-list">
-    <div class="container">
-      <h2 class="clear">Projects</h2>
-      <p class="clear">I work for Amazon&rsquo;s <a href="https://www.amazon.jobs/advertising-ux">Advertising UX</a> group as a senior designer, making our ad business more interesting and better for customers. Some of my projects at Amazon include:</p>
-      <a class="project" href="/projects/ad-landing-pages">
-        <b>Ad Landing Pages</b>
-        <br>
-        <span>An internal tool for Amazon designers to make landing pages without writing any code.</span>
-      </a>
-      <a class="project" href="/projects/advertise-your-app">
-        <b>Advertise Your App</b>
-        <br>
-        <span>Do-it-yourself ad campaigns for app developers. Featured in TechCrunch!</span>
-      </a>
-      <a class="project" href="/projects/amazon-mobile-ad-placements">
-        <b>Amazon Mobile ad placements</b>
-        <br>
-        <span>Scaling a worldwide ads business as our customers migrate to mobile shopping.</span>
-      </a>
-      <a class="project" href="/projects/mobile-add-to-cart">
-        <b>Mobile Add to Cart ad format</b>
-        <br>
-        <span>A new eCommerce-enabled ad format, unique to Amazon.</span>
-      </a>
-      <a class="project" href="/projects/mobile-interstitial-ads">
-        <b>Mobile interstitial ad format</b>
-        <br>
-        <span>Iterative design and development of a full screen ad format for third-party apps.</span>
-      </a>
-      <a class="project" href="/projects/fit-ratings">
-        <b>Fit ratings (internship project)</b>
-        <br>
-        <span>A detail page feature that helps you pick the right size for clothes.</span>
-      </a>
     </div>
   </section>
   <?php /*
