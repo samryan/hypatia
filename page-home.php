@@ -1,9 +1,14 @@
 <?php get_header(); ?>
   <section class="home intro">
     <div class="container">
-      <?php while(have_posts()) : the_post(); ?>
-        <?php the_content(); ?>
-      <?php endwhile; ?>
+      <figure class="home-photo">
+        <img src="<?php echo get_template_directory_uri(); ?>/sam.jpg" width="" height="" alt="Sam Ryan" />
+      </figure>
+      <div>
+        <?php while(have_posts()) : the_post(); ?>
+          <?php the_content(); ?>
+        <?php endwhile; ?>
+      </div>
     </div>
   </section>
   <section class="home books">
