@@ -241,7 +241,19 @@ header.site-header {
   .current-menu-item > a,
   .current-page-ancestor > a,
   .current-menu-ancestor > a {
-    font-weight: bold;
+    border-bottom: 3px solid #ddd;
+    padding-bottom: 0.4rem;
+    @media (max-width: $screen-sm-max) {
+      border: 0;
+      padding: 0;
+      font-weight: 500;
+      color: #666;
+      &::after {
+        content: " •";
+        font-size: 110%;
+        color: $color__light-blue;
+      }
+    }
   }
 }
 
@@ -340,7 +352,9 @@ nav {
     }
     &:focus,
     &:active {
-      width: 12rem;
+      @media (min-width: $screen-sm-min) {
+        width: 12rem;
+      }
       color: $color__text-main;
       &::placeholder {
         color: $color__text-main;
@@ -746,15 +760,6 @@ div.container {
   }
 }
 
-/* uncomment to show list of tags
-.books .book-tags {
-  list-style-type: none;
-  display: inline;
-  margin: 0;
-  padding: 0;
-  li { display: inline; }
-} */
-
 .books .book_quotes {
   .book_quote {
     background: #fff;
@@ -783,6 +788,40 @@ div.container {
       font-size: 0.9rem;
       margin-block-start: 1rem;
       display: block;
+    }
+  }
+}
+
+.books-menu {
+  ul {
+    list-style: none;
+    margin-top: 0.5rem;
+    padding: 0;
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    li {
+      display: block;
+      float: left;
+      margin: 0 1rem 1.8rem 0;
+      a, a:link, a:visited {
+        transition: all 0.1s ease-in-out;
+        text-decoration: none;
+        color: #555;
+        padding: 0.4rem 0.4rem;
+        border-bottom: 3px solid #ddd;
+        &:hover {
+          background-color: #fff;  
+          border-bottom: 3px solid $color__lighter-blue;
+        }
+        &[aria-current] {
+          color: #111;
+          border-bottom: 3px solid $color__light-blue;
+          padding: 0.4rem 0.4rem;
+        }
+      }
     }
   }
 }

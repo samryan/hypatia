@@ -8,6 +8,19 @@ Page template for a list of all books in the DB
 
 <?php get_header(); ?>
 
+<section>
+  <div class="container">
+    <?php
+      wp_nav_menu(
+        array(
+          'theme_location' => 'books-menu',
+          'container_class' => 'books-menu'
+        )
+      );
+    ?>
+  </div>
+</section>
+
 <section class="bg-default">
   <div class="container">
     <?php
@@ -24,60 +37,44 @@ Page template for a list of all books in the DB
     ?>
   </div>
   <div class="container">
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Rating</th>
-        <th>Read</th>
-        <th>Cover image</th>
-        <th>Links</th>
-      </tr>
-    </thead>
-    <tbody>
+    <ol reversed style="padding: 0; margin-left: 3rem;">
       <?php
-      $args = array(
-        'posts_per_page' => -1,
-        'post_type' => 'books',
-        'post_status' => 'publish'
-      );
-      $myposts = get_posts( $args );
-      foreach ( $myposts as $post ) : setup_postdata( $post );
-    ?>
-      <tr> 
-        <td>
-          <a href="<?php the_permalink() ?>">
-            <?php the_title() ?>
-          </a>
-        </td>
-        <td><?php echo get_post_meta($post->ID, 'book_author', true); ?></td>
-        <td><?php echo get_post_meta($post->ID, 'rating', true); ?></td>
-        <td>
-          <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
-            <?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
-          <?php else: ?>
-            <?php echo get_post_meta($post->ID, 'year_read', true); ?>
-          <?php endif; ?>
-        </td>
-        <td><a href="<?php the_post_thumbnail_url('full'); ?>">Cover image</a></td>
-        <td>
-          <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
-            <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Buy this book</a>
-          <?php endif; ?>
-          <?php if ( get_post_meta($post->ID, 'book_source', true) ) : ?>
-            <br>
-            <a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>">Full text</a>
-          <?php endif; ?>
-        </td>
-
-      </tr>
-    <?php
-      endforeach;
-      wp_reset_postdata();
-    ?>  
-    </tbody>
-  </table>
+        $args = array(
+          'posts_per_page' => -1,
+          'post_type' => 'books',
+          'post_status' => 'publish'
+        );
+        $myposts = get_posts( $args );
+        foreach ( $myposts as $post ) : setup_postdata( $post );
+      ?>
+        <li style="border-bottom: 1px dotted #999; margin-bottom: 0.5rem; padding-bottom: 0.5rem;">
+          <div>
+            <div>
+              <a href="<?php the_permalink() ?>">
+              <?php the_title() ?>
+              </a>
+            </div>
+            <div>
+            <?php echo get_post_meta($post->ID, 'book_author', true); ?>
+            </div>
+            <div style="opacity: 0.7;">
+            <span style="font-size: 90%;"><?php echo get_post_meta($post->ID, 'rating', true); ?>
+            - 
+            <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
+              <?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
+            <?php else: ?>
+              <?php echo get_post_meta($post->ID, 'year_read', true); ?>
+            <?php endif; ?>
+            </span>
+            </div>
+          </div>
+        </li>
+      <?php
+        endforeach;
+        wp_reset_postdata();
+      ?>  
+    </ol>
+  </div>
 </section>
 
 <?php

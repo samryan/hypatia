@@ -9,12 +9,27 @@ Page template for the main books page. Includes custom DB query to get favorites
 <?php get_header(); ?>
 
   <section>
+    <div class="container">
+      <?php
+        wp_nav_menu(
+          array(
+            'theme_location' => 'books-menu',
+            'container_class' => 'books-menu'
+          )
+        );
+      ?>
+    </div>
+  </section>
+
+  <section>
     <div class="container"><?php
   		while ( have_posts() ) : the_post();
     ?>
+    <?php /*
       <?php if ( has_post_thumbnail() ) { } else { ?>
         <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
       <?php } ?>
+    */ ?>
       <div class="entry-content">
         <?php
           the_content();

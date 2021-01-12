@@ -11,6 +11,19 @@ Page template for the 2012 books. Includes custom DB query to get books read in 
 <section>
   <div class="container">
     <?php
+      wp_nav_menu(
+        array(
+          'theme_location' => 'books-menu',
+          'container_class' => 'books-menu'
+        )
+      );
+    ?>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <?php
       while ( have_posts() ) : the_post();
     ?>
       <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>

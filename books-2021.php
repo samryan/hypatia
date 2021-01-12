@@ -9,6 +9,18 @@ Page template for the 2021 books. Includes custom DB query to get books read in 
 <?php get_header(); ?>
 
 <section>
+  <section>
+    <div class="container">
+      <?php
+        wp_nav_menu(
+          array(
+            'theme_location' => 'books-menu',
+            'container_class' => 'books-menu'
+          )
+        );
+      ?>
+    </div>
+  </section>
   <div class="container">
     <?php
       while ( have_posts() ) : the_post();

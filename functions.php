@@ -39,6 +39,16 @@ function hypatia_setup() {
 		'primary' => esc_html__( 'Primary', 'hypatia' ),
 	) );
 
+  function register_my_menus() {
+    register_nav_menus(
+      array(
+        'primary' => esc_html__( 'Primary', 'hypatia' ),
+        'books-menu' => __( 'Books Menu' )
+       )
+     );
+   }
+   add_action( 'init', 'register_my_menus' );
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -59,7 +69,7 @@ add_action( 'after_setup_theme', 'hypatia_setup' );
  * Enqueue scripts and styles.
  */
 function hypatia_scripts() {
-	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri(), '', '1.0.1' );
+	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri(), '', '1.0.2' );
 }
 add_action( 'wp_enqueue_scripts', 'hypatia_scripts' );
 
