@@ -101,7 +101,7 @@ function remove_wp_junk() {
   remove_action('rest_api_init', 'wp_oembed_register_route');
   remove_action('template_redirect', 'rest_output_link_header', 11, 0);
   remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
-  add_filter( 'feed_links_show_comments_feed', '__return_false' ); 
+  add_filter( 'feed_links_show_comments_feed', '__return_false' );
   add_filter('the_generator', '__return_false');
   add_filter('emoji_svg_url', '__return_false');
   add_filter('embed_oembed_discover', '__return_false');
@@ -133,3 +133,12 @@ function tags_categories_support_query($wp_query) {
 // tag and category hooks
 add_action('init', 'tags_categories_support_all');
 add_action('pre_get_posts', 'tags_categories_support_query');
+
+// remove logo from login screen
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1, #login #backtoblog { display: none; }
+
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
