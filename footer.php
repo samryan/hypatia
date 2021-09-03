@@ -1,7 +1,7 @@
-    <footer id="colophon" class="site-footer" role="contentinfo">
+    <footer id="colophon" class="site-footer">
       <div class="site-info container">
         <p><small class="smallcaps">Content by Sam Ryan, 2007&ndash;<?php echo date('Y'); ?></small></p>
-        <p><small class="smallcaps" title="”To read well is to conquer the ages”&#013;– Isaac Flagg&#013;UC Berkeley library motto" style="cursor: help;">Bene legere saecla vincere</small></p>
+        <p><small class="smallcaps" title="”To read well is to conquer the ages”&#013;– Isaac Flagg&#013;UC Berkeley library motto" style="cursor: help;" lang="la">Bene legere saecla vincere</small></p>
       </div>
     </footer>
   </div>
@@ -16,7 +16,6 @@
   <?php endif; ?>
 <?php endif; ?>
 <script type="text/javascript">
-  if (window.location.host !== 'samryan.net') window.goatcounter = {no_onload: true};
   var a = false;
   document.querySelector('#toggle-menu').addEventListener('click', function (e) {
     e.preventDefault();
@@ -26,6 +25,5 @@
     }, false
   );
 </script>
-<script data-goatcounter="https://samryan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
