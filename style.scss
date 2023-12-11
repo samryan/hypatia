@@ -473,18 +473,19 @@ div.container {
   font-size: 0.875rem;
   font-family: $font__sans;
   a {
-    width: 50%;
+    width: calc(50% - 1rem);
     @media (min-width: $screen-sm-min) {
-      width: 33%;
+      width: calc(33% - 1rem);
     }
     margin-block-start: 2rem;
+    margin-inline-end: 1rem;
     text-decoration: none;
     color: $color__text-main;
-    &:hover * {
+    &:hover *, &:focus * {
       color: $color__link !important;
     }
     @media (pointer: fine) {
-      &:hover {
+      &:hover, &:focus {
         .cover {
           transform: rotateZ(0.8deg) scale(1.04) translateX(4px);
           img {
@@ -729,7 +730,7 @@ div.container {
       color: #000;
       .subtitle {
         font-size: 1rem;
-        color: lighten($color__text-main, 30%);
+        color: lighten($color__text-main, 20%);
         display: block;
         margin-block-start: 0.2rem;
       }
