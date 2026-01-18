@@ -1,0 +1,25 @@
+name: Deploy Theme
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ssh.phx.nearlyfreespeech.net
+          username: ${{ secrets.NFSN_USER }}
+          password: ${{ secrets.NFSN_PASSWORD }}
+          protocol: sftp
+          local-dir: ./
+          server-dir: /home/public/wp-content/themes/hypatia/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
