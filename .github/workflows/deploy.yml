@@ -13,7 +13,7 @@ jobs:
       - name: Deploy via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ssh.phx.nearlyfreespeech.net
+          server: ssh.nyc1.nearlyfreespeech.net
           username: ${{ secrets.NFSN_USER }}
           password: ${{ secrets.NFSN_PASSWORD }}
           local_path: './*'
