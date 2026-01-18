@@ -11,15 +11,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ssh.phx.nearlyfreespeech.net
           username: ${{ secrets.NFSN_USER }}
           password: ${{ secrets.NFSN_PASSWORD }}
-          protocol: sftp
-          local-dir: ./
-          server-dir: /home/public/wp-content/themes/hypatia/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
+          local_path: './*'
+          remote_path: '/home/public/wp-content/themes/hypatia/'
+          sftpArgs: '-o StrictHostKeyChecking=no'
