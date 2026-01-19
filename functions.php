@@ -69,7 +69,7 @@ add_action( 'after_setup_theme', 'hypatia_setup' );
  * Enqueue scripts and styles.
  */
 function hypatia_scripts() {
-	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri(), '', '1.0.4' );
+	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 }
 add_action( 'wp_enqueue_scripts', 'hypatia_scripts' );
 

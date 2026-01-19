@@ -487,6 +487,12 @@ nav {
   justify-content: space-between;
   min-height: 50px;
   font-family: "Inter", "system-ui", Arial, sans-serif;
+  position: relative;
+}
+@media (max-width: 599px) {
+  nav {
+    flex-wrap: wrap;
+  }
 }
 nav .logo {
   text-decoration: none;
@@ -495,6 +501,16 @@ nav .logo {
 }
 nav .logo:hover {
   color: #3e3c2f !important;
+}
+nav .header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+@media (min-width: 600px) {
+  nav .header-controls {
+    order: 3;
+  }
 }
 nav ul {
   margin: 0;
@@ -509,14 +525,17 @@ nav ul {
 }
 @media (max-width: 599px) {
   nav ul {
-    display: none;
-    background: #f4f4f0;
-    width: calc(100% + 2rem);
-    margin: 0 -1rem;
-    padding: 0 1rem;
+    display: block;
+    width: 100%;
+    order: 3;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
   }
   nav ul.visible {
-    display: block !important;
+    max-height: 300px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
   }
 }
 nav ul li {
@@ -530,6 +549,7 @@ nav ul li {
     display: block;
     width: 100%;
     text-align: left;
+    padding: 0.25rem 0;
   }
 }
 nav ul li a {
@@ -542,8 +562,10 @@ nav ul li a:hover {
 }
 @media (max-width: 599px) {
   nav ul li a {
-    height: 40px;
-    line-height: 40px;
+    display: block;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1.1rem;
   }
 }
 nav input[type=search] {
@@ -562,8 +584,7 @@ nav input[type=search]:placeholder-shown::placeholder {
 }
 @media (max-width: 599px) {
   nav input[type=search] {
-    margin-inline-start: -0.5rem;
-    margin-block-end: 1rem;
+    margin: 0.5rem 0 0.25rem;
     width: 100%;
   }
 }
@@ -574,14 +595,25 @@ nav input[type=search]:focus::placeholder, nav input[type=search]:active::placeh
   color: #3e3c2f;
 }
 
+#toggle-theme {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: transparent;
+  box-shadow: none;
+  border-width: 0;
+  color: #3e3c2f;
+}
+#toggle-theme svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
 #toggle-menu {
-  position: absolute;
-  right: 0;
-  top: 0;
   display: none;
   cursor: pointer;
-  padding: 0 0.5rem;
-  height: 50px;
+  padding: 0.5rem;
   background: transparent;
   box-shadow: none;
   border-width: 0;
@@ -681,6 +713,8 @@ footer {
 div.container {
   margin: 0 auto;
   max-width: 50rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Book lists */
