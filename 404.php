@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
-    <section class="error-404 not-found">
+<main id="main" role="main">
+    <div class="error-404 not-found">
       <div class="container">
         <h1 class="clear">404: Page Not Found</h1>
         <div class="page-content">
@@ -9,7 +10,8 @@
           <?php get_search_form(); ?>
         </div>
       </div>
-    </section>
+    </div>
+</main>
 
 <?php
 get_footer();

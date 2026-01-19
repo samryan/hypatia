@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
-<section>
+<main id="main" role="main">
+<div>
   <div class="container">
-    <h5>Blog post:</h5>
     <?php
     while ( have_posts() ) : the_post();
     	get_template_part( 'template-parts/content', get_post_format() );
@@ -10,6 +10,7 @@
     endwhile;
     ?>
   </div>
-</section>
+</div>
+</main>
 <?php
 get_footer();

@@ -1,6 +1,8 @@
     <footer id="colophon" class="site-footer">
       <div class="site-info container">
-        <p><small class="smallcaps">Content by Sam Ryan, 2007&ndash;<?php echo date('Y'); ?></small></p>
+        <?php /*
+          <p><small class="smallcaps">Content by Sam Ryan, 2007&ndash;<?php echo date('Y'); ?></small></p>
+        */ ?>
         <p><small class="smallcaps" title="”To read well is to conquer the ages”&#013;– Isaac Flagg&#013;UC Berkeley library motto" style="cursor: help;" lang="la">Bene legere saecla vincere</small></p>
       </div>
     </footer>
@@ -22,8 +24,19 @@
     a = !a;
     document.querySelector('#toggle-menu').setAttribute('aria-expanded', a);
     document.querySelector('#site-navigation ul').classList.toggle('visible');
-    }, false
-  );
+  }, false);
+
+  document.querySelector('#toggle-theme').addEventListener('click', function (e) {
+    e.preventDefault();
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }, false);
 </script>
 </body>
 </html>

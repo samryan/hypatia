@@ -8,25 +8,19 @@ Page template for the 2011 books. Includes custom DB query to get books read in 
 
 <?php get_header(); ?>
 
-<section>
+<main id="main" role="main">
+<div>
   <div class="container">
-    <?php
-      wp_nav_menu(
-        array(
-          'theme_location' => 'books-menu',
-          'container_class' => 'books-menu'
-        )
-      );
-    ?>
+    <?php hypatia_books_nav(); ?>
   </div>
-</section>
+</div>
 
-<section>
+<div>
   <div class="container">
     <?php
       while ( have_posts() ) : the_post();
     ?>
-      <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+      <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
       <div class="entry-content">
         <?php
           the_content();
@@ -56,7 +50,7 @@ Page template for the 2011 books. Includes custom DB query to get books read in 
         <div class="metadata">
           <div class="title"><?php the_title() ?></div>
           <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
-          <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
+          <?php echo hypatia_book_rating(); ?>
         </div>
       </a>
     <?php
@@ -65,7 +59,8 @@ Page template for the 2011 books. Includes custom DB query to get books read in 
     ?>
     </div>
   </div>
-</section>
+</div>
+</main>
 
 <?php
 get_footer();

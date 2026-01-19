@@ -7,21 +7,22 @@ Include a hero image for projects. If the project has an image, move the headlin
 ?>
 
 <?php get_header(); ?>
+<main id="main" role="main">
 <?php if ( has_post_thumbnail() ) { ?>
-<section>
+<div>
   <div class="container">
-    <?php the_title( '<h2 class="entry-title entry-title-project">', '</h2>' ); ?>
+    <?php the_title( '<h1 class="entry-title entry-title-project">', '</h1>' ); ?>
     <img src="<?php the_post_thumbnail_url('full'); ?>" />
   </div>
-</section>
+</div>
 <?php } ?>
-<section>
+<div>
   <div class="container">
   	<?php
   		while ( have_posts() ) : the_post();
     ?>
       <?php if ( has_post_thumbnail() ) { } else { ?>
-        <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
       <?php } ?>
       <div class="entry-content">
         <?php
@@ -32,6 +33,7 @@ Include a hero image for projects. If the project has an image, move the headlin
   		endwhile; // End of the loop.
   	?>
   </div>
-</section>
+</div>
+</main>
 <?php
 get_footer();

@@ -1,142 +1,152 @@
 <article id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/Book" <?php post_class(); ?>>
-	<?php if (is_single()) : ?>
-    <?php if (has_post_thumbnail()) :?>
-      <section class="book-header gradient-wrap">
-        <div class="book-wrapper">
-          <div class="book-cover">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
-            <div class="book-spine"></div>
-          </div>
-          <div class="pages-container">
-            <ul class="pages">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-          <div class="bottom-cover">
-            <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
-          </div>
-          <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" style="visibility:hidden;" />
-        </div>
-      </section>
-    <?php endif; ?>
-    <section>
-      <div class="container book-metadata">
-        <?php
-          $title = the_title('','',false);
-          if (strpos($title, ':') !== false) {
-            // echo 'true';
-            $arr=explode(':', the_title('','',false) );
-            echo '<h2 class="entry-title" itemprop="name">';
-            echo implode( '<span class="sr-only">:</span> <span class="subtitle">', $arr);
-            echo '</h2>';
-          } else {
-            echo '<h2 class="entry-title" itemprop="name">';
-            the_title();
-            echo '</h2>';
-          }
-        ?>
-        <h3 itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></h2>
-        <h3 class="stars">
-          <?php echo get_post_meta($post->ID, 'rating', true); ?>
-        </h3>
-      </div>
-    </section>
-  <?php endif; ?>
-  <?php if ($post->post_content != '') : ?>
-    <section class="review">
+  <?php if (is_single()) : ?>
+    <?php $year_read = get_post_meta($post->ID, 'year_read', true); ?>
+
+    <!-- Breadcrumb -->
+    <div class="book-breadcrumb">
       <div class="container">
-        <h3><b>Review:</b></h3>
-        <div class="entry-content" itemprop="review" itemscope itemtype="http://schema.org/Review">
-          <span itemprop="reviewBody">
-            <?php the_content(); ?>
-          </span>
+        <a href="/books/all">Books</a> / <a href="/books/list-<?php echo $year_read; ?>"><?php echo $year_read; ?></a>
+      </div>
+    </div>
+
+    <!-- Header: Cover + Metadata -->
+    <div class="book-detail-header">
+      <div class="container">
+        <?php if (has_post_thumbnail()) : ?>
+          <div class="book-cover-wrapper">
+            <div class="book-3d">
+              <div class="book-cover">
+                <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+                <div class="book-spine"></div>
+              </div>
+              <div class="pages-container">
+                <ul class="pages">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="bottom-cover">
+                <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+              </div>
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book book-sizer" alt="" />
+            </div>
+          </div>
+        <?php endif; ?>
+        <div class="book-metadata">
+          <?php
+            $title = the_title('','',false);
+            if (strpos($title, ':') !== false) {
+              $arr = explode(':', the_title('','',false));
+              echo '<h1 class="entry-title" itemprop="name">';
+              echo implode('<span class="sr-only">:</span> <span class="subtitle">', $arr);
+              echo '</h1>';
+            } else {
+              echo '<h1 class="entry-title" itemprop="name">';
+              the_title();
+              echo '</h1>';
+            }
+          ?>
+          <p class="author" itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></p>
+          <p class="stars"><?php echo get_post_meta($post->ID, 'rating', true); ?></p>
+          <p class="finished">
+            Read
+            <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
+              ~<?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
+            <?php else: ?>
+              in <?php echo $year_read; ?>
+            <?php endif; ?>
+          </p>
+          <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) || get_post_meta($post->ID, 'book_source', true) ) : ?>
+            <p class="book-links">
+              <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
+                <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Buy this book</a>
+              <?php endif; ?>
+              <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) && get_post_meta($post->ID, 'book_source', true) ) : ?>
+                <span class="separator">&middot;</span>
+              <?php endif; ?>
+              <?php if ( get_post_meta($post->ID, 'book_source', true) ) : ?>
+                <a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>">Full text</a>
+              <?php endif; ?>
+            </p>
+          <?php endif; ?>
         </div>
       </div>
-    </section>
-  <?php endif; ?>
-  <?php if( have_rows('book_quotes') ): ?>
-    <section>
-      <div class="container book_quotes">
-        <h3><b>Highlights</b></h3>
-        <?php while ( have_rows('book_quotes') ) : the_row(); ?>
-          <article class="book_quote">
-            <div><?php the_sub_field('book_quote'); ?><cite><?php the_sub_field('book_quote_source'); ?></cite></div>
-          </article>
-        <?php endwhile; ?>
+    </div>
+
+    <?php /*
+    <?php if ($post->post_content != '') : ?>
+      <div class="book-review">
+        <div class="container">
+          <h2>Review</h2>
+          <div class="entry-content" itemprop="review" itemscope itemtype="http://schema.org/Review">
+            <span itemprop="reviewBody">
+              <?php the_content(); ?>
+            </span>
+          </div>
+        </div>
       </div>
-    </section>
-	<?php endif; ?>
-  <section class="links">
-    <div class="container">
-      <ul>
-        <li>
-          <span>Links:</span>
-          <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
-            <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Buy this book</a>
-          <?php endif; ?>
-          <?php if ( get_post_meta($post->ID, 'book_source', true) ) : ?>
-            <br>
-            <a href="<?php echo get_post_meta($post->ID, 'book_source', true); ?>">Full text</a>
-          <?php endif; ?>
-        </li>
-        <li>
-          <span>Finished:</span>
-          <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
-            ~<?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
-          <?php else: ?>
-          <?php echo get_post_meta($post->ID, 'year_read', true); ?>
-          <?php endif; ?>
-        </li>
-        <li>
-          <span>More from this year:</span>
-          <a href="/books/list-<?php echo get_post_meta($post->ID, 'year_read', true); ?>" aria-label="Books read in <?php echo get_post_meta($post->ID, 'year_read', true); ?>"><?php echo get_post_meta($post->ID, 'year_read', true); ?></a>
-        </li>
-        <?php /*
-        <li><b>Tags:</b>
-          <?php echo get_the_tag_list('<ul class="book-tags"><li>',', </li><li>','</li></ul>'); ?>
-        </li>
-        */ ?>
-      </ul>
-    </div>
-  </section>
-  <?php if( get_next_post() ): ?>
-  <section class="navigation">
-    <div class="container">
-      <span>Next:</span>
-      <?php
-        $next_post_url = get_permalink(get_adjacent_post(false,'',false)->ID);
-        echo '<a href="';
-        echo $next_post_url;
-        echo '" rel="next"><span class="author">';
-        echo get_next_post()->book_author;
-        echo '</span> – <span class="title">';
-        echo get_next_post()->post_title;
-        echo '</span></a>';
-      ?>
-    </div>
-  </section>
-  <?php endif; ?>
-  <?php if( get_previous_post() ): ?>
-  <section>
-    <div class="container">
-      <span>Previous:</span>
-      <?php
-        $previous_post_url = get_permalink( get_adjacent_post(false,'',true)->ID );
-        echo '<a href="';
-        echo $previous_post_url;
-        echo '" rel="next"><span class="author">';
-        echo get_previous_post()->book_author;
-        echo '</span> – <span class="title">';
-        echo get_previous_post()->post_title;
-        echo '</span></a>';
-      ?>
-    </div>
-    </section>
+    <?php endif; ?>
+    */ ?>
+
+    <?php if( have_rows('book_quotes') ): ?>
+      <div class="book-highlights">
+        <div class="container book_quotes">
+          <h2>Highlights</h2>
+          <?php $highlight_index = 0; while ( have_rows('book_quotes') ) : the_row(); $highlight_index++; ?>
+            <article class="book_quote" id="highlight-<?php echo $highlight_index; ?>">
+              <a href="#highlight-<?php echo $highlight_index; ?>" class="quote-mark" aria-label="Link to this highlight">&ldquo;</a>
+              <div><?php the_sub_field('book_quote'); ?><cite><?php the_sub_field('book_quote_source'); ?></cite></div>
+            </article>
+          <?php endwhile; ?>
+        </div>
+      </div>
+    <?php endif; ?>
+
+    <!-- Prev/Next Navigation -->
+    <?php
+      $prev_post = get_previous_post();
+      $next_post = get_next_post();
+      if ($prev_post || $next_post) :
+    ?>
+      <div class="book-navigation">
+        <div class="container">
+          <div class="book-nav-links">
+            <?php if ($prev_post) : ?>
+              <a href="<?php echo get_permalink($prev_post->ID); ?>" class="book-nav-link book-nav-prev" rel="prev">
+                <span class="nav-label">Previous</span>
+                <div class="nav-book">
+                  <div class="cover">
+                    <?php echo get_the_post_thumbnail($prev_post->ID, 'full', array('class' => 'book')); ?>
+                  </div>
+                  <div class="nav-metadata">
+                    <span class="title"><?php echo get_the_title($prev_post->ID); ?></span>
+                    <span class="author"><?php echo get_post_meta($prev_post->ID, 'book_author', true); ?></span>
+                  </div>
+                </div>
+              </a>
+            <?php endif; ?>
+            <?php if ($next_post) : ?>
+              <a href="<?php echo get_permalink($next_post->ID); ?>" class="book-nav-link book-nav-next" rel="next">
+                <span class="nav-label">Next</span>
+                <div class="nav-book">
+                  <div class="cover">
+                    <div class="book-spine"></div>
+                    <?php echo get_the_post_thumbnail($next_post->ID, 'full', array('class' => 'book')); ?>
+                  </div>
+                  <div class="nav-metadata">
+                    <span class="title"><?php echo get_the_title($next_post->ID); ?></span>
+                    <span class="author"><?php echo get_post_meta($next_post->ID, 'book_author', true); ?></span>
+                  </div>
+                </div>
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+
   <?php endif; ?>
 </article>

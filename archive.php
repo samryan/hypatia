@@ -1,6 +1,7 @@
 <?php get_header(); ?>
+<main id="main" role="main">
 	<div id="primary" class="content-area">
-    <div class="section">
+    <div>
       <div class="container">
     		<?php
     		if ( have_posts() ) : ?>
@@ -21,5 +22,6 @@
       </div>
     </div>
 	</div>
+</main>
 <?php
 get_footer();

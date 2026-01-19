@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-  <section class="home intro">
+<main id="main" role="main">
+  <h1 class="sr-only">Sam Ryan - Home</h1>
+  <div class="home intro">
     <div class="container">
       <figure class="home-photo">
         <img src="<?php echo get_template_directory_uri(); ?>/sam.jpg" width="" height="" alt="Sam Ryan" />
@@ -10,8 +12,8 @@
         <?php endwhile; ?>
       </div>
     </div>
-  </section>
-  <section class="home books">
+  </div>
+  <div class="home books">
     <div class="container">
       <h2>Reading list</h2>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
@@ -39,30 +41,7 @@
         ?>
       </div>
     </div>
-  </section>
-  <?php /*
-  <section class="home blog-list">
-    <div class="container">
-      <h2 class="clear">Blog posts</h2>
-      <p>I don&rsquo;t write here very often, but when I get something stuck in my head, it&rsquo;s nice to have <a href="/blog">a blog</a>!</p>
-      <table>
-      <?php
-        $blogPosts = new WP_Query();
-        $blogPosts->query('showposts=-1&cat=CAT_ID_GOES_HERE');
-        while($blogPosts->have_posts()): $blogPosts->the_post();
-      ?>
-        <tr>
-          <td valign="top">
-            <span><?php the_date('m/Y'); ?></span>
-          </td>
-          <td>
-            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-          </td>
-        </tr>
-      <?php endwhile; ?>
-      </table>
-    </div>
-  </section>
-  */ ?>
+  </div>
+</main>
 <?php
 get_footer();

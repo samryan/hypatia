@@ -1,9 +1,10 @@
 <?php get_header(); ?>
-	<section id="primary" class="content-area">
+<main id="main" role="main">
+	<div id="primary" class="content-area">
     <div class="container">
   		<?php
   		if ( have_posts() ) : ?>
-  			<h3><?php printf( esc_html__( 'Search Results for &ldquo;%s&rdquo;' ), '<span>' . get_search_query() . '</span>' ); ?></h3>
+  			<h1><?php printf( esc_html__( 'Search Results for &ldquo;%s&rdquo;' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
   			<?php while ( have_posts() ) : the_post();
   				get_template_part( 'template-parts/content', 'search' );
   			endwhile;
@@ -12,6 +13,7 @@
   			get_template_part( 'template-parts/content', 'none' );
   		endif; ?>
     </div>
-	</section>
+	</div>
+</main>
 <?php
 get_footer();

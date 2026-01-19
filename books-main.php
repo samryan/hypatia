@@ -8,28 +8,18 @@ Page template for the main books page. Includes custom DB query to get favorites
 
 <?php get_header(); ?>
 
-  <section>
+<main id="main" role="main">
+  <div>
     <div class="container">
-      <?php
-        wp_nav_menu(
-          array(
-            'theme_location' => 'books-menu',
-            'container_class' => 'books-menu'
-          )
-        );
-      ?>
+      <?php hypatia_books_nav(); ?>
     </div>
-  </section>
+  </div>
 
-  <section>
+  <div>
     <div class="container"><?php
   		while ( have_posts() ) : the_post();
     ?>
-    <?php /*
-      <?php if ( has_post_thumbnail() ) { } else { ?>
-        <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-      <?php } ?>
-    */ ?>
+      <?php the_title( '<h1 class="entry-title sr-only">', '</h1>' ); ?>
       <div class="entry-content">
         <?php
           the_content();
@@ -39,41 +29,36 @@ Page template for the main books page. Includes custom DB query to get favorites
   		endwhile; // End of the loop.
   	?>
     </div>
-  </section>
-  <section>
+  </div>
+  <div>
     <div class="container">
       <div class="books" id="books-recent">
-        <h3><b>Recently finished</b></h3>
+        <h2>Recently finished:</h2>
         <div class="list">
         <?php
-          $args = array( 'posts_per_page' => 6, 'post_type' => 'books' );
+          $args = array( 'posts_per_page' => 3, 'post_type' => 'books' );
           $myposts = get_posts( $args );
           foreach ( $myposts as $post ) : setup_postdata( $post );
-        ?>
-          <a href="<?php the_permalink(); ?>">
-            <div class="cover">
-              <div class="book-spine"></div>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
-            </div>
-            <div class="metadata">
-              <div class="title"><?php the_title() ?></div>
-              <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
-              <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
-            </div>
-          </a>
-        <?php
+            echo hypatia_book_card($post->ID, 'grid');
           endforeach;
           wp_reset_postdata();
         ?>
         </div>
       </div>
+      <?php
+        // Add a link to the list for the current year: "This year's list"
+        $current_year = date('Y');
+      ?>
+      <div class="books-year-link" style="margin-top:2rem;">
+        <a href="/books/list-<?php echo $current_year; ?>">This year's list &rarr;</a>
+      </div>
     </div>
-  </section>
-  <section>
+  </div>
+  <div>
     <div class="container">
       <div class="books" id="books-favorites">
-        <h3><b>Favorites</b></h3>
-        <p>These are some books that I would recommend to most people, or that made an impact on how I think about the world:</p>
+        <h2>Favorites:</h2>
+        <p>These are some books that I&rsquo;d recommend to most people, or that made an impact on how I think about the world:</p>
         <?php
           $args = array(
             'post_type' => 'books',
@@ -82,24 +67,16 @@ Page template for the main books page. Includes custom DB query to get favorites
           );
           $the_query = new WP_Query($args);
         ?>
-        <div class="list">
+        <div class="book-card-list book-card-list--mini">
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        <?php if (has_post_thumbnail()) :?>
-          <a href="<?php the_permalink(); ?>">
-            <div class="cover">
-              <div class="book-spine"></div>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
-            </div>
-            <div class="metadata">
-              <div class="title"><?php the_title() ?></div>
-              <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
-            </div>
-          </a>
-        <?php endif; endwhile; ?>
-        <?php wp_reset_postdata(); ?>
+          <?php if (has_post_thumbnail()) : ?>
+            <?php echo hypatia_book_card($post->ID, 'mini', ['show_rating' => false]); ?>
+          <?php endif; endwhile; ?>
+          <?php wp_reset_postdata(); ?>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</main>
 <?php
 get_footer();

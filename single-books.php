@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<main id="main" role="main">
 	<div id="primary" class="content-area">
 		<?php
 		while ( have_posts() ) : the_post();
@@ -8,5 +9,6 @@
 		  endwhile;
 		?>
 	</div>
+</main>
 <?php
 get_footer();
