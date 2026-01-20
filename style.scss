@@ -300,9 +300,7 @@ nav {
       align-items: center;
     }
     @media (max-width: $screen-sm-max) {
-      display: block;
-      width: 100%;
-      order: 3;
+      flex: 0 0 100%;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.25s ease-out, padding 0.25s ease-out;
@@ -473,6 +471,11 @@ header section {
   footer {
     padding: 1rem;
   }
+}
+/* Remove horizontal padding from site header - let nested .container provide consistent alignment */
+header.site-header {
+  padding-left: 0;
+  padding-right: 0;
 }
 div.container {
   margin: 0 auto;
@@ -1250,6 +1253,11 @@ section.home {
   }
 }
 
+/* Prevent scrollbar flash when lightbox opens */
+html {
+  scrollbar-gutter: stable;
+}
+
 .home.intro .container {
   display: flex;
   flex-direction: column-reverse;
@@ -1281,6 +1289,14 @@ section.home {
       }
     }
   }
+}
+
+.home.intro {
+  margin-top: 5rem;
+}
+
+.home.books {
+  margin-top: 5rem;
 }
 
 /* Search icon */
@@ -1376,7 +1392,9 @@ section.home {
     }
   }
 
-  #toggle-menu svg path,
+  #toggle-menu svg path {
+    fill: var(--color-text);
+  }
   #toggle-theme {
     color: var(--color-text);
   }

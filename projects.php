@@ -70,9 +70,10 @@ get_header(); ?>
 <script>
   const tobii = new Tobii({
     selector: '.lightbox',
-    zoom: false,
+    zoom: true,
     counter: false,
-    nav: false
+    nav: false,
+    swipe: false
   });
 </script>
 
