@@ -50,7 +50,7 @@ $color__border-input: #c5c4b8;
 $color__border-abbr: #666;
 
 /* import fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
 /* Type */
 
@@ -234,31 +234,21 @@ textarea {
 
 header.site-header {
   font-family: $font__menu;
+  nav ul li a {
+    display: flex;
+    align-items: center;
+    border-radius: 0.375rem;
+    padding: 0.4rem 0.65rem;
+    margin: 0 0.15rem;
+  }
   .current-page-item > a,
   .current-menu-item > a,
   .current-page-ancestor > a,
   .current-menu-ancestor > a {
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -0.4rem;
-      height: 2px;
-      background: $color__text-main;
-    }
-    @media (max-width: $screen-sm-max) {
-      &::after {
-        content: " •";
-        position: static;
-        height: auto;
-        background: none;
-        font-size: 110%;
-        color: $color__text-main;
-      }
-      font-weight: 500;
-      color: lighten($color__text-main, 10%);
+    font-weight: 500;
+    background: darken($color__background-body, 6%);
+    &:hover {
+      color: $color__text-main !important;
     }
   }
 }
@@ -267,9 +257,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 50px;
   font-family: $font__menu;
   position: relative;
+  @media (min-width: $screen-sm-min) {
+    justify-content: flex-start;
+  }
   @media (max-width: $screen-sm-max) {
     flex-wrap: wrap;
   }
@@ -298,6 +290,7 @@ nav {
     @media (min-width: $screen-sm-min) {
       display: flex;
       align-items: center;
+      margin-inline-start: auto;
     }
     @media (max-width: $screen-sm-max) {
       flex: 0 0 100%;
@@ -329,19 +322,22 @@ nav {
           color: $color__link-menu-hover !important;
         }
         @media (max-width: $screen-sm-max) {
-          display: block;
+          display: inline-block;
           padding: 0.5rem 0;
           margin: 0;
-          font-size: 1.1rem;
         }
       }
+    }
+  }
+  .search-wrap {
+    @media (min-width: $screen-sm-min) {
+      margin-inline-start: 0.75rem;
     }
   }
   input[type="search"] {
     font-family: $font__menu;
     line-height: 44px;
     height: 44px;
-    margin-block-start: 3px;
     border-radius: 6px;
     transition: background-color 0s, border-color 0s, color 0s;
     text-indent: 0.5rem;
@@ -435,7 +431,8 @@ nav {
 }
 
 header.site-header {
-  background: $color__background-menu;
+  background: #fff;
+  margin-bottom: 3rem;
 }
 
 .site-footer {
@@ -465,7 +462,7 @@ header section {
 }
 @media (max-width: $screen-sm-max) {
   header {
-    padding: 0 1rem;
+    padding: 1rem 2rem;
   }
   section,
   footer {
@@ -940,7 +937,6 @@ div.container {
   margin-top: 4rem;
   h2 {
     font-size: 1rem;
-    font-family: $font__serif;
     font-weight: 400;
     color: $color__text-main;
     margin: 0 0 1rem;
@@ -1062,34 +1058,38 @@ div.container {
     list-style: none;
     margin-top: 0.5rem;
     padding: 0;
-    &:after {
-      content: "";
-      clear: both;
-      display: block;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     li {
       display: block;
-      float: left;
-      margin: 0 1rem 1.8rem 0;
+      margin: 0 0 1rem 0;
       a, a:link, a:visited {
-        transition: all 0.1s ease-in-out;
+        display: block;
         text-decoration: none;
         color: lighten($color__text-main, 15%);
-        padding: 0.4rem;
-        border-bottom: 2px solid transparent;
+        padding: 0.4rem 0.65rem;
+        border-radius: 0.375rem;
         &:hover {
           color: $color__text-main;
-          border-bottom: 2px solid lighten($color__text-main, 40%);
+          background: darken($color__background-body, 4%);
         }
         &[aria-current] {
           color: $color__text-main;
-          border-bottom: 2px solid $color__text-main;
-          padding: 0.4rem;
+          font-weight: 500;
+          background: darken($color__background-body, 6%);
+          &:hover {
+            color: $color__text-main;
+          }
         }
       }
       &.current-menu-item a {
         color: $color__text-main;
-        border-bottom: 2px solid $color__text-main;
+        font-weight: 500;
+        background: darken($color__background-body, 6%);
+        &:hover {
+          color: $color__text-main;
+        }
       }
     }
   }
@@ -1334,10 +1334,18 @@ html {
   svg {
     width: 1.25rem;
     height: 1.25rem;
-    transition: transform 0.2s ease;
   }
-  &:hover svg {
-    transform: scale(1.1);
+  @media (prefers-reduced-motion: no-preference) {
+    svg {
+      transition: transform 0.15s ease-out;
+    }
+    &:hover svg,
+    &:focus svg {
+      transform: scale(1.15);
+    }
+    &:active svg {
+      transform: scale(0.95);
+    }
   }
   .icon-moon {
     display: none;
@@ -1369,7 +1377,16 @@ html {
   }
 
   header.site-header {
-    background: var(--color-bg);
+    background: #000;
+    .current-page-item > a,
+    .current-menu-item > a,
+    .current-page-ancestor > a,
+    .current-menu-ancestor > a {
+      background: var(--color-bg-elevated);
+      &:hover {
+        color: var(--color-text) !important;
+      }
+    }
   }
 
   nav {
@@ -1464,14 +1481,24 @@ html {
 
   .books-menu ul li a {
     color: var(--color-text-light);
-    &:hover,
+    &:hover {
+      color: var(--color-text);
+      background: var(--color-bg-elevated);
+    }
     &[aria-current] {
       color: var(--color-text);
+      background: var(--color-bg-elevated);
+      &:hover {
+        color: var(--color-text);
+      }
     }
   }
   .books-menu ul li.current-menu-item a {
     color: var(--color-text);
-    border-color: var(--color-text);
+    background: var(--color-bg-elevated);
+    &:hover {
+      color: var(--color-text);
+    }
   }
 
   .books .book_quotes .book_quote {
@@ -1539,4 +1566,41 @@ html {
   pre {
     background: var(--color-bg-elevated);
   }
+}
+
+/* Theme transition animations - only for users without reduced motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  /* Smooth color transitions for theme change */
+  body,
+  header.site-header,
+  .site-footer,
+  nav input[type="search"],
+  pre,
+  .books .book_quotes .book_quote {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  a,
+  p a, li a, cite a, b a, i a,
+  nav .logo,
+  nav ul li a,
+  .search-wrap .search-icon,
+  .site-footer .smallcaps,
+  .books .list a .metadata .author,
+  .books .list a .metadata .rating,
+  .book-card .book-card__label,
+  .book-card .book-card__author,
+  .book-card .rating,
+  .books-menu ul li a,
+  .book-breadcrumb,
+  .book-breadcrumb a,
+  .book-detail-header .book-metadata .author,
+  .book-detail-header .book-metadata .finished,
+  .book-navigation .book-nav-link .nav-label,
+  .book-navigation .book-nav-link .author,
+  .book-list-item .book-author,
+  .book-list-item .book-meta {
+    transition: color 0.3s ease;
+  }
+
 }

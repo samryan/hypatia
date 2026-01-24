@@ -309,8 +309,8 @@ function hypatia_books_nav() {
 
   $output = '<div class="books-menu"><ul>';
 
-  // Overview link
-  $overview_class = (strpos($current_url, '/books/') !== false && strpos($current_url, '/list-') === false) ? ' class="current-menu-item"' : '';
+  // Overview link - only exact match to /books/ or /books
+  $overview_class = (preg_match('#^/books/?$#', $current_url)) ? ' class="current-menu-item"' : '';
   $output .= '<li' . $overview_class . '><a href="/books/">Overview</a></li>';
 
   // Full book list link
