@@ -32,7 +32,7 @@
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
               <div class="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></div>
-              <div class="rating"><?php echo get_post_meta($post->ID, 'rating', true); ?></div>
+              <div class="rating"><?php echo hypatia_rating_to_stars(get_post_meta($post->ID, 'rating', true)); ?></div>
             </div>
           </a>
         <?php

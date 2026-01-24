@@ -266,8 +266,11 @@ function hypatia_book_rating($post_id = null) {
   $rating = get_post_meta($post_id, 'rating', true);
   $has_highlights = have_rows('book_quotes', $post_id);
 
+  // Convert rating to Unicode stars for display
+  $stars = hypatia_rating_to_stars($rating);
+
   $output = '<div class="rating">';
-  $output .= esc_html($rating);
+  $output .= $stars;
 
   if ($has_highlights) {
     $output .= '<svg class="highlights-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-label="Has highlights"><path d="M160,56H64A16,16,0,0,0,48,72V224a8,8,0,0,0,12.65,6.51L112,193.83l51.36,36.68A8,8,0,0,0,176,224V72A16,16,0,0,0,160,56Zm0,152.46-43.36-31a8,8,0,0,0-9.3,0L64,208.45V72h96ZM208,40V192a8,8,0,0,1-16,0V40H88a8,8,0,0,1,0-16H192A16,16,0,0,1,208,40Z"/></svg>';
@@ -276,6 +279,26 @@ function hypatia_book_rating($post_id = null) {
   $output .= '</div>';
 
   return $output;
+}
+
+/**
+ * Convert rating value to Unicode stars
+ * Accepts either a number (0-5) or legacy Unicode string
+ */
+function hypatia_rating_to_stars($rating) {
+  // If it's already Unicode stars, return as-is (legacy support)
+  if (mb_strpos($rating, '★') !== false || mb_strpos($rating, '☆') !== false) {
+    return esc_html($rating);
+  }
+
+  // Convert number to stars
+  $num = intval($rating);
+  $num = max(0, min(5, $num)); // Clamp to 0-5
+
+  $filled = str_repeat('★', $num);
+  $empty = str_repeat('☆', 5 - $num);
+
+  return $filled . $empty;
 }
 
 // Books navigation - shows Overview, Full book list, and most recent 5 years
@@ -384,3 +407,28 @@ function hypatia_book_card($post_id = null, $style = 'grid', $options = []) {
 
   return $output;
 }
+
+/**
+ * Auto-add list-YYYY tag when creating a new book
+ */
+function hypatia_auto_tag_new_book($post_id, $post, $update) {
+  // Only for new posts, not updates
+  if ($update) {
+    return;
+  }
+
+  $current_year = date('Y');
+  $year_tag = 'list-' . $current_year;
+
+  wp_set_post_tags($post_id, $year_tag, true);
+}
+add_action('save_post_books', 'hypatia_auto_tag_new_book', 10, 3);
+
+/**
+ * Set dynamic default for year_read ACF field to current year
+ */
+function hypatia_year_read_default($field) {
+  $field['default_value'] = date('Y');
+  return $field;
+}
+add_filter('acf/load_field/name=year_read', 'hypatia_year_read_default');

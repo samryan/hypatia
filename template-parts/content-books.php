@@ -50,7 +50,7 @@
             }
           ?>
           <p class="author" itemprop="author"><?php echo get_post_meta($post->ID, 'book_author', true); ?></p>
-          <p class="stars"><?php echo get_post_meta($post->ID, 'rating', true); ?></p>
+          <p class="stars"><?php echo hypatia_rating_to_stars(get_post_meta($post->ID, 'rating', true)); ?></p>
           <p class="finished">
             Read
             <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
