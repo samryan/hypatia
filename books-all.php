@@ -9,27 +9,22 @@ Page template for a list of all books in the DB
 <?php get_header(); ?>
 
 <main id="main" role="main">
-<div>
+  <div class="container">
+    <?php while ( have_posts() ) : the_post(); ?>
+      <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    <?php endwhile; ?>
+  </div>
   <div class="container">
     <?php hypatia_books_nav(); ?>
   </div>
-</div>
-
-<div class="bg-default">
-  <div class="container">
-    <?php
-      while ( have_posts() ) : the_post();
-    ?>
-      <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+  <?php while ( have_posts() ) : the_post(); ?>
+    <div class="container">
       <div class="entry-content">
-        <?php
-          the_content();
-        ?>
-        </div>
-    <?php
-      endwhile; // End of the loop.
-    ?>
-  </div>
+        <?php the_content(); ?>
+      </div>
+    </div>
+  <?php endwhile; ?>
+  
   <div class="container">
     <ol reversed class="book-list">
       <?php

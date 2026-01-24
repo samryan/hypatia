@@ -49,6 +49,20 @@ function hypatia_setup() {
    }
    add_action( 'init', 'register_my_menus' );
 
+   // Highlight Reading nav item on individual book pages
+   function hypatia_nav_menu_css_class( $classes, $item ) {
+     // Check if we're on a single book page (post type is 'books')
+     if ( is_singular( 'books' ) ) {
+       // Check if this menu item links to /books/
+       $url = $item->url;
+       if ( preg_match( '#/books/?$#', $url ) ) {
+         $classes[] = 'current-menu-ancestor';
+       }
+     }
+     return $classes;
+   }
+   add_filter( 'nav_menu_css_class', 'hypatia_nav_menu_css_class', 10, 2 );
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
