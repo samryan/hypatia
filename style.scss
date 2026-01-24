@@ -34,6 +34,10 @@ $color__background-ins: #3e3c2f;
 $color__text-main: #3e3c2f;
 $color__text-secondary: lighten($color__text-main, 10%); // For secondary text - meets WCAG AA contrast
 
+// Dark mode colors for counter
+$color__dark-bg: #1a1a18;
+$color__dark-text-light: #a8a8a0;
+
 $color__text-input: #666;
 $color__text-input-focus: $color__text-main;
 $color__link: $color__text-main;
@@ -1092,22 +1096,45 @@ div.container {
 }
 
 /* Full book list page */
+ol:has(.book-list-item),
+ol.book-list {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  
+  .book-list-item {
+    position: relative;
+    padding-left: 5rem; // 4rem for counter width + 1rem gap
+    &::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 0;
+      width: 4rem; // Width for counter (enough for numbers like 1,234)
+      text-align: right;
+      color: lighten($color__text-main, 20%); // Meets WCAG AA contrast requirements
+    }
+  }
+}
+
 .book-list-item {
-  border-bottom: 1px dotted lighten($color__text-main, 40%);
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  
   .book-author {
     font-family: $font__sans;
   }
   .book-meta {
     font-family: $font__sans;
     font-size: 90%;
-    opacity: 0.7;
+    color: lighten($color__text-main, 20%);
     .highlights-icon {
       width: 1em;
       height: 1em;
-      vertical-align: -0.1em;
+      vertical-align: -0.15em;
       margin-left: 0.25em;
+    }
+    .date {
+      display: block;
+      margin-top: 0.25rem;
     }
   }
 }
@@ -1547,6 +1574,12 @@ html {
   }
 
   /* Full book list */
+  ol:has(.book-list-item) .book-list-item::before,
+  ol.book-list .book-list-item::before {
+    // Use a slightly darker shade of the light text for better contrast
+    color: darken($color__dark-text-light, 8%);
+  }
+
   .book-list-item {
     border-color: var(--color-border);
     .book-author,
@@ -1561,6 +1594,10 @@ html {
 
   pre {
     background: var(--color-bg-elevated);
+  }
+
+  ol:has(.book-list-item)::marker {
+    color: var(--color-text-light);
   }
 }
 

@@ -37,6 +37,28 @@
       localStorage.setItem('theme', 'dark');
     }
   }, false);
+
+  // Format ordered list numbers with thousands separators
+  (function() {
+    var bookLists = document.querySelectorAll('ol:has(.book-list-item)');
+    bookLists.forEach(function(ol) {
+      var items = ol.querySelectorAll('.book-list-item');
+      var isReversed = ol.hasAttribute('reversed');
+      var start = parseInt(ol.getAttribute('start')) || (isReversed ? items.length : 1);
+      
+      items.forEach(function(item, index) {
+        var number;
+        if (isReversed) {
+          number = start - index;
+        } else {
+          number = start + index;
+        }
+        // Format number with thousands separators
+        var formatted = number.toLocaleString('en-US');
+        item.setAttribute('data-number', formatted);
+      });
+    });
+  })();
 </script>
 </body>
 </html>

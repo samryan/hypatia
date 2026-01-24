@@ -1308,10 +1308,29 @@ div.container {
 }
 
 /* Full book list page */
+ol:has(.book-list-item),
+ol.book-list {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+}
+ol:has(.book-list-item) .book-list-item,
+ol.book-list .book-list-item {
+  position: relative;
+  padding-left: 5rem;
+}
+ol:has(.book-list-item) .book-list-item::before,
+ol.book-list .book-list-item::before {
+  content: attr(data-number);
+  position: absolute;
+  left: 0;
+  width: 4rem;
+  text-align: right;
+  color: #78745b;
+}
+
 .book-list-item {
-  border-bottom: 1px dotted #aaa68f;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 .book-list-item .book-author {
   font-family: "Inter", "system-ui", Arial, sans-serif;
@@ -1319,13 +1338,17 @@ div.container {
 .book-list-item .book-meta {
   font-family: "Inter", "system-ui", Arial, sans-serif;
   font-size: 90%;
-  opacity: 0.7;
+  color: #78745b;
 }
 .book-list-item .book-meta .highlights-icon {
   width: 1em;
   height: 1em;
-  vertical-align: -0.1em;
+  vertical-align: -0.15em;
   margin-left: 0.25em;
+}
+.book-list-item .book-meta .date {
+  display: block;
+  margin-top: 0.25rem;
 }
 
 /* Make sure embeds and iframes fit their containers. */
@@ -1737,6 +1760,10 @@ html {
 [data-theme=dark] .book-navigation .book-nav-link .author {
   color: var(--color-text-light);
 }
+[data-theme=dark] ol:has(.book-list-item) .book-list-item::before,
+[data-theme=dark] ol.book-list .book-list-item::before {
+  color: #94948b;
+}
 [data-theme=dark] .book-list-item {
   border-color: var(--color-border);
 }
@@ -1749,6 +1776,9 @@ html {
 }
 [data-theme=dark] pre {
   background: var(--color-bg-elevated);
+}
+[data-theme=dark] ol:has(.book-list-item)::marker {
+  color: var(--color-text-light);
 }
 
 /* Theme transition animations - only for users without reduced motion preference */
