@@ -8,6 +8,7 @@
     </footer>
   </div>
 </div>
+<?php get_template_part('template-parts/search-modal'); ?>
 <?php wp_footer(); ?>
 <?php if (is_single()) : ?>
   <?php if (has_post_thumbnail()) :?>

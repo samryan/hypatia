@@ -446,3 +446,115 @@ function hypatia_year_read_default($field) {
   return $field;
 }
 add_filter('acf/load_field/name=year_read', 'hypatia_year_read_default');
+
+/**
+ * Search Modal REST API endpoint
+ */
+function hypatia_register_search_endpoint() {
+  register_rest_route('hypatia/v1', '/search', array(
+    'methods' => 'GET',
+    'callback' => 'hypatia_search_callback',
+    'permission_callback' => '__return_true',
+    'args' => array(
+      'q' => array(
+        'required' => true,
+        'sanitize_callback' => 'sanitize_text_field',
+      ),
+    ),
+  ));
+}
+add_action('rest_api_init', 'hypatia_register_search_endpoint');
+
+function hypatia_search_callback($request) {
+  $search_term = $request->get_param('q');
+
+  // Check cache first (1 hour expiry)
+  $cache_key = 'hypatia_search_' . md5($search_term);
+  $cached = get_transient($cache_key);
+  if ($cached !== false) {
+    return $cached;
+  }
+
+  $args = array(
+    's' => $search_term,
+    'post_type' => array('post', 'page', 'books'),
+    'post_status' => 'publish',
+    'posts_per_page' => 10,
+  );
+
+  $query = new WP_Query($args);
+  $results = array();
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $post_id = get_the_ID();
+      $post_type = get_post_type();
+
+      $result = array(
+        'id' => $post_id,
+        'title' => html_entity_decode(get_the_title(), ENT_QUOTES, 'UTF-8'),
+        'url' => get_permalink(),
+        'type' => $post_type,
+        'type_label' => get_post_type_object($post_type)->labels->singular_name,
+      );
+
+      // Add author for books
+      if ($post_type === 'books') {
+        $result['author'] = get_post_meta($post_id, 'book_author', true);
+        // Use 'full' size - older images may not have generated thumbnails
+        $thumbnail = get_the_post_thumbnail_url($post_id, 'full');
+        if ($thumbnail) {
+          $result['thumbnail'] = $thumbnail;
+        }
+      } else {
+        // Add excerpt for posts/pages
+        $excerpt = get_the_excerpt();
+        if ($excerpt) {
+          $result['excerpt'] = wp_trim_words($excerpt, 15, '...');
+        }
+      }
+
+      $results[] = $result;
+    }
+    wp_reset_postdata();
+  }
+
+  // Cache results for 1 hour
+  set_transient($cache_key, $results, HOUR_IN_SECONDS);
+
+  return $results;
+}
+
+/**
+ * Clear search cache when content changes
+ */
+function hypatia_clear_search_cache($post_id) {
+  $post_type = get_post_type($post_id);
+  if (in_array($post_type, array('post', 'page', 'books'))) {
+    global $wpdb;
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_hypatia_search_%' OR option_name LIKE '_transient_timeout_hypatia_search_%'");
+  }
+}
+add_action('save_post', 'hypatia_clear_search_cache');
+add_action('delete_post', 'hypatia_clear_search_cache');
+
+/**
+ * Enqueue search modal scripts
+ */
+function hypatia_search_modal_scripts() {
+  $version = filemtime(get_stylesheet_directory() . '/js/search-modal.js');
+
+  wp_enqueue_script(
+    'hypatia-search-modal',
+    get_theme_file_uri('/js/search-modal.js'),
+    array(),
+    $version,
+    true
+  );
+
+  wp_localize_script('hypatia-search-modal', 'hypatiaSearch', array(
+    'endpoint' => rest_url('hypatia/v1/search'),
+  ));
+}
+add_action('wp_enqueue_scripts', 'hypatia_search_modal_scripts');

@@ -46,7 +46,7 @@ get_header(); ?>
           <?php if (has_post_thumbnail()) : ?>
             <div class="project-image">
               <a href="<?php the_post_thumbnail_url('full'); ?>" class="lightbox" data-group="projects">
-                <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>" />
+                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>" />
               </a>
             </div>
           <?php endif; ?>
