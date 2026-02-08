@@ -1713,6 +1713,9 @@ html {
 [data-theme=dark] .book-card {
   color: var(--color-text);
 }
+[data-theme=dark] .book-card:hover .book-card__title, [data-theme=dark] .book-card:focus .book-card__title {
+  color: var(--color-text);
+}
 [data-theme=dark] .book-card .book-card__label,
 [data-theme=dark] .book-card .book-card__author,
 [data-theme=dark] .book-card .rating {

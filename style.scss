@@ -1513,6 +1513,11 @@ html {
 
   .book-card {
     color: var(--color-text);
+    &:hover, &:focus {
+      .book-card__title {
+        color: var(--color-text);
+      }
+    }
     .book-card__label,
     .book-card__author,
     .rating {
