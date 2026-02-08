@@ -335,7 +335,7 @@ nav {
   }
   .search-wrap {
     @media (min-width: $screen-sm-min) {
-      margin-inline-start: 0.75rem;
+      margin-inline-start: 1.5rem;
     }
   }
   input[type="search"] {
@@ -583,6 +583,12 @@ div.container {
 
 .books-year-link {
   margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Books sections spacing on overview page */
+#books-favorites {
+  margin-top: 6rem;
 }
 
 /* Reusable book card component */
@@ -1157,16 +1163,24 @@ ol.book-list {
   }
 }
 
+/* Section headers - consistent styling across books overview */
+.section-header {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 /* Stats page */
 .stats-page {
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .stats-overview {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   @media (min-width: $screen-sm-min) {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1195,11 +1209,9 @@ ol.book-list {
 }
 
 .stats-section {
-  margin-bottom: 3rem;
-  h2 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+  margin-top: 5rem;
+  &:first-child {
+    margin-top: 0;
   }
 }
 
@@ -2019,7 +2031,7 @@ html {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.65rem;
-  margin: 0 0.15rem;
+  margin: 0 0.15rem 0 1rem;
   width: 12rem;
   background: transparent;
   border: 1px solid $color__border-input;

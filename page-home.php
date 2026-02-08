@@ -15,7 +15,7 @@
   </div>
   <div class="home books">
     <div class="container">
-      <h2>Reading list</h2>
+      <h2 class="section-header">Reading list</h2>
       <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
       <p>These are the last six books I finished:</p>
       <div class="list">

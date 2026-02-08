@@ -553,7 +553,7 @@ nav ul li a:hover {
 }
 @media (min-width: 600px) {
   nav .search-wrap {
-    margin-inline-start: 0.75rem;
+    margin-inline-start: 1.5rem;
   }
 }
 nav input[type=search] {
@@ -809,6 +809,12 @@ div.container {
 
 .books-year-link {
   margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Books sections spacing on overview page */
+#books-favorites {
+  margin-top: 6rem;
 }
 
 /* Reusable book card component */
@@ -1368,16 +1374,24 @@ ol.book-list .book-list-item::before {
   margin-top: 0.25rem;
 }
 
+/* Section headers - consistent styling across books overview */
+.section-header {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 /* Stats page */
 .stats-page {
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .stats-overview {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 @media (min-width: 600px) {
   .stats-overview {
@@ -1408,12 +1422,10 @@ ol.book-list .book-list-item::before {
 }
 
 .stats-section {
-  margin-bottom: 3rem;
+  margin-top: 5rem;
 }
-.stats-section h2 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+.stats-section:first-child {
+  margin-top: 0;
 }
 
 .stats-chart-bar {
@@ -2194,7 +2206,7 @@ nav ul li a,
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.65rem;
-  margin: 0 0.15rem;
+  margin: 0 0.15rem 0 1rem;
   width: 12rem;
   background: transparent;
   border: 1px solid #c5c4b8;

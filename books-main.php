@@ -133,28 +133,8 @@ Page template for the main books overview page with stats.
     extract($stats);
   ?>
 
-  <!-- Recently Finished -->
+  <!-- Overview Stats -->
   <div class="container">
-    <div class="books" id="books-recent">
-      <h2>Recently finished</h2>
-      <div class="list">
-      <?php
-        $args = array( 'posts_per_page' => 3, 'post_type' => 'books' );
-        $myposts = get_posts( $args );
-        foreach ( $myposts as $post ) : setup_postdata( $post );
-          echo hypatia_book_card($post->ID, 'grid');
-        endforeach;
-        wp_reset_postdata();
-      ?>
-      </div>
-    </div>
-    <div class="books-year-link">
-      <a href="/books/list-<?php echo $current_year; ?>">This year's list &rarr;</a>
-    </div>
-  </div>
-
-  <div class="container stats-page" style="margin-top: 4rem;">
-    <!-- Overview Stats -->
     <div class="stats-overview">
       <div class="stat-card">
         <div class="stat-number"><?php echo number_format($total_books); ?></div>
@@ -173,10 +153,32 @@ Page template for the main books overview page with stats.
         <div class="stat-label">Average rating</div>
       </div>
     </div>
+  </div>
 
+  <!-- Recently Finished -->
+  <div class="container">
+    <div class="books" id="books-recent">
+      <h2 class="section-header">Recently finished</h2>
+      <div class="book-card-list book-card-list--mini">
+      <?php
+        $args = array( 'posts_per_page' => 4, 'post_type' => 'books' );
+        $myposts = get_posts( $args );
+        foreach ( $myposts as $post ) : setup_postdata( $post );
+          echo hypatia_book_card($post->ID, 'mini');
+        endforeach;
+        wp_reset_postdata();
+      ?>
+      </div>
+    </div>
+    <div class="books-year-link">
+      <a href="/books/list-<?php echo $current_year; ?>">This year's list &rarr;</a>
+    </div>
+  </div>
+
+  <div class="container stats-page">
     <!-- Books per Year Chart -->
     <div class="stats-section">
-      <h2 id="chart-year-label">Books per year</h2>
+      <h2 class="section-header" id="chart-year-label">Books per year</h2>
       <div class="stats-chart-bar" role="list" aria-labelledby="chart-year-label">
         <?php
           $max_count = max($books_by_year);
@@ -197,7 +199,7 @@ Page template for the main books overview page with stats.
 
     <!-- Books per Month This Year -->
     <div class="stats-section">
-      <h2><?php echo $current_year; ?> by month</h2>
+      <h2 class="section-header"><?php echo $current_year; ?> by month</h2>
       <div class="stats-months-compact" role="list">
         <?php
           $max_month_count = max($books_by_month);
@@ -214,12 +216,10 @@ Page template for the main books overview page with stats.
         <?php endforeach; ?>
       </div>
     </div>
-  </div>
 
-  <div class="container stats-page" style="margin-top: 4rem;">
     <!-- Rating Distribution -->
     <div class="stats-section">
-      <h2>Rating distribution (all time)</h2>
+      <h2 class="section-header">Rating distribution (all time)</h2>
       <div class="stats-ratings" role="list">
         <?php
           $max_rating_count = max($rating_distribution);
@@ -240,7 +240,7 @@ Page template for the main books overview page with stats.
 
     <!-- Most Read Authors -->
     <div class="stats-section">
-      <h2>Most-read authors</h2>
+      <h2 class="section-header">Most-read authors</h2>
       <div class="stats-authors-compact">
         <?php foreach ($top_authors as $author => $count) : ?>
           <span class="author-pill"><?php echo esc_html($author); ?> <span class="pill-count"><?php echo $count; ?></span></span>
@@ -250,9 +250,9 @@ Page template for the main books overview page with stats.
   </div>
 
   <!-- Favorites -->
-  <div class="container" style="margin-top: 4rem;">
+  <div class="container">
     <div class="books" id="books-favorites">
-      <h2>Favorites</h2>
+      <h2 class="section-header">Favorites</h2>
       <p>Books I'd recommend to most people, or that made an impact on how I think about the world:</p>
       <?php
         $args = array(
