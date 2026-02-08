@@ -937,7 +937,8 @@ div.container {
 
 /* Section dividers */
 .book-review,
-.book-highlights {
+.book-highlights,
+.book-more-by-author {
   margin-top: 4rem;
   h2 {
     font-size: 1rem;
@@ -1152,6 +1153,238 @@ ol.book-list {
     .date {
       display: block;
       margin-top: 0.25rem;
+    }
+  }
+}
+
+/* Stats page */
+.stats-page {
+  margin-top: 2rem;
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+  @media (min-width: $screen-sm-min) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: darken($color__background-body, 3%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 5.5rem;
+  .stat-number {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $color__text-main;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: $color__text-secondary;
+    margin-top: 0.25rem;
+  }
+}
+
+.stats-section {
+  margin-bottom: 3rem;
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+}
+
+.stats-chart-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 180px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  @media (min-width: $screen-sm-min) {
+    gap: 0.5rem;
+    overflow-x: visible;
+  }
+}
+
+.chart-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  @media (min-width: $screen-sm-min) {
+    min-width: 0;
+  }
+  &.current .chart-bar-inner {
+    background: $color__text-main;
+  }
+  &:hover, &:focus {
+    .chart-bar-inner {
+      background: $color__text-main;
+    }
+    .chart-bar-label {
+      color: $color__text-main;
+    }
+  }
+}
+
+.chart-bar {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.chart-bar-inner {
+  width: 100%;
+  background: darken($color__background-body, 15%);
+  border-radius: 2px 2px 0 0;
+  min-height: 4px;
+}
+
+.chart-bar-value {
+  font-size: 0.7rem;
+  color: $color__text-secondary;
+  margin-bottom: 0.25rem;
+  @media (max-width: $screen-sm-max) {
+    display: none;
+  }
+}
+
+.chart-bar-label {
+  font-size: 0.7rem;
+  color: $color__text-secondary;
+  margin-top: 0.5rem;
+  @media (max-width: $screen-sm-max) {
+    font-size: 0.6rem;
+  }
+}
+
+.stats-months-compact {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  @media (min-width: $screen-sm-min) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.month-cell {
+  background: darken($color__background-body, 5%);
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  text-align: center;
+  .month-label {
+    display: block;
+    font-size: 0.7rem;
+    color: $color__text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .month-count {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  &.future {
+    opacity: 0.35;
+  }
+  &.current {
+    background: darken($color__background-body, 10%);
+  }
+}
+
+.stats-ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+.stats-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  .rating-label {
+    flex: 0 0 5rem;
+    text-align: right;
+    color: $color__text-secondary;
+    font-size: 0.8rem;
+    letter-spacing: -1px;
+  }
+  .rating-bar-wrap {
+    flex: 1;
+    background: darken($color__background-body, 5%);
+    border-radius: 2px;
+    height: 12px;
+  }
+  .rating-bar {
+    display: block;
+    height: 100%;
+    background: darken($color__background-body, 20%);
+    border-radius: 2px;
+    min-width: 2px;
+  }
+  .rating-count {
+    flex: 0 0 2.5rem;
+    text-align: right;
+    color: $color__text-secondary;
+  }
+}
+
+.stats-note {
+  font-size: 0.875rem;
+  color: $color__text-secondary;
+  margin-top: 1rem;
+}
+
+.stats-authors-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.author-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: darken($color__background-body, 5%);
+  border-radius: 2rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  .pill-count {
+    background: darken($color__background-body, 10%);
+    border-radius: 1rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: $color__text-secondary;
+  }
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid darken($color__background-body, 8%);
+    &:last-child {
+      border-bottom: none;
     }
   }
 }
@@ -1580,6 +1813,7 @@ html {
 
   .book-review,
   .book-highlights,
+  .book-more-by-author,
   .book-navigation {
     h2 {
       color: var(--color-text-light);
@@ -1621,6 +1855,81 @@ html {
 
   ol:has(.book-list-item)::marker {
     color: var(--color-text-light);
+  }
+
+  /* Stats page dark mode */
+  .stat-card {
+    background: var(--color-bg-elevated);
+    .stat-number {
+      color: var(--color-text);
+    }
+    .stat-label {
+      color: var(--color-text-light);
+    }
+  }
+
+  .chart-bar-inner {
+    background: var(--color-bg-elevated);
+  }
+
+  .chart-bar-item.current .chart-bar-inner {
+    background: var(--color-text);
+  }
+
+  .chart-bar-item:hover .chart-bar-inner,
+  .chart-bar-item:focus .chart-bar-inner {
+    background: var(--color-text);
+  }
+
+  .chart-bar-item:hover .chart-bar-label,
+  .chart-bar-item:focus .chart-bar-label {
+    color: var(--color-text);
+  }
+
+  .chart-bar-value,
+  .chart-bar-label {
+    color: var(--color-text-light);
+  }
+
+  .stats-note {
+    color: var(--color-text-light);
+  }
+
+  .stats-rating-row {
+    .rating-label {
+      color: var(--color-text-light);
+    }
+    .rating-bar-wrap {
+      background: var(--color-bg-elevated);
+    }
+    .rating-bar {
+      background: var(--color-text-light);
+    }
+    .rating-count {
+      color: var(--color-text-light);
+    }
+  }
+
+  .month-cell {
+    background: var(--color-bg-elevated);
+    .month-label {
+      color: var(--color-text-light);
+    }
+    &.current {
+      background: var(--color-border);
+    }
+  }
+
+  .author-pill {
+    background: var(--color-bg-elevated);
+    .pill-count {
+      background: var(--color-border);
+      color: var(--color-text-light);
+    }
+  }
+
+  .stats-list li {
+    border-color: var(--color-border);
   }
 }
 
@@ -1836,8 +2145,7 @@ html {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0.5rem 0.5rem 0;
-    border-bottom: 1px solid $color__border-input;
+    margin: 0.5rem;
   }
 
   &__input {
@@ -1889,7 +2197,44 @@ html {
     }
   }
 
+  &__results-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__results-shadow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5rem;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    &--top {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent);
+    }
+
+    &--bottom {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent);
+    }
+  }
+
+  &__results-wrap.has-scroll-top &__results-shadow--top,
+  &__results-wrap.has-scroll-bottom &__results-shadow--bottom {
+    opacity: 1;
+  }
+
   &__results {
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
 
     &:not(:empty) {
@@ -1901,7 +2246,6 @@ html {
     display: flex;
     gap: 1.5rem;
     padding: 0.75rem 1rem;
-    border-top: 1px solid $color__border-input;
     font-family: $font__sans;
     font-size: 0.75rem;
     color: $color__text-secondary;
@@ -2062,10 +2406,6 @@ html {
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
-    &__input-wrap {
-      border-color: var(--color-border);
-    }
-
     &__icon {
       color: var(--color-text-light);
     }
@@ -2093,8 +2433,15 @@ html {
     }
 
     &__footer {
-      border-color: var(--color-border);
       color: var(--color-text-light);
+    }
+
+    &__results-shadow--top {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
+    }
+
+    &__results-shadow--bottom {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
     }
 
     &__hint kbd {

@@ -13,6 +13,16 @@
   let selectedIndex = -1;
   let currentResults = [];
 
+  // Update scroll shadow visibility (scroll-aware drop shadows)
+  function updateScrollShadows() {
+    var wrap = resultsContainer.closest('.search-modal__results-wrap');
+    if (!wrap) return;
+    var atTop = resultsContainer.scrollTop <= 0;
+    var atBottom = resultsContainer.scrollTop + resultsContainer.clientHeight >= resultsContainer.scrollHeight;
+    wrap.classList.toggle('has-scroll-top', !atTop);
+    wrap.classList.toggle('has-scroll-bottom', !atBottom);
+  }
+
   // Open modal
   function openModal() {
     lastFocusedElement = document.activeElement;
@@ -37,6 +47,7 @@
     resultsContainer.innerHTML = '';
     currentResults = [];
     selectedIndex = -1;
+    updateScrollShadows();
 
     // Return focus
     if (lastFocusedElement) {
@@ -117,6 +128,7 @@
 
     resultsContainer.innerHTML = '';
     resultsContainer.appendChild(list);
+    setTimeout(updateScrollShadows, 0);
   }
 
   // Update selection highlight
@@ -137,6 +149,7 @@
     if (query.length < 2) {
       resultsContainer.innerHTML = '';
       currentResults = [];
+      updateScrollShadows();
       return;
     }
 
@@ -153,6 +166,7 @@
       .catch(function(error) {
         modal.classList.remove('search-modal--loading');
         resultsContainer.innerHTML = '<div class="search-modal__no-results">Search failed. Please try again.</div>';
+        setTimeout(updateScrollShadows, 0);
       });
   }
 
@@ -231,6 +245,15 @@
     e.preventDefault();
     closeModal();
   });
+
+  // Scroll-aware shadows on the results area
+  resultsContainer.addEventListener('scroll', updateScrollShadows);
+  if (typeof ResizeObserver !== 'undefined') {
+    var ro = new ResizeObserver(function() {
+      updateScrollShadows();
+    });
+    ro.observe(resultsContainer);
+  }
 
   // Focus trap
   modal.addEventListener('keydown', function(e) {

@@ -397,7 +397,7 @@ function hypatia_book_card($post_id = null, $style = 'grid', $options = []) {
   $output .= '<div class="book-card__cover">';
   $output .= '<div class="book-spine"></div>';
   if ($thumbnail) {
-    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" />';
+    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" loading="lazy" />';
   }
   $output .= '</div>';
 
@@ -527,17 +527,22 @@ function hypatia_search_callback($request) {
 }
 
 /**
- * Clear search cache when content changes
+ * Clear caches when content changes
  */
-function hypatia_clear_search_cache($post_id) {
+function hypatia_clear_caches($post_id) {
   $post_type = get_post_type($post_id);
   if (in_array($post_type, array('post', 'page', 'books'))) {
     global $wpdb;
+    // Clear search cache
     $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_hypatia_search_%' OR option_name LIKE '_transient_timeout_hypatia_search_%'");
+    // Clear book stats cache
+    if ($post_type === 'books') {
+      delete_transient('hypatia_book_stats');
+    }
   }
 }
-add_action('save_post', 'hypatia_clear_search_cache');
-add_action('delete_post', 'hypatia_clear_search_cache');
+add_action('save_post', 'hypatia_clear_caches');
+add_action('delete_post', 'hypatia_clear_caches');
 
 /**
  * Enqueue search modal scripts
@@ -558,3 +563,36 @@ function hypatia_search_modal_scripts() {
   ));
 }
 add_action('wp_enqueue_scripts', 'hypatia_search_modal_scripts');
+
+/**
+ * Get other books by the same author
+ *
+ * @param int $post_id Current book post ID
+ * @param int $limit Max number of books to return (default 6)
+ * @return array Array of WP_Post objects
+ */
+function hypatia_books_by_same_author($post_id, $limit = 6) {
+  $author = get_post_meta($post_id, 'book_author', true);
+
+  if (empty($author)) {
+    return array();
+  }
+
+  $args = array(
+    'post_type' => 'books',
+    'post_status' => 'publish',
+    'posts_per_page' => $limit + 1, // Get one extra to account for current book
+    'post__not_in' => array($post_id),
+    'meta_query' => array(
+      array(
+        'key' => 'book_author',
+        'value' => $author,
+        'compare' => '='
+      )
+    )
+  );
+
+  $books = get_posts($args);
+
+  return array_slice($books, 0, $limit);
+}

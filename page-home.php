@@ -27,7 +27,7 @@
           <a href="<?php the_permalink(); ?>">
             <div class="cover">
               <div class="book-spine"></div>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" loading="lazy" />
             </div>
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>

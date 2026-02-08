@@ -26,7 +26,11 @@
         </button>
       </div>
 
-      <div id="search-results" class="search-modal__results" role="listbox"></div>
+      <div class="search-modal__results-wrap">
+        <div class="search-modal__results-shadow search-modal__results-shadow--top" aria-hidden="true"></div>
+        <div class="search-modal__results-shadow search-modal__results-shadow--bottom" aria-hidden="true"></div>
+        <div id="search-results" class="search-modal__results" role="listbox"></div>
+      </div>
 
       <div class="search-modal__footer" id="search-modal-hint">
         <span class="search-modal__hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
