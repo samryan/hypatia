@@ -1182,25 +1182,19 @@ div.container {
 }
 .book-navigation .book-nav-links {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
 }
-@media (max-width: 599px) {
+@media (min-width: 600px) {
   .book-navigation .book-nav-links {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 }
 .book-navigation .book-nav-link {
   text-decoration: none;
   color: #3e3c2f;
-  flex: 1;
-  max-width: 45%;
-}
-@media (max-width: 599px) {
-  .book-navigation .book-nav-link {
-    max-width: 100%;
-  }
 }
 .book-navigation .book-nav-link .nav-label {
   display: block;
@@ -1255,7 +1249,7 @@ div.container {
   margin-block-start: 1rem;
   margin-block-end: 1rem;
   padding-block-start: 1rem;
-  padding-inline-end: 0.5rem;
+  padding-inline-end: 1.5rem;
   padding-block-end: 1rem;
   padding-inline-start: 3rem;
   position: relative;
@@ -1404,7 +1398,8 @@ ol.book-list .book-list-item::before {
 }
 
 .stat-card {
-  background: #eeeee7;
+  background: transparent;
+  border: 1px solid #dadacd;
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
@@ -2062,7 +2057,8 @@ html {
   color: var(--color-text-light);
 }
 [data-theme=dark] .stat-card {
-  background: var(--color-bg-elevated);
+  background: transparent;
+  border-color: var(--color-border);
 }
 [data-theme=dark] .stat-card .stat-number {
   color: var(--color-text);
@@ -2612,3 +2608,5 @@ nav ul li a,
 [data-theme=dark] .aria-autocomplete-no-results {
   color: var(--color-text-light);
 }
+
+/*# sourceMappingURL=style.css.map */

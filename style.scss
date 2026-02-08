@@ -962,10 +962,11 @@ div.container {
   margin-top: 4rem;
   .book-nav-links {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    @media (max-width: $screen-sm-max) {
-      flex-direction: column;
+    flex-direction: column;
+    gap: 1rem;
+    @media (min-width: $screen-sm-min) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
   }
@@ -973,11 +974,6 @@ div.container {
   .book-nav-link {
     text-decoration: none;
     color: $color__text-main;
-    flex: 1;
-    max-width: 45%;
-    @media (max-width: $screen-sm-max) {
-      max-width: 100%;
-    }
 
     .nav-label {
       display: block;
@@ -1039,7 +1035,7 @@ div.container {
     margin-block-start: 1rem;
     margin-block-end: 1rem;
     padding-block-start: 1rem;
-    padding-inline-end: 0.5rem;
+    padding-inline-end: 1.5rem;
     padding-block-end: 1rem;
     padding-inline-start: 3rem;
     position: relative;
@@ -1191,7 +1187,8 @@ ol.book-list {
 }
 
 .stat-card {
-  background: darken($color__background-body, 3%);
+  background: transparent;
+  border: 1px solid darken($color__background-body, 12%);
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
@@ -1875,7 +1872,8 @@ html {
 
   /* Stats page dark mode */
   .stat-card {
-    background: var(--color-bg-elevated);
+    background: transparent;
+    border-color: var(--color-border);
     .stat-number {
       color: var(--color-text);
     }

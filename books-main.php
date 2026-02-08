@@ -141,11 +141,11 @@ Page template for the main books overview page with stats.
       </div>
       <div class="stat-card">
         <div class="stat-number"><?php echo $stats['years_reading']; ?></div>
-        <div class="stat-label">Years tracking</div>
+        <div class="stat-label">Years tracked</div>
       </div>
       <div class="stat-card">
         <div class="stat-number"><?php echo round($stats['total_books'] / $stats['years_reading'], 1); ?></div>
-        <div class="stat-label">Books per year (avg)</div>
+        <div class="stat-label">Books per year</div>
       </div>
       <div class="stat-card">
         <div class="stat-number"><?php echo $stats['overall_avg_rating']; ?> ★</div>
