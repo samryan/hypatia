@@ -14,39 +14,35 @@
     </div>
   </div>
 
-  <?php
-    // Featured projects for homepage
-    $uploads_url = content_url('/uploads');
-    $featured_projects = array(
-      array(
-        'image' => 'storm.png',
-        'title' => 'Storm design system',
-        'description' => 'Lead designer for Amazon Ads\' design system, supporting a $50B/year business across 890+ software projects. Built documentation, Figma libraries, and led adoption for a 100+ person design org.'
-      ),
-      array(
-        'image' => 'API-site.png',
-        'title' => 'Amazon Ads API',
-        'description' => 'Redesigned the developer documentation site for Amazon Ads API integrators. Shipped new navigation, mobile support, and a dashboard for tracking application metrics.'
-      ),
-    );
-  ?>
+  <?php $uploads_url = content_url('/uploads'); ?>
 
   <!-- Projects section -->
   <div class="home projects">
     <div class="container">
-      <h2 class="section-header">Selected work</h2>
+      <h2 class="section-header">Recent work</h2>
       <div class="home-projects-list">
-        <?php foreach ($featured_projects as $project) : ?>
-          <div class="home-project-row">
-            <div class="home-project-image">
-              <img src="<?php echo $uploads_url . '/' . $project['image']; ?>" alt="<?php echo $project['title']; ?>" loading="lazy" />
-            </div>
-            <div class="home-project-info">
-              <h3><?php echo $project['title']; ?></h3>
-              <p><?php echo $project['description']; ?></p>
-            </div>
+        <div class="home-project-row">
+          <div class="home-project-image">
+            <img src="<?php echo $uploads_url . '/kindle-scribes-2.jpg'; ?>" alt="" loading="lazy" />
           </div>
-        <?php endforeach; ?>
+          <div class="home-project-info">
+            <h3>Kindle design tools</h3>
+            <p>Building the next generation of design tools for prototyping, visual design, and design reviews on e-ink devices.</p>
+            <br />
+            <p>2025&ndash;</p>
+          </div>
+        </div>
+        <div class="home-project-row">
+          <div class="home-project-image" style="background: linear-gradient(to top, rgba(85, 85, 85, 0.4), rgba(136, 136, 136, 0.4)); border-radius: 4px; padding-block-start: 0.75rem;">
+            <img src="<?php echo $uploads_url . '/storm.png'; ?>" alt="" loading="lazy" />
+          </div>
+          <div class="home-project-info">
+            <h3>Storm design system</h3>
+            <p>Lead designer for Amazon Ads&rsquo; design system, supporting a $50B/year business across 890+ software projects. Built documentation, Figma libraries, and led adoption for a 100+ person design org.</p>
+            <br />
+            <p>2019&ndash;2025</p>
+          </div>
+        </div>
       </div>
       <p class="home-projects-link"><a href="/projects">View all projects &rarr;</a></p>
     </div>
