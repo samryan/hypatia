@@ -231,21 +231,31 @@ function hypatia_projects_lightbox() {
     }
     .tobii__slider { cursor: default; }
     .tobii__btn--close {
-      background: transparent;
+      background: rgba(0, 0, 0, 0.5);
       border: none;
       box-shadow: none;
-      padding: 1rem;
+      top: 1.5rem;
+      right: 1.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tobii__btn--close:hover {
+      background: rgba(0, 0, 0, 0.7);
     }
     .tobii__btn--close:focus { outline: none; box-shadow: none; }
     .tobii__btn--close:focus-visible { outline: 2px solid white; outline-offset: 2px; }
-    .tobii__btn--close svg { display: none; }
+    .tobii__btn--close svg,
+    .tobii__btn--close span { display: none !important; }
     .tobii__btn--close::after {
       content: '';
       display: block;
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
       background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 256 256'%3E%3Cpath d='M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z'%3E%3C/path%3E%3C/svg%3E\");
       background-size: contain;
+      background-repeat: no-repeat;
     }
   " );
 
