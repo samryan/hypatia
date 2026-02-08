@@ -53,7 +53,8 @@ $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #c5c4b8;
 $color__border-abbr: #666;
 
-/* fonts loaded via header.php for better performance */
+/* import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
 /* Type */
 
@@ -92,19 +93,18 @@ html {
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: $color__background-body;
 }
 
 a {
-  color: var(--color-text);
+  color: $color__link;
   &:visited {
-    color: var(--color-text);
+    color: $color__link;
   }
   &:hover,
   &:focus,
   &:active {
-    color: var(--color-link-hover);
+    color: $color__link-hover;
   }
   &:active {
     outline: 0;
@@ -118,14 +118,14 @@ a {
 }
 
 p a, li a, cite a, b a, i a {
-  color: var(--color-text);
+  color: $color__link;
   &:visited {
-    color: var(--color-text);
+    color: $color__link-visited;
   }
   &:hover,
   &:focus,
   &:active {
-    color: var(--color-link-hover);
+    color: $color__link-hover;
   }
   &:active {
     outline: 0;
@@ -238,26 +238,21 @@ textarea {
 
 header.site-header {
   font-family: $font__menu;
-  background: var(--color-header-bg);
   nav ul li a {
     display: flex;
     align-items: center;
     border-radius: 0.375rem;
     padding: 0.4rem 0.65rem;
     margin: 0 0.15rem;
-    color: var(--color-text) !important;
-    &:hover {
-      color: var(--color-text-light) !important;
-    }
   }
   .current-page-item > a,
   .current-menu-item > a,
   .current-page-ancestor > a,
   .current-menu-ancestor > a {
     font-weight: 500;
-    background: var(--color-bg-elevated);
+    background: darken($color__background-body, 6%);
     &:hover {
-      color: var(--color-text) !important;
+      color: $color__text-main !important;
     }
   }
 }
@@ -275,12 +270,13 @@ nav {
     flex-wrap: wrap;
   }
   .logo {
+    
+    
     text-decoration: none;
     font-family: $font__logo;
-    font-weight: 600;
-    color: var(--color-text) !important;
+    color: $color__logo !important;
     &:hover {
-      color: var(--color-text) !important;
+      color: $color__logo !important;
     }
   }
   .header-controls {
@@ -378,7 +374,7 @@ nav {
   background: transparent;
   box-shadow: none;
   border-width: 0;
-  color: var(--color-text);
+  color: $color__link-menu;
   svg {
     height: 1.25rem;
     width: 1.25rem;
@@ -394,7 +390,7 @@ nav {
   svg {
     height: 22px;
     path {
-      fill: var(--color-text);
+      fill: $color__link-menu;
     }
     &.close {
       display: none;
@@ -448,12 +444,11 @@ header.site-header {
   padding-block-start: 2rem;
   font-family: $font__footer;
   font-size: 0.95rem;
-  background: var(--color-bg);
   .smallcaps {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
   }
 }
 header,
@@ -503,9 +498,9 @@ div.container {
     margin-block-start: 2rem;
     margin-inline-end: 1rem;
     text-decoration: none;
-    color: var(--color-text);
+    color: $color__text-main;
     &:hover *, &:focus * {
-      color: var(--color-text) !important;
+      color: $color__link !important;
     }
     @media (pointer: fine) {
       &:hover, &:focus {
@@ -568,11 +563,11 @@ div.container {
         letter-spacing: 1px;
         font-size: 85%;
         font-family: $font__sans;
-        color: var(--color-text-light);
+        color: $color__text-secondary;
       }
       .rating {
         font-family: $font__sans;
-        color: var(--color-text-light);
+        color: $color__text-secondary;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -600,12 +595,12 @@ div.container {
 .book-card {
   display: block;
   text-decoration: none;
-  color: var(--color-text);
+  color: $color__text-main;
   font-family: $font__sans;
   font-size: 0.875rem;
 
   &:hover, &:focus {
-    color: var(--color-text);
+    color: $color__text-main;
     .book-card__cover {
       transform: rotateZ(0.5deg) scale(1.02);
       img {
@@ -613,7 +608,7 @@ div.container {
       }
     }
     .book-card__title {
-      color: var(--color-text);
+      color: $color__text-secondary;
     }
   }
 
@@ -622,7 +617,7 @@ div.container {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
     margin-bottom: 0.5rem;
   }
 
@@ -664,7 +659,7 @@ div.container {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 85%;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
   }
 
   .rating {
@@ -672,7 +667,7 @@ div.container {
     align-items: center;
     gap: 0.5rem;
     margin-top: 0.35rem;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
     .highlights-icon {
       width: 1.1em;
       height: 1.1em;
@@ -1645,41 +1640,136 @@ html {
   }
 }
 
-/* CSS Custom Properties for theming */
+/* Dark mode */
 :root {
   --color-bg: #{$color__background-body};
   --color-text: #{$color__text-main};
   --color-text-light: #{$color__text-secondary};
-  --color-link-hover: #{$color__link-hover};
   --color-border: #{lighten($color__text-main, 50%)};
   --color-bg-elevated: #{lighten($color__background-body, 3%)};
-  --color-header-bg: #{$color__background-body};
 }
 
 [data-theme="dark"] {
   --color-bg: #1a1a18;
   --color-text: #e8e8e4;
   --color-text-light: #a8a8a0;
-  --color-link-hover: #e8e8e4;
   --color-border: #3a3a36;
   --color-bg-elevated: #252522;
-  --color-header-bg: #000;
 
-  /* Icon toggle - show moon in dark mode */
-  #toggle-theme {
-    .icon-sun { display: none; }
-    .icon-moon { display: block; }
-  }
-
-  /* Nav search input */
-  nav input[type="search"] {
-    background: var(--color-bg-elevated);
-    border-color: var(--color-border);
+  body {
+    background: var(--color-bg);
     color: var(--color-text);
-    &::placeholder { color: var(--color-text-light); }
   }
 
-  /* Books menu */
+  header.site-header {
+    background: #000;
+    .current-page-item > a,
+    .current-menu-item > a,
+    .current-page-ancestor > a,
+    .current-menu-ancestor > a {
+      background: var(--color-bg-elevated);
+      &:hover {
+        color: var(--color-text) !important;
+      }
+    }
+  }
+
+  nav {
+    .logo {
+      color: var(--color-text) !important;
+      font-weight: 600;
+    }
+    ul li a {
+      color: var(--color-text) !important;
+      &:hover {
+        color: var(--color-text-light) !important;
+      }
+    }
+    input[type="search"] {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border);
+      color: var(--color-text);
+      &::placeholder {
+        color: var(--color-text-light);
+      }
+    }
+  }
+
+  #toggle-menu svg path {
+    fill: var(--color-text);
+  }
+  #toggle-theme {
+    color: var(--color-text);
+  }
+
+  #toggle-theme {
+    .icon-sun {
+      display: none;
+    }
+    .icon-moon {
+      display: block;
+    }
+  }
+
+  .search-wrap .search-icon {
+    color: var(--color-text-light);
+  }
+
+  .site-footer {
+    background: var(--color-bg);
+    .smallcaps {
+      color: var(--color-text-light);
+    }
+  }
+
+  a {
+    color: var(--color-text);
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-text);
+    }
+  }
+
+  p a, li a, cite a, b a, i a {
+    color: var(--color-text);
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-text);
+    }
+  }
+
+  .books .list a {
+    color: var(--color-text);
+    &:hover,
+    &:focus,
+    &:hover *,
+    &:focus * {
+      color: var(--color-text) !important;
+    }
+    .metadata .author,
+    .metadata .rating {
+      color: var(--color-text-light);
+    }
+  }
+
+  .book-card {
+    color: var(--color-text);
+    &:hover, &:focus {
+      .book-card__title {
+        color: var(--color-text);
+      }
+    }
+    .book-card__label,
+    .book-card__author,
+    .rating {
+      color: var(--color-text-light);
+    }
+  }
+
   .books-menu ul li a {
     color: var(--color-text-light);
     &:hover {
@@ -1689,14 +1779,19 @@ html {
     &[aria-current] {
       color: var(--color-text);
       background: var(--color-bg-elevated);
+      &:hover {
+        color: var(--color-text);
+      }
     }
   }
   .books-menu ul li.current-menu-item a {
     color: var(--color-text);
     background: var(--color-bg-elevated);
+    &:hover {
+      color: var(--color-text);
+    }
   }
 
-  /* Book quotes */
   .books .book_quotes .book_quote {
     background: var(--color-bg-elevated);
   }
@@ -1706,68 +1801,135 @@ html {
     color: var(--color-text-light);
     a {
       color: var(--color-text-light);
-      &:hover { color: var(--color-text); }
+      &:hover {
+        color: var(--color-text);
+      }
     }
   }
 
   .book-detail-header .book-metadata {
-    .subtitle, .author, .finished, .book-links .separator {
+    h1.entry-title {
+      color: var(--color-text);
+      .subtitle {
+        color: var(--color-text-light);
+      }
+    }
+    .author,
+    .finished {
+      color: var(--color-text-light);
+    }
+    .book-links .separator {
       color: var(--color-text-light);
     }
   }
 
-  .book-review h2, .book-highlights h2, .book-more-by-author h2, .book-navigation h2 {
-    color: var(--color-text-light);
+  .book-review,
+  .book-highlights,
+  .book-more-by-author,
+  .book-navigation {
+    h2 {
+      color: var(--color-text-light);
+    }
   }
 
-  .book-navigation .book-nav-link {
-    .nav-label, .author { color: var(--color-text-light); }
+  .book-navigation {
+    .book-nav-link {
+      color: var(--color-text);
+      .nav-label,
+      .author {
+        color: var(--color-text-light);
+      }
+    }
   }
 
-  /* Book list items */
+  /* Full book list */
   ol:has(.book-list-item) .book-list-item::before,
   ol.book-list .book-list-item::before {
+    // Use a slightly darker shade of the light text for better contrast
     color: darken($color__dark-text-light, 8%);
   }
 
   .book-list-item {
     border-color: var(--color-border);
-    .book-author, .book-meta { color: var(--color-text-light); }
+    .book-author,
+    .book-meta {
+      color: var(--color-text-light);
+    }
   }
 
-  ol:has(.book-list-item)::marker { color: var(--color-text-light); }
+  article.post .entry-content {
+    border-color: var(--color-border);
+  }
 
-  /* Article borders */
-  article.post .entry-content { border-color: var(--color-border); }
+  pre {
+    background: var(--color-bg-elevated);
+  }
 
-  /* Pre blocks */
-  pre { background: var(--color-bg-elevated); }
+  ol:has(.book-list-item)::marker {
+    color: var(--color-text-light);
+  }
 
-  /* Stats page */
+  /* Stats page dark mode */
   .stat-card {
     background: var(--color-bg-elevated);
-    .stat-label { color: var(--color-text-light); }
+    .stat-number {
+      color: var(--color-text);
+    }
+    .stat-label {
+      color: var(--color-text-light);
+    }
   }
 
-  .chart-bar-inner { background: var(--color-bg-elevated); }
-  .chart-bar-item.current .chart-bar-inner { background: var(--color-text); }
+  .chart-bar-inner {
+    background: var(--color-bg-elevated);
+  }
+
+  .chart-bar-item.current .chart-bar-inner {
+    background: var(--color-text);
+  }
+
   .chart-bar-item:hover .chart-bar-inner,
-  .chart-bar-item:focus .chart-bar-inner { background: var(--color-text); }
+  .chart-bar-item:focus .chart-bar-inner {
+    background: var(--color-text);
+  }
+
   .chart-bar-item:hover .chart-bar-label,
-  .chart-bar-item:focus .chart-bar-label { color: var(--color-text); }
-  .chart-bar-value, .chart-bar-label { color: var(--color-text-light); }
-  .stats-note { color: var(--color-text-light); }
+  .chart-bar-item:focus .chart-bar-label {
+    color: var(--color-text);
+  }
+
+  .chart-bar-value,
+  .chart-bar-label {
+    color: var(--color-text-light);
+  }
+
+  .stats-note {
+    color: var(--color-text-light);
+  }
 
   .stats-rating-row {
-    .rating-label, .rating-count { color: var(--color-text-light); }
-    .rating-bar-wrap { background: var(--color-bg-elevated); }
-    .rating-bar { background: var(--color-text-light); }
+    .rating-label {
+      color: var(--color-text-light);
+    }
+    .rating-bar-wrap {
+      background: var(--color-bg-elevated);
+    }
+    .rating-bar {
+      background: var(--color-text-light);
+    }
+    .rating-count {
+      color: var(--color-text-light);
+    }
   }
 
   .month-cell {
     background: var(--color-bg-elevated);
-    .month-label { color: var(--color-text-light); }
-    &.current { background: var(--color-border); }
+    .month-label {
+      color: var(--color-text-light);
+    }
+    &.current {
+      background: var(--color-border);
+    }
   }
 
   .author-pill {
@@ -1778,7 +1940,9 @@ html {
     }
   }
 
-  .stats-list li { border-color: var(--color-border); }
+  .stats-list li {
+    border-color: var(--color-border);
+  }
 }
 
 /* Theme transition animations - only for users without reduced motion preference */
@@ -1870,12 +2034,12 @@ html {
   margin: 0 0.15rem 0 1rem;
   width: 12rem;
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid $color__border-input;
   border-radius: 0.375rem;
   cursor: pointer;
   font-family: $font__menu;
   font-size: 0.875rem;
-  color: var(--color-text-light);
+  color: $color__text-secondary;
   box-shadow: none;
   text-shadow: none;
   transition: border-color 0.15s ease, color 0.15s ease;
@@ -1886,13 +2050,13 @@ html {
   }
 
   &:hover {
-    border-color: var(--color-text-light);
-    color: var(--color-text);
+    border-color: darken($color__border-input, 10%);
+    color: $color__text-main;
     box-shadow: none;
   }
 
   &:focus {
-    outline: 2px solid var(--color-text);
+    outline: 2px solid $color__text-main;
     outline-offset: 2px;
     box-shadow: none;
   }
@@ -1911,8 +2075,8 @@ html {
   &__kbd {
     display: none;
     padding: 0.15rem 0.4rem;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
+    background: $color__background-button;
+    border: 1px solid $color__border-input;
     border-radius: 0.25rem;
     font-family: $font__sans;
     font-size: 0.75rem;
@@ -1954,8 +2118,8 @@ html {
     transform: translateY(-50%);
     width: 1rem;
     height: 1rem;
-    border: 2px solid var(--color-border);
-    border-top-color: var(--color-text);
+    border: 2px solid $color__border-input;
+    border-top-color: $color__text-main;
     border-radius: 50%;
     animation: search-spinner 0.6s linear infinite;
   }
@@ -1974,7 +2138,7 @@ html {
     width: 100%;
     max-width: 600px;
     max-height: 70vh;
-    background: var(--color-bg);
+    background: #fff;
     border-radius: 0.75rem;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -2003,11 +2167,11 @@ html {
     background: transparent;
     font-family: $font__sans;
     font-size: 1rem;
-    color: var(--color-text);
+    color: $color__text-main;
     outline: none;
 
     &::placeholder {
-      color: var(--color-text-light);
+      color: $color__text-secondary;
     }
 
     /* Prevent iOS zoom on focus */
@@ -2029,13 +2193,13 @@ html {
     border: none;
     border-radius: 0.375rem;
     cursor: pointer;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
     box-shadow: none;
     text-shadow: none;
 
     &:hover {
-      background: var(--color-bg-elevated);
-      color: var(--color-text);
+      background: $color__background-button;
+      color: $color__text-main;
       box-shadow: none;
     }
 
@@ -2096,7 +2260,7 @@ html {
     padding: 0.75rem 1rem;
     font-family: $font__sans;
     font-size: 0.75rem;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
 
     @media (max-width: $screen-sm-max) {
       display: none;
@@ -2114,8 +2278,8 @@ html {
       justify-content: center;
       min-width: 1.5rem;
       padding: 0.15rem 0.35rem;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
+      background: $color__background-button;
+      border: 1px solid $color__border-input;
       border-radius: 0.25rem;
       font-family: $font__sans;
       font-size: 0.7rem;
@@ -2135,7 +2299,7 @@ html {
     padding: 0;
 
     &[aria-selected="true"] .search-result {
-      background: var(--color-bg-elevated);
+      background: $color__background-button;
     }
   }
 }
@@ -2150,7 +2314,7 @@ html {
   transition: background-color 0.1s ease;
 
   &:hover {
-    background: var(--color-bg-elevated);
+    background: $color__background-button;
   }
 
   &__thumb {
@@ -2173,7 +2337,7 @@ html {
     font-family: $font__sans;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: $color__text-main;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2183,7 +2347,7 @@ html {
   &__excerpt {
     font-family: $font__sans;
     font-size: 0.8rem;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2198,13 +2362,13 @@ html {
   &__badge {
     flex-shrink: 0;
     padding: 0.2rem 0.5rem;
-    background: var(--color-bg-elevated);
+    background: $color__background-button;
     border-radius: 0.25rem;
     font-family: $font__sans;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--color-text-light);
+    color: $color__text-secondary;
   }
 }
 
@@ -2214,7 +2378,7 @@ html {
   text-align: center;
   font-family: $font__sans;
   font-size: 0.9rem;
-  color: var(--color-text-light);
+  color: $color__text-secondary;
 }
 
 @keyframes search-spinner {
@@ -2223,18 +2387,111 @@ html {
   }
 }
 
-/* Dark mode adjustments for search modal shadows */
-[data-theme="dark"] .search-modal {
-  &__backdrop {
-    background: rgba(0, 0, 0, 0.6);
+/* Dark mode - search modal */
+[data-theme="dark"] {
+  .search-trigger {
+    color: var(--color-text-light);
+    border-color: var(--color-border);
+
+    &:hover {
+      border-color: var(--color-text-light);
+      color: var(--color-text);
+    }
+
+    &:focus {
+      outline-color: var(--color-text);
+    }
+
+    &__kbd {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border);
+    }
   }
-  &__dialog {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  .search-modal {
+    &__backdrop {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    &__dialog {
+      background: var(--color-bg);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    &__icon {
+      color: var(--color-text-light);
+    }
+
+    &__input {
+      color: var(--color-text);
+      caret-color: var(--color-text);
+
+      &::placeholder {
+        color: var(--color-text-light);
+      }
+
+      &:focus {
+        color: var(--color-text);
+      }
+    }
+
+    &__close {
+      color: var(--color-text-light);
+
+      &:hover {
+        background: var(--color-bg-elevated);
+        color: var(--color-text);
+      }
+    }
+
+    &__footer {
+      color: var(--color-text-light);
+    }
+
+    &__results-shadow--top {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
+    }
+
+    &__results-shadow--bottom {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+    }
+
+    &__hint kbd {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border);
+    }
+
+    &--loading .search-modal__input-wrap::after {
+      border-color: var(--color-border);
+      border-top-color: var(--color-text);
+    }
   }
-  &__results-shadow--top {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
+
+  .search-results__list li[aria-selected="true"] .search-result {
+    background: var(--color-bg-elevated);
   }
-  &__results-shadow--bottom {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+
+  .search-result {
+    &:hover {
+      background: var(--color-bg-elevated);
+    }
+
+    &__title {
+      color: var(--color-text);
+    }
+
+    &__author,
+    &__excerpt {
+      color: var(--color-text-light);
+    }
+
+    &__badge {
+      background: var(--color-bg-elevated);
+      color: var(--color-text-light);
+    }
+  }
+
+  .aria-autocomplete-no-results {
+    color: var(--color-text-light);
   }
 }

@@ -56,16 +56,10 @@ Won't fix - WCAG contrast requirements apply to default states, not transient ho
 
 ---
 
-## 7. CSS Size / Dark Mode Optimization 🟢
+## 7. CSS Size / Dark Mode Optimization ⚪
 **File:** `style.scss`
 
-Refactored to use CSS custom properties throughout. Base styles now use `var(--color-*)` instead of SCSS variables, eliminating redundant dark mode overrides.
-
-- Before: 53KB, 2,611 lines
-- After: 49KB, 2,455 lines (-8% file size, -156 lines)
-- Dark mode block reduced from ~300 lines to ~100 lines
-
-**Completed:** 2026-02-07
+Won't fix - attempted refactor to use CSS custom properties broke dark mode. Would require more comprehensive changes to all component styles. Current approach with explicit dark mode overrides works reliably.
 
 ---
 
