@@ -16,7 +16,7 @@
           <div class="book-cover-wrapper">
             <div class="book-3d">
               <div class="book-cover">
-                <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" />
+                <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" itemprop="image" />
                 <div class="book-spine"></div>
               </div>
               <div class="pages-container">

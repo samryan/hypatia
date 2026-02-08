@@ -1,8 +1,8 @@
 <?php
 /*
-Template Name: List 2025
+Template Name: Books Year
 
-Page template for the 2025 books. Includes custom DB query to get books read in 2025.
+Page template for yearly book lists. Extracts year from page slug (e.g., "books-2025" -> 2025).
 */
 ?>
 
@@ -27,11 +27,14 @@ Page template for the 2025 books. Includes custom DB query to get books read in 
   <div class="container books">
     <div class="list">
     <?php
+      $slug = get_post_field('post_name', get_the_ID());
+      $year = str_replace('list-', '', $slug);
+
       $args = array(
         'posts_per_page' => -1,
         'post_type' => 'books',
         'post_status' => 'publish',
-        'tag' => 'list-2025'
+        'tag' => 'list-' . $year
       );
       $myposts = get_posts( $args );
       foreach ( $myposts as $post ) : setup_postdata( $post );
@@ -57,4 +60,4 @@ Page template for the 2025 books. Includes custom DB query to get books read in 
 </main>
 
 <?php
-get_footer(); 
+get_footer();

@@ -10,14 +10,6 @@
 </div>
 <?php get_template_part('template-parts/search-modal'); ?>
 <?php wp_footer(); ?>
-<?php if (is_single()) : ?>
-  <?php if (has_post_thumbnail()) :?>
-    <script src="<?php echo get_theme_file_uri(); ?>/grade.min.js"></script>
-    <script type="text/javascript">
-      window.addEventListener('load', function(){ Grade(document.querySelectorAll('.gradient-wrap')) });
-    </script>
-  <?php endif; ?>
-<?php endif; ?>
 <script type="text/javascript">
   var a = false;
   document.querySelector('#toggle-menu').addEventListener('click', function (e) {

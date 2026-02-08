@@ -130,26 +130,25 @@ Page template for the main books overview page with stats.
       set_transient($cache_key, $stats, HOUR_IN_SECONDS);
     }
 
-    extract($stats);
   ?>
 
   <!-- Overview Stats -->
   <div class="container">
     <div class="stats-overview">
       <div class="stat-card">
-        <div class="stat-number"><?php echo number_format($total_books); ?></div>
+        <div class="stat-number"><?php echo number_format($stats['total_books']); ?></div>
         <div class="stat-label">Books read</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number"><?php echo $years_reading; ?></div>
+        <div class="stat-number"><?php echo $stats['years_reading']; ?></div>
         <div class="stat-label">Years tracking</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number"><?php echo round($total_books / $years_reading, 1); ?></div>
+        <div class="stat-number"><?php echo round($stats['total_books'] / $stats['years_reading'], 1); ?></div>
         <div class="stat-label">Books per year (avg)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number"><?php echo $overall_avg_rating; ?> ★</div>
+        <div class="stat-number"><?php echo $stats['overall_avg_rating']; ?> ★</div>
         <div class="stat-label">Average rating</div>
       </div>
     </div>
@@ -171,7 +170,7 @@ Page template for the main books overview page with stats.
       </div>
     </div>
     <div class="books-year-link">
-      <a href="/books/list-<?php echo $current_year; ?>">This year's list &rarr;</a>
+      <a href="/books/list-<?php echo $stats['current_year']; ?>">This year's list &rarr;</a>
     </div>
   </div>
 
@@ -181,10 +180,10 @@ Page template for the main books overview page with stats.
       <h2 class="section-header" id="chart-year-label">Books per year</h2>
       <div class="stats-chart-bar" role="list" aria-labelledby="chart-year-label">
         <?php
-          $max_count = max($books_by_year);
-          foreach ($books_by_year as $year => $count) :
+          $max_count = max($stats['books_by_year']);
+          foreach ($stats['books_by_year'] as $year => $count) :
             $height_pct = $max_count > 0 ? ($count / $max_count) * 100 : 0;
-            $is_current = ($year == $current_year);
+            $is_current = ($year == $stats['current_year']);
         ?>
           <a href="/books/list-<?php echo $year; ?>" class="chart-bar-item<?php echo $is_current ? ' current' : ''; ?>" role="listitem" aria-label="<?php echo $year; ?>: <?php echo $count; ?> books">
             <span class="chart-bar-value" aria-hidden="true"><?php echo $count; ?></span>
@@ -199,13 +198,13 @@ Page template for the main books overview page with stats.
 
     <!-- Books per Month This Year -->
     <div class="stats-section">
-      <h2 class="section-header"><?php echo $current_year; ?> by month</h2>
+      <h2 class="section-header"><?php echo $stats['current_year']; ?> by month</h2>
       <div class="stats-months-compact" role="list">
         <?php
-          $max_month_count = max($books_by_month);
+          $max_month_count = max($stats['books_by_month']);
           $month_names = array(1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec');
           $current_month = (int) date('n');
-          foreach ($books_by_month as $month => $count) :
+          foreach ($stats['books_by_month'] as $month => $count) :
             $is_future = ($month > $current_month);
             $is_current = ($month == $current_month);
         ?>
@@ -222,9 +221,9 @@ Page template for the main books overview page with stats.
       <h2 class="section-header">Rating distribution (all time)</h2>
       <div class="stats-ratings" role="list">
         <?php
-          $max_rating_count = max($rating_distribution);
+          $max_rating_count = max($stats['rating_distribution']);
           foreach (array(5, 4, 3, 2, 1) as $stars) :
-            $count = $rating_distribution[$stars];
+            $count = $stats['rating_distribution'][$stars];
             $width_pct = $max_rating_count > 0 ? ($count / $max_rating_count) * 100 : 0;
         ?>
           <div class="stats-rating-row" role="listitem" aria-label="<?php echo $stars; ?> stars: <?php echo $count; ?> books">
@@ -242,7 +241,7 @@ Page template for the main books overview page with stats.
     <div class="stats-section">
       <h2 class="section-header">Most-read authors</h2>
       <div class="stats-authors-compact">
-        <?php foreach ($top_authors as $author => $count) : ?>
+        <?php foreach ($stats['top_authors'] as $author => $count) : ?>
           <span class="author-pill"><?php echo esc_html($author); ?> <span class="pill-count"><?php echo $count; ?></span></span>
         <?php endforeach; ?>
       </div>
