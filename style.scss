@@ -437,6 +437,10 @@ nav {
 header.site-header {
   background: #fff;
   margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
 }
 
 .site-footer {

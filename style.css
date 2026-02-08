@@ -658,6 +658,10 @@ nav input[type=search]:focus::placeholder, nav input[type=search]:active::placeh
 header.site-header {
   background: #fff;
   margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
 }
 
 .site-footer {
@@ -2608,5 +2612,3 @@ nav ul li a,
 [data-theme=dark] .aria-autocomplete-no-results {
   color: var(--color-text-light);
 }
-
-/*# sourceMappingURL=style.css.map */

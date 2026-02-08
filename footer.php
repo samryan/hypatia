@@ -22,12 +22,15 @@
   document.querySelector('#toggle-theme').addEventListener('click', function (e) {
     e.preventDefault();
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var themeColor = document.getElementById('theme-color');
     if (isDark) {
       document.documentElement.removeAttribute('data-theme');
       localStorage.setItem('theme', 'light');
+      themeColor.setAttribute('content', '#ffffff');
     } else {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
+      themeColor.setAttribute('content', '#000000');
     }
   }, false);
 
