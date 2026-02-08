@@ -13,6 +13,45 @@
       </div>
     </div>
   </div>
+
+  <?php
+    // Featured projects for homepage
+    $uploads_url = content_url('/uploads');
+    $featured_projects = array(
+      array(
+        'image' => 'storm.png',
+        'title' => 'Storm design system',
+        'description' => 'Lead designer for Amazon Ads\' design system, supporting a $50B/year business across 890+ software projects. Built documentation, Figma libraries, and led adoption for a 100+ person design org.'
+      ),
+      array(
+        'image' => 'API-site.png',
+        'title' => 'Amazon Ads API',
+        'description' => 'Redesigned the developer documentation site for Amazon Ads API integrators. Shipped new navigation, mobile support, and a dashboard for tracking application metrics.'
+      ),
+    );
+  ?>
+
+  <!-- Projects section -->
+  <div class="home projects">
+    <div class="container">
+      <h2 class="section-header">Selected work</h2>
+      <div class="home-projects-list">
+        <?php foreach ($featured_projects as $project) : ?>
+          <div class="home-project-row">
+            <div class="home-project-image">
+              <img src="<?php echo $uploads_url . '/' . $project['image']; ?>" alt="<?php echo $project['title']; ?>" loading="lazy" />
+            </div>
+            <div class="home-project-info">
+              <h3><?php echo $project['title']; ?></h3>
+              <p><?php echo $project['description']; ?></p>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <p class="home-projects-link"><a href="/projects">View all projects &rarr;</a></p>
+    </div>
+  </div>
+
   <div class="home books">
     <div class="container">
       <h2 class="section-header">Reading list</h2>

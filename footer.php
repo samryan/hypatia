@@ -41,7 +41,7 @@
       var items = ol.querySelectorAll('.book-list-item');
       var isReversed = ol.hasAttribute('reversed');
       var start = parseInt(ol.getAttribute('start')) || (isReversed ? items.length : 1);
-      
+
       items.forEach(function(item, index) {
         var number;
         if (isReversed) {
@@ -54,6 +54,18 @@
         item.setAttribute('data-number', formatted);
       });
     });
+  })();
+
+  // Add shadow to header when scrolled
+  (function() {
+    var header = document.querySelector('header.site-header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
   })();
 </script>
 </body>

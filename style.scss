@@ -441,6 +441,10 @@ header.site-header {
   top: 0;
   z-index: 1000;
   padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  transition: box-shadow 0.2s ease;
+  &.scrolled {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .site-footer {
@@ -1585,6 +1589,59 @@ html {
   margin-top: 5rem;
 }
 
+/* Homepage projects section */
+.home.projects {
+  margin-top: 5rem;
+}
+
+.home-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.home-project-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+}
+
+.home-project-image {
+  flex-shrink: 0;
+  @media (min-width: $screen-sm-min) {
+    width: 280px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+}
+
+.home-project-info {
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    color: $color__text-secondary;
+  }
+}
+
+.home-projects-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
 /* Search icon */
 .search-wrap {
   position: relative;
@@ -1664,6 +1721,9 @@ html {
 
   header.site-header {
     background: #000;
+    &.scrolled {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
     .current-page-item > a,
     .current-menu-item > a,
     .current-page-ancestor > a,
@@ -1944,6 +2004,16 @@ html {
 
   .stats-list li {
     border-color: var(--color-border);
+  }
+
+  /* Homepage projects */
+  .home-project-info {
+    h3 {
+      color: var(--color-text);
+    }
+    p {
+      color: var(--color-text-light);
+    }
   }
 }
 
