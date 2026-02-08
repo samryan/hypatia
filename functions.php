@@ -606,3 +606,471 @@ function hypatia_books_by_same_author($post_id, $limit = 6) {
 
   return array_slice($books, 0, $limit);
 }
+
+/**
+ * =============================================================================
+ * LLM Accessibility Features
+ * =============================================================================
+ *
+ * Implements three features to make the site more accessible to LLMs:
+ * 1. /llms.txt - A Markdown directory of key content
+ * 2. .md URL suffix - View any page as Markdown (e.g., /about.md)
+ * 3. Accept: text/markdown - Content negotiation via HTTP header
+ */
+
+/**
+ * Register rewrite rules for LLM endpoints
+ */
+function hypatia_llm_rewrite_rules() {
+  // llms.txt endpoint
+  add_rewrite_rule('^llms\.txt$', 'index.php?hypatia_llms_txt=1', 'top');
+
+  // .md suffix for posts/pages (captures the slug without .md)
+  add_rewrite_rule('^(.+)\.md$', 'index.php?hypatia_md_request=$matches[1]', 'top');
+}
+add_action('init', 'hypatia_llm_rewrite_rules');
+
+/**
+ * Register query vars
+ */
+function hypatia_llm_query_vars($vars) {
+  $vars[] = 'hypatia_llms_txt';
+  $vars[] = 'hypatia_md_request';
+  return $vars;
+}
+add_filter('query_vars', 'hypatia_llm_query_vars');
+
+/**
+ * Handle LLM requests
+ */
+function hypatia_llm_template_redirect() {
+  // Check for Accept: text/markdown header on regular pages
+  if (!get_query_var('hypatia_llms_txt') && !get_query_var('hypatia_md_request')) {
+    $accept = isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '';
+    if (strpos($accept, 'text/markdown') !== false && (is_singular() || is_page())) {
+      global $post;
+      if ($post) {
+        hypatia_serve_markdown($post);
+        exit;
+      }
+    }
+    return;
+  }
+
+  // Handle /llms.txt
+  if (get_query_var('hypatia_llms_txt')) {
+    hypatia_serve_llms_txt();
+    exit;
+  }
+
+  // Handle .md suffix requests
+  $md_request = get_query_var('hypatia_md_request');
+  if ($md_request) {
+    // Try to find the post/page by path
+    $post = hypatia_get_post_by_path($md_request);
+    if ($post) {
+      hypatia_serve_markdown($post);
+      exit;
+    }
+    // If not found, return 404
+    status_header(404);
+    echo "# 404 Not Found\n\nThe requested page could not be found.";
+    exit;
+  }
+}
+add_action('template_redirect', 'hypatia_llm_template_redirect', 1);
+
+/**
+ * Find a post by its URL path
+ */
+function hypatia_get_post_by_path($path) {
+  // Clean the path
+  $path = trim($path, '/');
+
+  // Try as page first (handles hierarchical paths)
+  $page = get_page_by_path($path);
+  if ($page && $page->post_status === 'publish') {
+    return $page;
+  }
+
+  // Try as post
+  $post = get_page_by_path($path, OBJECT, 'post');
+  if ($post && $post->post_status === 'publish') {
+    return $post;
+  }
+
+  // Try as book (custom post type)
+  $book = get_page_by_path($path, OBJECT, 'books');
+  if ($book && $book->post_status === 'publish') {
+    return $book;
+  }
+
+  // Try extracting slug from path like "book/book-title" or "books/book-title"
+  $parts = explode('/', $path);
+  $slug = end($parts);
+
+  // Check if it's a book path (handles both /book/ and /books/)
+  if (count($parts) >= 2 && ($parts[0] === 'book' || $parts[0] === 'books')) {
+    $args = array(
+      'name' => $slug,
+      'post_type' => 'books',
+      'post_status' => 'publish',
+      'posts_per_page' => 1
+    );
+    $posts = get_posts($args);
+    if (!empty($posts)) {
+      return $posts[0];
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Serve the llms.txt file
+ */
+function hypatia_serve_llms_txt() {
+  // Check cache first (1 hour)
+  $cached = get_transient('hypatia_llms_txt');
+  if ($cached !== false) {
+    header('Content-Type: text/markdown; charset=utf-8');
+    header('X-Robots-Tag: noindex');
+    echo $cached;
+    return;
+  }
+
+  $site_name = get_bloginfo('name');
+  $site_url = home_url();
+
+  $output = "# {$site_name}\n\n";
+
+  // Get and convert home page content
+  $home_page = get_page_by_path('home');
+  if (!$home_page) {
+    $home_page = get_post(get_option('page_on_front'));
+  }
+
+  if ($home_page && $home_page->post_content) {
+    $home_content = hypatia_html_to_markdown($home_page->post_content);
+    $output .= $home_content . "\n\n";
+  }
+
+  // Main pages
+  $output .= "## Pages\n\n";
+  $output .= "- [Projects]({$site_url}/projects.md): My work and portfolio\n";
+  $output .= "- [Reading]({$site_url}/books.md): Book tracking since 2009\n";
+
+  // Reading section sitemap
+  $output .= "\n## Reading\n\n";
+  $output .= "Since 2009, I've been keeping a list of all the books I read, with ratings, highlights, and short reviews.\n\n";
+  $output .= "- [Reading Overview]({$site_url}/books.md): Stats and recent books\n";
+  $output .= "- [Full Book List]({$site_url}/books/all.md): Complete list of all books\n";
+
+  // Get all years with books
+  global $wpdb;
+  $years = $wpdb->get_col("SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE meta_key = 'year_read' AND meta_value != '' ORDER BY meta_value DESC");
+
+  if (!empty($years)) {
+    $output .= "\n### Books by Year\n\n";
+    foreach ($years as $year) {
+      $book_count = $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM {$wpdb->postmeta} pm
+         JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+         WHERE pm.meta_key = 'year_read' AND pm.meta_value = %s
+         AND p.post_status = 'publish' AND p.post_type = 'books'",
+        $year
+      ));
+      $output .= "- [{$year}]({$site_url}/books/list-{$year}): {$book_count} books\n";
+    }
+  }
+
+  // Recent books
+  $output .= "\n### Recent Books\n\n";
+
+  $recent_books = get_posts(array(
+    'post_type' => 'books',
+    'post_status' => 'publish',
+    'posts_per_page' => 10,
+    'orderby' => 'date',
+    'order' => 'DESC'
+  ));
+
+  foreach ($recent_books as $book) {
+    $url = get_permalink($book);
+    $md_url = rtrim($url, '/') . '.md';
+    $author = get_post_meta($book->ID, 'book_author', true);
+    $rating = get_post_meta($book->ID, 'rating', true);
+    $stars = hypatia_rating_to_stars($rating);
+    $output .= "- [{$book->post_title}]({$md_url})";
+    if ($author) {
+      $output .= " by {$author}";
+    }
+    $output .= " ({$stars})\n";
+  }
+
+  // Optional section
+  $output .= "\n## Optional\n\n";
+  $output .= "- [Full site (HTML)]({$site_url}): Browse the complete website\n";
+
+  // Cache for 1 hour
+  set_transient('hypatia_llms_txt', $output, HOUR_IN_SECONDS);
+
+  header('Content-Type: text/markdown; charset=utf-8');
+  header('X-Robots-Tag: noindex');
+  echo $output;
+}
+
+/**
+ * Serve a post as Markdown
+ */
+function hypatia_serve_markdown($post) {
+  $title = get_the_title($post);
+  $content = apply_filters('the_content', $post->post_content);
+  $url = get_permalink($post);
+  $date = get_the_date('F j, Y', $post);
+  $post_type = get_post_type($post);
+  $slug = $post->post_name;
+
+  $output = "# {$title}\n\n";
+
+  // Add metadata based on post type
+  if ($post_type === 'books') {
+    $author = get_post_meta($post->ID, 'book_author', true);
+    $rating = get_post_meta($post->ID, 'rating', true);
+    $year_read = get_post_meta($post->ID, 'year_read', true);
+
+    if ($author) {
+      $output .= "**Author:** {$author}\n";
+    }
+    if ($rating) {
+      $stars = hypatia_rating_to_stars($rating);
+      $output .= "**Rating:** {$stars}\n";
+    }
+    if ($year_read) {
+      $output .= "**Year Read:** {$year_read}\n";
+    }
+    $output .= "\n";
+  } elseif ($post_type === 'post') {
+    $output .= "*Published: {$date}*\n\n";
+  }
+
+  // Convert HTML content to Markdown
+  $markdown_content = hypatia_html_to_markdown($content);
+  $output .= $markdown_content;
+
+  // Check if this is a books section page that needs a book list
+  $template = get_page_template_slug($post->ID);
+
+  // Year list pages (e.g., list-2025)
+  if ($template === 'books-year.php' || preg_match('/^list-(\d{4})$/', $slug, $matches)) {
+    $year = isset($matches[1]) ? $matches[1] : str_replace('list-', '', $slug);
+    $output .= hypatia_books_list_markdown('list-' . $year, $year);
+  }
+  // Full book list page
+  elseif ($template === 'books-all.php' || $slug === 'all') {
+    $output .= hypatia_books_list_markdown(null, 'All');
+  }
+  // Main books overview page
+  elseif ($template === 'books-main.php' || $slug === 'books') {
+    $output .= hypatia_books_overview_markdown();
+  }
+
+  // Add source link
+  $output .= "\n\n---\n\n";
+  $output .= "*Source: [{$url}]({$url})*\n";
+
+  header('Content-Type: text/markdown; charset=utf-8');
+  header('X-Robots-Tag: noindex');
+  echo $output;
+}
+
+/**
+ * Generate Markdown list of books
+ *
+ * @param string|null $tag Tag to filter by (e.g., 'list-2025'), or null for all books
+ * @param string $year_label Label for the year (e.g., '2025' or 'All')
+ * @return string Markdown output
+ */
+function hypatia_books_list_markdown($tag = null, $year_label = '') {
+  $args = array(
+    'posts_per_page' => -1,
+    'post_type' => 'books',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC'
+  );
+
+  if ($tag) {
+    $args['tag'] = $tag;
+  }
+
+  $books = get_posts($args);
+
+  if (empty($books)) {
+    return "\n\nNo books found.\n";
+  }
+
+  $output = "\n\n## Books" . ($year_label ? " ({$year_label})" : "") . "\n\n";
+  $output .= "| Title | Author | Rating |\n";
+  $output .= "|-------|--------|--------|\n";
+
+  foreach ($books as $book) {
+    $book_title = html_entity_decode(get_the_title($book), ENT_QUOTES, 'UTF-8');
+    $book_url = rtrim(get_permalink($book), '/') . '.md';
+    $author = get_post_meta($book->ID, 'book_author', true);
+    $rating = get_post_meta($book->ID, 'rating', true);
+    $stars = hypatia_rating_to_stars($rating);
+
+    $output .= "| [{$book_title}]({$book_url}) | {$author} | {$stars} |\n";
+  }
+
+  $count = count($books);
+  $output .= "\n*{$count} books total*\n";
+
+  return $output;
+}
+
+/**
+ * Generate Markdown overview for the main books page
+ *
+ * @return string Markdown output
+ */
+function hypatia_books_overview_markdown() {
+  global $wpdb;
+  $site_url = home_url();
+
+  $output = "\n\n## Reading Stats\n\n";
+
+  // Get total book count
+  $total = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type = 'books' AND post_status = 'publish'");
+  $output .= "**Total books read:** {$total}\n\n";
+
+  // Get years with book counts
+  $years = $wpdb->get_results("
+    SELECT pm.meta_value as year, COUNT(*) as count
+    FROM {$wpdb->postmeta} pm
+    JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+    WHERE pm.meta_key = 'year_read' AND pm.meta_value != ''
+    AND p.post_status = 'publish' AND p.post_type = 'books'
+    GROUP BY pm.meta_value
+    ORDER BY pm.meta_value DESC
+  ");
+
+  $output .= "## Books by Year\n\n";
+  foreach ($years as $year_data) {
+    $output .= "- [{$year_data->year}]({$site_url}/books/list-{$year_data->year}.md): {$year_data->count} books\n";
+  }
+
+  // Recent books
+  $output .= "\n## Recent Books\n\n";
+  $recent = get_posts(array(
+    'post_type' => 'books',
+    'post_status' => 'publish',
+    'posts_per_page' => 10
+  ));
+
+  foreach ($recent as $book) {
+    $book_url = rtrim(get_permalink($book), '/') . '.md';
+    $book_title = html_entity_decode(get_the_title($book), ENT_QUOTES, 'UTF-8');
+    $author = get_post_meta($book->ID, 'book_author', true);
+    $stars = hypatia_rating_to_stars(get_post_meta($book->ID, 'rating', true));
+    $output .= "- [{$book_title}]({$book_url}) by {$author} ({$stars})\n";
+  }
+
+  return $output;
+}
+
+/**
+ * Convert HTML to Markdown
+ * A lightweight conversion for common elements
+ */
+function hypatia_html_to_markdown($html) {
+  // Decode entities first
+  $text = html_entity_decode($html, ENT_QUOTES, 'UTF-8');
+
+  // Remove scripts and styles
+  $text = preg_replace('/<script\b[^>]*>.*?<\/script>/is', '', $text);
+  $text = preg_replace('/<style\b[^>]*>.*?<\/style>/is', '', $text);
+
+  // Convert headings
+  $text = preg_replace('/<h1[^>]*>(.*?)<\/h1>/is', "\n# $1\n", $text);
+  $text = preg_replace('/<h2[^>]*>(.*?)<\/h2>/is', "\n## $1\n", $text);
+  $text = preg_replace('/<h3[^>]*>(.*?)<\/h3>/is', "\n### $1\n", $text);
+  $text = preg_replace('/<h4[^>]*>(.*?)<\/h4>/is', "\n#### $1\n", $text);
+  $text = preg_replace('/<h5[^>]*>(.*?)<\/h5>/is', "\n##### $1\n", $text);
+  $text = preg_replace('/<h6[^>]*>(.*?)<\/h6>/is', "\n###### $1\n", $text);
+
+  // Convert emphasis
+  $text = preg_replace('/<(strong|b)[^>]*>(.*?)<\/(strong|b)>/is', '**$2**', $text);
+  $text = preg_replace('/<(em|i)[^>]*>(.*?)<\/(em|i)>/is', '*$2*', $text);
+
+  // Convert links
+  $text = preg_replace('/<a[^>]*href=["\']([^"\']*)["\'][^>]*>(.*?)<\/a>/is', '[$2]($1)', $text);
+
+  // Convert images
+  $text = preg_replace('/<img[^>]*src=["\']([^"\']*)["\'][^>]*alt=["\']([^"\']*)["\'][^>]*\/?>/is', '![$2]($1)', $text);
+  $text = preg_replace('/<img[^>]*alt=["\']([^"\']*)["\'][^>]*src=["\']([^"\']*)["\'][^>]*\/?>/is', '![$1]($2)', $text);
+  $text = preg_replace('/<img[^>]*src=["\']([^"\']*)["\'][^>]*\/?>/is', '![]($1)', $text);
+
+  // Convert blockquotes
+  $text = preg_replace_callback('/<blockquote[^>]*>(.*?)<\/blockquote>/is', function($matches) {
+    $quote = strip_tags($matches[1]);
+    $lines = explode("\n", trim($quote));
+    return "\n" . implode("\n", array_map(function($line) {
+      return '> ' . trim($line);
+    }, $lines)) . "\n";
+  }, $text);
+
+  // Convert code blocks
+  $text = preg_replace('/<pre[^>]*><code[^>]*>(.*?)<\/code><\/pre>/is', "\n```\n$1\n```\n", $text);
+  $text = preg_replace('/<code[^>]*>(.*?)<\/code>/is', '`$1`', $text);
+
+  // Convert lists
+  $text = preg_replace_callback('/<ul[^>]*>(.*?)<\/ul>/is', function($matches) {
+    return preg_replace('/<li[^>]*>(.*?)<\/li>/is', "- $1\n", $matches[1]);
+  }, $text);
+
+  $text = preg_replace_callback('/<ol[^>]*>(.*?)<\/ol>/is', function($matches) {
+    $counter = 0;
+    return preg_replace_callback('/<li[^>]*>(.*?)<\/li>/is', function($m) use (&$counter) {
+      $counter++;
+      return "{$counter}. {$m[1]}\n";
+    }, $matches[1]);
+  }, $text);
+
+  // Convert paragraphs
+  $text = preg_replace('/<p[^>]*>(.*?)<\/p>/is', "\n$1\n", $text);
+
+  // Convert line breaks
+  $text = preg_replace('/<br\s*\/?>/i', "\n", $text);
+
+  // Convert horizontal rules
+  $text = preg_replace('/<hr\s*\/?>/i', "\n---\n", $text);
+
+  // Remove remaining HTML tags
+  $text = strip_tags($text);
+
+  // Clean up whitespace
+  $text = preg_replace('/\n{3,}/', "\n\n", $text);
+  $text = trim($text);
+
+  return $text;
+}
+
+/**
+ * Clear llms.txt cache when content changes
+ */
+function hypatia_clear_llms_cache($post_id) {
+  delete_transient('hypatia_llms_txt');
+}
+add_action('save_post', 'hypatia_clear_llms_cache');
+add_action('delete_post', 'hypatia_clear_llms_cache');
+
+/**
+ * Flush rewrite rules on theme activation
+ */
+function hypatia_llm_flush_rules() {
+  hypatia_llm_rewrite_rules();
+  flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'hypatia_llm_flush_rules');
