@@ -300,11 +300,14 @@ nav {
       flex: 0 0 100%;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+      visibility: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease-out, visibility 0s 0.25s;
       &.visible {
         max-height: 300px;
         padding-top: 0.75rem;
         padding-bottom: 0.5rem;
+        visibility: visible;
+        transition: max-height 0.25s ease-out, padding 0.25s ease-out, visibility 0s 0s;
       }
     }
     li {
