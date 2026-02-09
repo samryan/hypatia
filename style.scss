@@ -1438,8 +1438,13 @@ h6 {
 
 h2, h3, h4, h5, h6 {
   font-size: 100%;
-  font-weight: normal;
+  font-weight: bold;
   margin-block-end: 1rem;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 140%;
 }
 
 p {
@@ -1739,6 +1744,10 @@ html {
   body {
     background: var(--color-bg);
     color: var(--color-text);
+  }
+
+  hr {
+    background-color: var(--color-border);
   }
 
   header.site-header {
