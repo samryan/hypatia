@@ -54,7 +54,7 @@
           <p class="finished">
             Read
             <?php if ( get_post_meta($post->ID, 'date_read', true) ) : ?>
-              ~<?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
+              <?php echo date('M j, Y', strtotime(get_post_meta($post->ID, 'date_read', true))); ?>
             <?php else: ?>
               in <?php echo $year_read; ?>
             <?php endif; ?>
@@ -62,7 +62,7 @@
           <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) || get_post_meta($post->ID, 'book_source', true) ) : ?>
             <p class="book-links">
               <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) ) : ?>
-                <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>">Buy this book</a>
+                <a href="<?php echo get_post_meta($post->ID, 'amazon_affiliate_link', true); ?>" class="btn">Buy this book</a>
               <?php endif; ?>
               <?php if ( get_post_meta($post->ID, 'amazon_affiliate_link', true) && get_post_meta($post->ID, 'book_source', true) ) : ?>
                 <span class="separator">&middot;</span>

@@ -2678,4 +2678,51 @@ nav ul li a,
   color: var(--color-text-light);
 }
 
+/* Link button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-family: "Inter", "system-ui", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  color: #3e3c2f;
+  background: #f4f4f0;
+  border: 1px solid #dadacd;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+.btn:hover, .btn:focus {
+  color: #3e3c2f;
+  background: #f8f8f6;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.btn:active {
+  background: #eeeee7;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), inset 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode button styles */
+[data-theme=dark] .btn {
+  color: var(--color-text);
+  background: #2a2a27;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+[data-theme=dark] .btn:hover, [data-theme=dark] .btn:focus {
+  color: var(--color-text);
+  background: #353530;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+[data-theme=dark] .btn:active {
+  background: #22221f;
+}
+
 /*# sourceMappingURL=style.css.map */

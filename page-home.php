@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <main id="main" role="main">
   <h1 class="sr-only">Sam Ryan - Home</h1>
+
   <div class="home intro">
     <div class="container">
       <figure class="home-photo">
@@ -44,14 +45,15 @@
           </div>
         </div>
       </div>
-      <p class="home-projects-link"><a href="/projects">View all projects &rarr;</a></p>
+      <p class="home-projects-link"><a href="/projects" class="btn">More projects</a></p>
     </div>
   </div>
 
   <div class="home books">
     <div class="container">
       <h2 class="section-header">Reading list</h2>
-      <p>Since 2009, I&rsquo;ve been keeping a list of all the books I read, and occasionally posting highlights, short reviews, and summaries of them. Here&rsquo;s <a href="/books/list-<?php echo date('Y'); ?>">this year&rsquo;s list</a>. Here&rsquo;s <a href="/books">the overview page</a>.</p>
+      <p>I&rsquo;ve been keeping a list of all the books I read since 2009, with occasional highlights or short reviews.</p>
+      <p><a href="/books" class="btn" style="margin-right: 1rem;">Books overview</a><a href="/books/list-<?php echo date('Y'); ?>" class="btn">This year&rsquo;s list</a></p>
       <p>These are the last six books I finished:</p>
       <div class="list">
         <?php

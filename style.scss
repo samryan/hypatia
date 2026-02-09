@@ -2567,3 +2567,66 @@ html {
     color: var(--color-text-light);
   }
 }
+
+/* Link button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-family: $font__sans;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  color: $color__text-main;
+  background: $color__background-body;
+  border: 1px solid darken($color__background-body, 12%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 1px 1px rgba(0, 0, 0, 0.03);
+
+  &:hover, &:focus {
+    color: $color__text-main;
+    background: lighten($color__background-body, 2%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+      0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  &:active {
+    background: darken($color__background-body, 3%);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.05),
+      inset 0 2px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Dark mode button styles */
+[data-theme="dark"] {
+  .btn {
+    color: var(--color-text);
+    background: lighten($color__dark-bg, 6%);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 1px 1px rgba(0, 0, 0, 0.1);
+
+    &:hover, &:focus {
+      color: var(--color-text);
+      background: lighten($color__dark-bg, 10%);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      background: lighten($color__dark-bg, 3%);
+    }
+  }
+}

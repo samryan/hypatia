@@ -170,7 +170,7 @@ Page template for the main books overview page with stats.
       </div>
     </div>
     <div class="books-year-link">
-      <a href="/books/list-<?php echo $stats['current_year']; ?>">This year's list &rarr;</a>
+      <a href="/books/list-<?php echo $stats['current_year']; ?>" class="btn">This year's list &rarr;</a>
     </div>
   </div>
 
