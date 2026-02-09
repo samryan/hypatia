@@ -261,13 +261,27 @@ Page template for the main books overview page with stats.
         );
         $the_query = new WP_Query($args);
       ?>
+      <?php $fav_count = 0; ?>
       <div class="book-card-list book-card-list--mini">
       <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        <?php if (has_post_thumbnail()) : ?>
+        <?php if (has_post_thumbnail()) : $fav_count++; ?>
+          <?php if ($fav_count === 7) : ?></div><div class="book-card-list book-card-list--mini favorites-hidden" id="favorites-extra"><?php endif; ?>
           <?php echo hypatia_book_card($post->ID, 'mini', ['show_rating' => false]); ?>
         <?php endif; endwhile; ?>
         <?php wp_reset_postdata(); ?>
       </div>
+      <?php if ($fav_count > 6) : ?>
+        <button class="btn favorites-show-all" id="favorites-show-all" aria-expanded="false" aria-controls="favorites-extra">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Show all
+        </button>
+        <script>
+        document.getElementById('favorites-show-all').addEventListener('click', function() {
+          document.getElementById('favorites-extra').classList.remove('favorites-hidden');
+          this.remove();
+        });
+        </script>
+      <?php endif; ?>
     </div>
   </div>
 

@@ -824,6 +824,24 @@ div.container {
   margin-top: 6rem;
 }
 
+#favorites-extra {
+  margin-top: 1rem;
+}
+@media (min-width: 600px) {
+  #favorites-extra {
+    margin-top: 1.5rem;
+  }
+}
+
+.favorites-hidden {
+  display: none !important;
+}
+
+.favorites-show-all {
+  margin-top: 1.5rem;
+  gap: 0.4rem;
+}
+
 /* Reusable book card component */
 .book-card {
   display: block;
