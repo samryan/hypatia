@@ -1856,6 +1856,26 @@ html {
   height: auto;
   border-radius: 4px;
 }
+.home-project-image.storm {
+  background: linear-gradient(to top, rgba(85, 85, 85, 0.4), rgba(136, 136, 136, 0.4));
+  border-radius: 4px;
+  padding-block-start: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 4/2;
+  height: auto;
+}
+@media (min-width: 600px) {
+  .home-project-image.storm {
+    height: 160px;
+    aspect-ratio: auto;
+  }
+}
+.home-project-image.storm img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
 
 .home-project-info h3 {
   font-size: 1rem;

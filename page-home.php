@@ -30,16 +30,16 @@
             <h3>Kindle design tools</h3>
             <p>Building the next generation of design tools for prototyping, visual design, and design reviews on e-ink devices.</p>
             <br />
-            <p>2025&ndash;</p>
+            <p>2025&ndash;present</p>
           </div>
         </div>
         <div class="home-project-row">
-          <div class="home-project-image" style="background: linear-gradient(to top, rgba(85, 85, 85, 0.4), rgba(136, 136, 136, 0.4)); border-radius: 4px; padding-block-start: 0.75rem;">
+          <div class="home-project-image storm">
             <img src="<?php echo $uploads_url . '/storm.png'; ?>" alt="" loading="lazy" />
           </div>
           <div class="home-project-info">
             <h3>Storm design system</h3>
-            <p>Lead designer for Amazon Ads&rsquo; design system, supporting a $50B/year business across 890+ software projects. Built documentation, Figma libraries, and led adoption for a 100+ person design org.</p>
+            <p>Lead designer for Amazon Ads&rsquo; design system, supporting a $50B/year business across 900+ software projects. Built documentation, Figma libraries, and led adoption for the design org.</p>
             <br />
             <p>2019&ndash;2025</p>
           </div>
