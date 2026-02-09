@@ -277,7 +277,10 @@ Page template for the main books overview page with stats.
         </button>
         <script>
         document.getElementById('favorites-show-all').addEventListener('click', function() {
-          document.getElementById('favorites-extra').classList.remove('favorites-hidden');
+          var extra = document.getElementById('favorites-extra');
+          extra.classList.remove('favorites-hidden');
+          var firstLink = extra.querySelector('a');
+          if (firstLink) firstLink.focus();
           this.remove();
         });
         </script>
