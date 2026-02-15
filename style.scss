@@ -441,9 +441,12 @@ header.site-header {
   top: 0;
   z-index: 1000;
   padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  padding-bottom: 1rem;
   transition: box-shadow 0.2s ease;
   &.scrolled {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding-top: calc(0.6rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 0.6rem;
   }
 }
 
@@ -2090,12 +2093,17 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   /* Smooth color transitions for theme change */
   body,
-  header.site-header,
   .site-footer,
   nav input[type="search"],
   pre,
   .books .book_quotes .book_quote {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Header: combine theme color transitions + scroll-triggered transitions */
+  header.site-header {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+                box-shadow 0.2s ease, padding-top 0.2s ease, padding-bottom 0.2s ease;
   }
 
   a,
@@ -2697,5 +2705,124 @@ html {
     &:active {
       background: lighten($color__dark-bg, 3%);
     }
+  }
+}
+
+/* ==========================================================================
+   Scroll-triggered & micro-interaction animations
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Button press depth */
+  .btn:active {
+    transform: scale(0.97) translateY(1px);
+  }
+
+  /* Bar chart grow-in on scroll */
+  .chart-bar-inner {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: calc(var(--i, 0) * 40ms);
+  }
+  .stats-chart-bar.animate-in .chart-bar-inner {
+    transform: scaleY(1);
+  }
+
+  /* Rating distribution bars grow-in on scroll */
+  .rating-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+  .stats-ratings.animate-in .rating-bar {
+    transform: scaleX(1);
+  }
+
+  /* Staggered book grid fade-in */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .will-animate > a,
+  .will-animate > .book-card {
+    opacity: 0;
+  }
+
+  .will-animate.animate-in > a,
+  .will-animate.animate-in > .book-card {
+    animation: fade-in-up 300ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 30ms);
+  }
+
+}
+
+/* Stat count-up prototype panel */
+.countup-panel {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: $font__sans;
+  font-size: 0.8rem;
+  width: 240px;
+
+  h3 {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  input[type="range"] {
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.25rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-family: $font__sans;
+    font-size: 0.8rem;
+  }
+}
+
+[data-theme="dark"] .countup-panel {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+
+  select, input[type="range"] {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border);
+    color: var(--color-text);
   }
 }

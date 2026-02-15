@@ -14,7 +14,8 @@
       <div class="container">
         <?php if (has_post_thumbnail()) : ?>
           <div class="book-cover-wrapper">
-            <div class="book-3d">
+            <?php $book_vt = hypatia_book_vt_name($post->ID); ?>
+            <div class="book-3d"<?php if ($book_vt) echo ' style="view-transition-name: ' . $book_vt . '"'; ?>>
               <div class="book-cover">
                 <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" itemprop="image" />
                 <div class="book-spine"></div>
@@ -137,7 +138,7 @@
                 <span class="nav-label">Previous</span>
                 <div class="nav-book">
                   <div class="cover">
-                    <?php echo get_the_post_thumbnail($prev_post->ID, 'full', array('class' => 'book')); ?>
+                    <?php echo get_the_post_thumbnail($prev_post->ID, 'full', array('class' => 'book', 'data-book-id' => $prev_post->ID)); ?>
                   </div>
                   <div class="nav-metadata">
                     <span class="title"><?php echo get_the_title($prev_post->ID); ?></span>
@@ -152,7 +153,7 @@
                 <div class="nav-book">
                   <div class="cover">
                     <div class="book-spine"></div>
-                    <?php echo get_the_post_thumbnail($next_post->ID, 'full', array('class' => 'book')); ?>
+                    <?php echo get_the_post_thumbnail($next_post->ID, 'full', array('class' => 'book', 'data-book-id' => $next_post->ID)); ?>
                   </div>
                   <div class="nav-metadata">
                     <span class="title"><?php echo get_the_title($next_post->ID); ?></span>

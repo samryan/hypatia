@@ -396,6 +396,29 @@ function hypatia_books_nav() {
 }
 
 /**
+ * Reserve and return a view-transition-name for a book cover.
+ * Returns 'book-{id}' on first call per ID, empty string on duplicates.
+ * Duplicate view-transition-names on the same page break the entire transition.
+ */
+function hypatia_book_vt_name($post_id) {
+  static $used = [];
+  $id = intval($post_id);
+  if (isset($used[$id])) return '';
+  $used[$id] = true;
+  return 'book-' . $id;
+}
+
+/**
+ * Return a full inline style attribute for a book's view-transition-name.
+ * Returns empty string if the name was already used on this page.
+ */
+function hypatia_book_vt_style($post_id) {
+  $name = hypatia_book_vt_name($post_id);
+  if (!$name) return '';
+  return ' style="view-transition-name: ' . $name . '"';
+}
+
+/**
  * Reusable book card component
  *
  * @param int|WP_Post $post_id Post ID or post object
@@ -453,7 +476,7 @@ function hypatia_book_card($post_id = null, $style = 'grid', $options = []) {
   if ($thumbnail) {
     $loading_attr = $options['loading'] === 'eager' ? '' : ' loading="lazy"';
     $priority_attr = $options['loading'] === 'eager' ? ' fetchpriority="high"' : '';
-    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" width="140" height="210"' . $loading_attr . $priority_attr . ' />';
+    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" width="140" height="210"' . $loading_attr . $priority_attr . ' data-book-id="' . intval($post_id) . '" />';
   }
   $output .= '</div>';
 

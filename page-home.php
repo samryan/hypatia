@@ -66,7 +66,7 @@
           <a href="<?php the_permalink(); ?>">
             <div class="cover">
               <div class="book-spine"></div>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" width="140" height="210" loading="lazy" />
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" width="140" height="210" loading="lazy" data-book-id="<?php echo $post->ID; ?>" />
             </div>
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
