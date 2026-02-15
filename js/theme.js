@@ -151,56 +151,16 @@
   })();
 
   // ==========================================================================
-  // Stat card count-up prototype (books overview page only)
+  // Stat card count-up animation (books overview page only)
   // ==========================================================================
   (function() {
     var statsOverview = document.querySelector('.stats-overview');
     if (!statsOverview) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var panel = document.createElement('div');
-    panel.className = 'countup-panel';
-    panel.innerHTML =
-      '<h3>Count-up prototype</h3>' +
-      '<label><span>Duration <output id="cp-dur-val">800ms</output></span>' +
-      '<input type="range" id="cp-duration" min="200" max="1500" value="800" step="50"></label>' +
-      '<label><span>Start from <output id="cp-start-val">70%</output></span>' +
-      '<input type="range" id="cp-start" min="0" max="90" value="70" step="5"></label>' +
-      '<label>Easing' +
-      '<select id="cp-easing">' +
-      '<option value="ease-out">ease-out (gentle)</option>' +
-      '<option value="ease-out-quart" selected>ease-out-quart (recommended)</option>' +
-      '<option value="ease-out-expo">ease-out-expo (snappy)</option>' +
-      '<option value="linear">linear</option>' +
-      '</select></label>' +
-      '<button id="cp-replay" type="button" class="btn" style="width:100%;margin-top:0.5rem;">Replay</button>' +
-      '<button id="cp-close" type="button" style="width:100%;background:transparent;border:none;box-shadow:none;text-decoration:underline;color:inherit;margin-top:0.25rem;padding:0.4rem;font-size:0.8rem;cursor:pointer;">Dismiss</button>';
-    document.body.appendChild(panel);
-
-    var durSlider = document.getElementById('cp-duration');
-    var durVal = document.getElementById('cp-dur-val');
-    var startSlider = document.getElementById('cp-start');
-    var startVal = document.getElementById('cp-start-val');
-    var easingSelect = document.getElementById('cp-easing');
-
-    durSlider.addEventListener('input', function() {
-      durVal.textContent = this.value + 'ms';
-    });
-    startSlider.addEventListener('input', function() {
-      startVal.textContent = this.value + '%';
-    });
-
-    document.getElementById('cp-replay').addEventListener('click', runCountUp);
-    document.getElementById('cp-close').addEventListener('click', function() {
-      panel.remove();
-    });
-
-    var easings = {
-      'ease-out': function(t) { return 1 - Math.pow(1 - t, 2); },
-      'ease-out-quart': function(t) { return 1 - Math.pow(1 - t, 4); },
-      'ease-out-expo': function(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); },
-      'linear': function(t) { return t; }
-    };
+    var duration = 800;
+    var startPct = 0.7;
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
 
     var statNumbers = statsOverview.querySelectorAll('.stat-number');
     var originalValues = [];
@@ -234,16 +194,13 @@
     function runCountUp() {
       if (animFrameId) cancelAnimationFrame(animFrameId);
 
-      var duration = parseInt(durSlider.value);
-      var startPct = parseInt(startSlider.value) / 100;
-      var easingFn = easings[easingSelect.value];
       var startTime = null;
       var parsed = originalValues.map(parseValue);
 
       function tick(time) {
         if (!startTime) startTime = time;
         var progress = Math.min((time - startTime) / duration, 1);
-        var eased = easingFn(progress);
+        var eased = easeOutQuart(progress);
 
         statNumbers.forEach(function(el, i) {
           if (!parsed[i]) return;
