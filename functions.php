@@ -1149,6 +1149,56 @@ add_action('save_post', 'hypatia_clear_llms_cache');
 add_action('delete_post', 'hypatia_clear_llms_cache');
 
 /**
+ * Auto-generate meta descriptions
+ */
+function hypatia_meta_description() {
+  $desc = '';
+
+  if ( is_front_page() ) {
+    $desc = 'Sam Ryan is a designer working on Kindle at Amazon. Personal site with projects and a reading list tracked since 2009.';
+
+  } elseif ( is_singular( 'books' ) ) {
+    $title = get_the_title();
+    $author = get_post_meta( get_the_ID(), 'book_author', true );
+    $rating = get_post_meta( get_the_ID(), 'rating', true );
+    $stars = $rating ? intval( $rating ) . '/5' : '';
+    $desc = $title;
+    if ( $author ) $desc .= ' by ' . $author;
+    if ( $stars ) $desc .= ' — ' . $stars;
+    $excerpt = get_the_excerpt();
+    if ( $excerpt ) $desc .= '. ' . wp_trim_words( $excerpt, 20, '...' );
+
+  } elseif ( is_page_template( 'books-main.php' ) ) {
+    $desc = 'Books I\'ve read since 2009, with ratings, highlights, and reading stats.';
+
+  } elseif ( is_page_template( 'books-year.php' ) ) {
+    $slug = get_post_field( 'post_name', get_the_ID() );
+    $year = str_replace( 'list-', '', $slug );
+    $desc = 'Books I read in ' . $year . ', with ratings and highlights.';
+
+  } elseif ( is_page_template( 'books-all.php' ) ) {
+    $desc = 'Complete list of every book I\'ve read since 2009.';
+
+  } elseif ( is_page_template( 'projects.php' ) ) {
+    $desc = 'Design work and projects by Sam Ryan, including Kindle design tools and the Storm design system at Amazon Ads.';
+
+  } elseif ( is_singular() ) {
+    $excerpt = get_the_excerpt();
+    if ( $excerpt ) {
+      $desc = wp_trim_words( $excerpt, 25, '...' );
+    } else {
+      $desc = wp_trim_words( get_the_content(), 25, '...' );
+    }
+  }
+
+  if ( $desc ) {
+    $desc = esc_attr( wp_strip_all_tags( $desc ) );
+    echo '<meta name="description" content="' . $desc . '">' . "\n";
+  }
+}
+add_action( 'wp_head', 'hypatia_meta_description', 1 );
+
+/**
  * Flush rewrite rules on theme activation
  */
 function hypatia_llm_flush_rules() {
