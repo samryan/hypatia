@@ -162,8 +162,11 @@ Page template for the main books overview page with stats.
       <?php
         $args = array( 'posts_per_page' => 4, 'post_type' => 'books' );
         $myposts = get_posts( $args );
+        $card_index = 0;
         foreach ( $myposts as $post ) : setup_postdata( $post );
-          echo hypatia_book_card($post->ID, 'mini');
+          $card_opts = $card_index < 2 ? ['loading' => 'eager'] : [];
+          $card_index++;
+          echo hypatia_book_card($post->ID, 'mini', $card_opts);
         endforeach;
         wp_reset_postdata();
       ?>

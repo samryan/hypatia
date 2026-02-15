@@ -35,8 +35,10 @@ get_header(); ?>
     );
 
     $projects = get_posts($args);
+    $project_index = 0;
 
     foreach ($projects as $post) : setup_postdata($post);
+      $project_index++;
       $thumb_url = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'full' ) : '';
       $thumb_alt = has_post_thumbnail() ? get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) : '';
   ?>
@@ -46,7 +48,7 @@ get_header(); ?>
           <?php if ( $thumb_url ) : ?>
             <div class="project-image">
               <a href="<?php echo esc_url( $thumb_url ); ?>" class="lightbox" data-group="projects">
-                <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" />
+                <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>"<?php echo $project_index === 1 ? ' fetchpriority="high"' : ' loading="lazy"'; ?> />
               </a>
             </div>
           <?php endif; ?>

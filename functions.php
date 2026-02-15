@@ -116,9 +116,8 @@ function hypatia_scripts() {
 			get_theme_file_uri( 'js/theme.js' ),
 			array(),
 			filemtime( $theme_js ),
-			true
+			array( 'in_footer' => true, 'strategy' => 'defer' )
 		);
-		wp_script_add_data( 'hypatia-theme', 'defer', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'hypatia_scripts' );
@@ -421,6 +420,7 @@ function hypatia_book_card($post_id = null, $style = 'grid', $options = []) {
     'show_rating' => true,
     'show_link' => true,
     'label' => '',
+    'loading' => 'lazy',
   ];
   $options = array_merge($defaults, $options);
 
@@ -451,7 +451,9 @@ function hypatia_book_card($post_id = null, $style = 'grid', $options = []) {
   $output .= '<div class="book-card__cover">';
   $output .= '<div class="book-spine"></div>';
   if ($thumbnail) {
-    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" loading="lazy" />';
+    $loading_attr = $options['loading'] === 'eager' ? '' : ' loading="lazy"';
+    $priority_attr = $options['loading'] === 'eager' ? ' fetchpriority="high"' : '';
+    $output .= '<img src="' . esc_url($thumbnail) . '" class="book" alt="" width="140" height="210"' . $loading_attr . $priority_attr . ' />';
   }
   $output .= '</div>';
 
@@ -645,9 +647,8 @@ function hypatia_search_modal_scripts() {
     get_theme_file_uri( '/js/search-modal.js' ),
     array(),
     $version,
-    true
+    array( 'in_footer' => true, 'strategy' => 'defer' )
   );
-  wp_script_add_data( 'hypatia-search-modal', 'defer', true );
 
   wp_localize_script( 'hypatia-search-modal', 'hypatiaSearch', array(
     'endpoint' => rest_url( 'hypatia/v1/search' ),

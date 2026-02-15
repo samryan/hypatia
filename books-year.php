@@ -40,12 +40,15 @@ Page template for yearly book lists. Extracts year from page slug (e.g., "books-
       if ( ! empty( $myposts ) ) {
         update_meta_cache( 'post', wp_list_pluck( $myposts, 'ID' ) );
       }
+      $book_index = 0;
       foreach ( $myposts as $post ) : setup_postdata( $post );
+        $is_above_fold = $book_index < 3;
+        $book_index++;
     ?>
       <a href="<?php the_permalink(); ?>">
         <div class="cover">
           <div class="book-spine"></div>
-          <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" loading="lazy" />
+          <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" width="140" height="210"<?php echo $is_above_fold ? ' fetchpriority="high"' : ' loading="lazy"'; ?> />
         </div>
         <div class="metadata">
           <div class="title"><?php the_title() ?></div>

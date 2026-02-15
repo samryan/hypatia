@@ -5,7 +5,7 @@
   <div class="home intro">
     <div class="container">
       <figure class="home-photo">
-        <img src="<?php echo get_template_directory_uri(); ?>/sam.jpg" width="" height="" alt="Sam Ryan" />
+        <img src="<?php echo get_template_directory_uri(); ?>/sam.jpg" width="800" height="800" alt="Sam Ryan" />
       </figure>
       <div>
         <?php while(have_posts()) : the_post(); ?>
@@ -24,7 +24,7 @@
       <div class="home-projects-list">
         <div class="home-project-row">
           <div class="home-project-image">
-            <img src="<?php echo $uploads_url . '/kindle-scribes-2.jpg'; ?>" alt="" loading="lazy" />
+            <img src="<?php echo $uploads_url . '/kindle-scribes-2.jpg'; ?>" alt="" fetchpriority="high" />
           </div>
           <div class="home-project-info">
             <h3>Kindle design tools</h3>
@@ -59,12 +59,14 @@
         <?php
           $args = array( 'posts_per_page' => 6, 'post_type' => 'books' );
           $myposts = get_posts( $args );
+          $home_book_index = 0;
           foreach ( $myposts as $post ) : setup_postdata( $post );
+            $home_book_index++;
         ?>
           <a href="<?php the_permalink(); ?>">
             <div class="cover">
               <div class="book-spine"></div>
-              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" loading="lazy" />
+              <img src="<?php the_post_thumbnail_url('full'); ?>" class="book" alt="" width="140" height="210" loading="lazy" />
             </div>
             <div class="metadata">
               <div class="title"><?php the_title() ?></div>
