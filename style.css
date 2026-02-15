@@ -15,7 +15,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
 /* import normalize */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -262,7 +261,7 @@ th {
 }
 
 /* Colors */
-/* import fonts */
+/* Fonts loaded via wp_enqueue_style in functions.php (preconnect + display=swap) */
 /* Type */
 /* Media query values */
 /* Document styles */
@@ -1399,6 +1398,29 @@ ol.book-list .book-list-item::before {
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+.book-list-pagination {
+  margin-top: 2rem;
+}
+.book-list-pagination .pagination-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+}
+.book-list-pagination .page-numbers {
+  padding: 0.35em 0.65em;
+  border: 1px solid #c5c4b8;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+.book-list-pagination .page-numbers:hover {
+  border-color: #3e3c2f;
+}
+.book-list-pagination .page-numbers.current {
+  font-weight: 600;
 }
 
 /* Stats page */
