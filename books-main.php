@@ -170,7 +170,7 @@ Page template for the main books overview page with stats.
       </div>
     </div>
     <div class="books-year-link">
-      <a href="/books/list-<?php echo $stats['current_year']; ?>" class="btn">This year's list &rarr;</a>
+      <a href="/books/list-<?php echo $stats['current_year']; ?>" class="btn">This year&rsquo;s list &rarr;</a>
     </div>
   </div>
 
@@ -257,7 +257,7 @@ Page template for the main books overview page with stats.
         $args = array(
           'post_type' => 'books',
           'tag' => 'favorite',
-          'posts_per_page' => -1
+          'posts_per_page' => 50
         );
         $the_query = new WP_Query($args);
       ?>
@@ -275,15 +275,6 @@ Page template for the main books overview page with stats.
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           Show all
         </button>
-        <script>
-        document.getElementById('favorites-show-all').addEventListener('click', function() {
-          var extra = document.getElementById('favorites-extra');
-          extra.classList.remove('favorites-hidden');
-          var firstLink = extra.querySelector('a');
-          if (firstLink) firstLink.focus();
-          this.remove();
-        });
-        </script>
       <?php endif; ?>
     </div>
   </div>

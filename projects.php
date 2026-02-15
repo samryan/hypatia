@@ -6,8 +6,6 @@ Description: Template for displaying a list of projects
 
 get_header(); ?>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.css">
-
 <main id="main" role="main">
 <div>
   <div class="container">
@@ -30,7 +28,7 @@ get_header(); ?>
   <?php
     $args = array(
       'post_type' => 'projects',
-      'posts_per_page' => -1,
+      'posts_per_page' => 50,
       'post_status' => 'publish',
       'orderby' => 'menu_order',
       'order' => 'ASC'
@@ -39,14 +37,16 @@ get_header(); ?>
     $projects = get_posts($args);
 
     foreach ($projects as $post) : setup_postdata($post);
+      $thumb_url = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'full' ) : '';
+      $thumb_alt = has_post_thumbnail() ? get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) : '';
   ?>
     <div class="project-section">
       <div class="container">
         <div class="project-content">
-          <?php if (has_post_thumbnail()) : ?>
+          <?php if ( $thumb_url ) : ?>
             <div class="project-image">
-              <a href="<?php the_post_thumbnail_url('full'); ?>" class="lightbox" data-group="projects">
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>" />
+              <a href="<?php echo esc_url( $thumb_url ); ?>" class="lightbox" data-group="projects">
+                <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" />
               </a>
             </div>
           <?php endif; ?>
@@ -65,16 +65,5 @@ get_header(); ?>
   ?>
 </div>
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.js"></script>
-<script>
-  const tobii = new Tobii({
-    selector: '.lightbox',
-    zoom: true,
-    counter: false,
-    nav: false,
-    swipe: false
-  });
-</script>
 
 <?php get_footer(); ?>

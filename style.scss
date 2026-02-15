@@ -53,8 +53,7 @@ $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #c5c4b8;
 $color__border-abbr: #666;
 
-/* import fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+/* Fonts loaded via wp_enqueue_style in functions.php (preconnect + display=swap) */
 
 /* Type */
 
@@ -1190,6 +1189,29 @@ ol.book-list {
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+.book-list-pagination {
+  margin-top: 2rem;
+  .pagination-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+  }
+  .page-numbers {
+    padding: 0.35em 0.65em;
+    border: 1px solid $color__background-hr;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    &:hover {
+      border-color: $color__text-main;
+    }
+    &.current {
+      font-weight: 600;
+    }
+  }
 }
 
 /* Stats page */

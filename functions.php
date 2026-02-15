@@ -80,10 +80,46 @@ endif;
 add_action( 'after_setup_theme', 'hypatia_setup' );
 
 /**
+ * Google Fonts URL (used for async load).
+ */
+function hypatia_fonts_url() {
+	return 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap';
+}
+
+/**
  * Enqueue scripts and styles.
  */
 function hypatia_scripts() {
+	// Preconnect for Google Fonts
+	add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
+		if ( $relation_type === 'preconnect' ) {
+			$urls[] = array( 'href' => 'https://fonts.googleapis.com', 'crossorigin' => true );
+			$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' => true );
+		}
+		return $urls;
+	}, 10, 2 );
+
+	// Main stylesheet (no font dependency; fonts load async below)
 	wp_enqueue_style( 'hypatia-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
+
+	// Load Google Fonts asynchronously so they don't block render (saves ~550ms in Lighthouse)
+	add_action( 'wp_head', function() {
+		$url = esc_url( hypatia_fonts_url() );
+		echo '<link rel="preload" href="' . $url . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+		echo '<noscript><link rel="stylesheet" href="' . $url . '"></noscript>';
+	}, 1 );
+
+	$theme_js = get_theme_file_path( 'js/theme.js' );
+	if ( file_exists( $theme_js ) ) {
+		wp_enqueue_script(
+			'hypatia-theme',
+			get_theme_file_uri( 'js/theme.js' ),
+			array(),
+			filemtime( $theme_js ),
+			true
+		);
+		wp_script_add_data( 'hypatia-theme', 'defer', true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'hypatia_scripts' );
 
@@ -210,7 +246,7 @@ function hypatia_quick_links_widget() {
 
 // Lightbox for Projects page
 function hypatia_projects_lightbox() {
-  if ( ! is_page( 193 ) ) return;
+  if ( ! is_page_template( 'projects.php' ) ) return;
 
   wp_enqueue_style( 'tobii', 'https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.css' );
   wp_enqueue_script( 'tobii', 'https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.js', array(), null, true );
@@ -269,8 +305,9 @@ function hypatia_projects_lightbox() {
         img.parentNode.insertBefore(wrapper, img);
         wrapper.appendChild(img);
       });
-      window.tobiiInstance = new Tobii({ selector: '.lightbox', zoom: false, counter: false, nav: false });
-      document.querySelector('.tobii').addEventListener('click', function(e) {
+      window.tobiiInstance = new Tobii({ selector: '.lightbox', zoom: true, counter: false, nav: false, swipe: false });
+      var tobiiEl = document.querySelector('.tobii');
+      if (tobiiEl) tobiiEl.addEventListener('click', function(e) {
         if (e.target.closest('.tobii-image')) {
           window.tobiiInstance.close();
         }
@@ -288,7 +325,14 @@ function hypatia_book_rating($post_id = null) {
   }
 
   $rating = get_post_meta($post_id, 'rating', true);
-  $has_highlights = have_rows('book_quotes', $post_id);
+  // Read cached flag when set (by save_post or backfill). Avoids have_rows() in loops.
+  // When not set, fall back to have_rows() for this request only (no write on read).
+  $has_highlights = get_post_meta($post_id, '_has_book_quotes', true);
+  if ( $has_highlights === '' && function_exists( 'have_rows' ) ) {
+    $has_highlights = have_rows( 'book_quotes', $post_id );
+  } else {
+    $has_highlights = ( $has_highlights === '1' );
+  }
 
   // Convert rating to Unicode stars for display
   $stars = hypatia_rating_to_stars($rating);
@@ -449,6 +493,41 @@ function hypatia_auto_tag_new_book($post_id, $post, $update) {
 add_action('save_post_books', 'hypatia_auto_tag_new_book', 10, 3);
 
 /**
+ * Keep _has_book_quotes in sync when a book is saved. Used by hypatia_book_rating()
+ * so we can show the highlights icon without calling have_rows() in loops.
+ * Run hypatia_backfill_has_book_quotes() once to set the meta for existing books.
+ */
+function hypatia_update_has_book_quotes( $post_id ) {
+  if ( get_post_type( $post_id ) !== 'books' ) {
+    return;
+  }
+  $has = ( function_exists( 'have_rows' ) && have_rows( 'book_quotes', $post_id ) ) ? '1' : '0';
+  update_post_meta( $post_id, '_has_book_quotes', $has );
+}
+add_action( 'save_post_books', 'hypatia_update_has_book_quotes', 20 );
+
+/**
+ * One-time backfill: set _has_book_quotes for all books. Run via WP-CLI:
+ *   wp eval 'hypatia_backfill_has_book_quotes();'
+ * Or call from a one-off admin action / script.
+ */
+function hypatia_backfill_has_book_quotes() {
+  $books = get_posts( array(
+    'post_type'      => 'books',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'fields'         => 'ids',
+  ) );
+  $updated = 0;
+  foreach ( $books as $id ) {
+    $has = ( function_exists( 'have_rows' ) && have_rows( 'book_quotes', $id ) ) ? '1' : '0';
+    update_post_meta( $id, '_has_book_quotes', $has );
+    $updated++;
+  }
+  return $updated;
+}
+
+/**
  * Set dynamic default for year_read ACF field to current year
  */
 function hypatia_year_read_default($field) {
@@ -558,21 +637,23 @@ add_action('delete_post', 'hypatia_clear_caches');
  * Enqueue search modal scripts
  */
 function hypatia_search_modal_scripts() {
-  $version = filemtime(get_stylesheet_directory() . '/js/search-modal.js');
+  $script_path = get_theme_file_path( 'js/search-modal.js' );
+  $version = file_exists( $script_path ) ? filemtime( $script_path ) : null;
 
   wp_enqueue_script(
     'hypatia-search-modal',
-    get_theme_file_uri('/js/search-modal.js'),
+    get_theme_file_uri( '/js/search-modal.js' ),
     array(),
     $version,
     true
   );
+  wp_script_add_data( 'hypatia-search-modal', 'defer', true );
 
-  wp_localize_script('hypatia-search-modal', 'hypatiaSearch', array(
-    'endpoint' => rest_url('hypatia/v1/search'),
-  ));
+  wp_localize_script( 'hypatia-search-modal', 'hypatiaSearch', array(
+    'endpoint' => rest_url( 'hypatia/v1/search' ),
+  ) );
 }
-add_action('wp_enqueue_scripts', 'hypatia_search_modal_scripts');
+add_action( 'wp_enqueue_scripts', 'hypatia_search_modal_scripts' );
 
 /**
  * Get other books by the same author

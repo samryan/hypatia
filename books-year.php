@@ -31,12 +31,15 @@ Page template for yearly book lists. Extracts year from page slug (e.g., "books-
       $year = str_replace('list-', '', $slug);
 
       $args = array(
-        'posts_per_page' => -1,
+        'posts_per_page' => 500,
         'post_type' => 'books',
         'post_status' => 'publish',
         'tag' => 'list-' . $year
       );
       $myposts = get_posts( $args );
+      if ( ! empty( $myposts ) ) {
+        update_meta_cache( 'post', wp_list_pluck( $myposts, 'ID' ) );
+      }
       foreach ( $myposts as $post ) : setup_postdata( $post );
     ?>
       <a href="<?php the_permalink(); ?>">
