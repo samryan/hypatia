@@ -89,12 +89,43 @@
   (function() {
     if (!document.startViewTransition && !CSS.supports('view-transition-name', 'test')) return;
 
-    document.addEventListener('click', function(e) {
+    // On pointerdown: set view-transition-name early so the browser has time
+    // to commit the style before capturing the old-page snapshot on navigation.
+    // Using click is too late — the snapshot can race ahead of the style change.
+    var lastTaggedImg = null;
+    document.addEventListener('pointerdown', function(e) {
+      // Clear any previously tagged cover (e.g. pointer moved away without navigating)
+      if (lastTaggedImg) {
+        lastTaggedImg.style.viewTransitionName = '';
+        lastTaggedImg = null;
+      }
       var link = e.target.closest('a[href]');
       if (!link) return;
       var img = link.querySelector('img[data-book-id]');
-      if (!img) return;
-      img.style.viewTransitionName = 'book-' + img.getAttribute('data-book-id');
+      if (img) {
+        var id = img.getAttribute('data-book-id');
+        img.style.viewTransitionName = 'book-' + id;
+        sessionStorage.setItem('vt-book', id);
+        lastTaggedImg = img;
+        return;
+      }
+      // Navigating away from a detail page (e.g. breadcrumb): stash its book ID
+      var hero = document.querySelector('.book-3d[style*="view-transition-name"]');
+      if (hero) {
+        var match = hero.style.viewTransitionName.match(/book-(\d+)/);
+        if (match) sessionStorage.setItem('vt-book', match[1]);
+      }
+    });
+
+    // On incoming page: set view-transition-name on the matching cover
+    // so the morph works in reverse (detail→list).
+    window.addEventListener('pagereveal', function(e) {
+      if (!e.viewTransition) return;
+      var id = sessionStorage.getItem('vt-book');
+      if (!id) return;
+      sessionStorage.removeItem('vt-book');
+      var img = document.querySelector('img[data-book-id="' + id + '"]');
+      if (img) img.style.viewTransitionName = 'book-' + id;
     });
   })();
 
