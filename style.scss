@@ -92,7 +92,14 @@ html {
 }
 
 body {
-  background: $color__background-body;
+  background: #fff;
+}
+.content {
+  padding-top: 3rem;
+  min-height: 100dvh;
+  background:
+    linear-gradient($color__background-body, #fff) no-repeat bottom / 100% 30vh,
+    $color__background-body;
 }
 
 a {
@@ -436,7 +443,7 @@ nav {
 
 header.site-header {
   background: #fff;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -1578,10 +1585,26 @@ section.home {
 }
 
 /* Project images lightbox */
-.project-image .lightbox {
+button.lightbox {
   display: block;
   cursor: zoom-in;
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border-radius: 0;
+  box-shadow: none;
+  outline-offset: 2px;
   img {
+    display: block;
     transition: opacity 0.15s ease;
   }
   &:hover img,
@@ -1783,8 +1806,13 @@ html {
   --color-bg-elevated: #252522;
 
   body {
-    background: var(--color-bg);
+    background: #000;
     color: var(--color-text);
+  }
+  .content {
+    background:
+      linear-gradient(var(--color-bg), #000) no-repeat bottom / 100% 30vh,
+      var(--color-bg);
   }
 
   hr {
@@ -1849,7 +1877,7 @@ html {
   }
 
   .site-footer {
-    background: var(--color-bg);
+    background: transparent;
     .smallcaps {
       color: var(--color-text-light);
     }

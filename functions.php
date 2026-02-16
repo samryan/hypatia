@@ -245,13 +245,14 @@ function hypatia_quick_links_widget() {
 
 // Lightbox for Projects page
 function hypatia_projects_lightbox() {
-  if ( ! is_page_template( 'projects.php' ) ) return;
+  if ( ! is_page( 'projects' ) && ! is_page_template( 'projects.php' ) ) return;
 
   wp_enqueue_style( 'tobii', 'https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.css' );
   wp_enqueue_script( 'tobii', 'https://cdn.jsdelivr.net/npm/@midzer/tobii@2.5.0/dist/tobii.min.js', array(), null, true );
 
   wp_add_inline_style( 'tobii', "
     .tobii figcaption { display: none; }
+    .tobii-zoom__icon { display: none; }
     .tobii { background: rgba(0, 0, 0, 0.45); }
     .tobii[aria-hidden='false'] .tobii__slide figure {
       animation: tobii-zoom-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -297,12 +298,17 @@ function hypatia_projects_lightbox() {
   wp_add_inline_script( 'tobii', "
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.entry-content img').forEach(function(img) {
-        if (img.closest('a')) return;
-        var wrapper = document.createElement('a');
-        wrapper.href = img.src;
+        if (img.closest('a') || img.closest('button')) return;
+        var wrapper = document.createElement('button');
+        wrapper.type = 'button';
         wrapper.className = 'lightbox';
+        wrapper.setAttribute('data-src', img.src);
+        wrapper.href = img.src;
         img.parentNode.insertBefore(wrapper, img);
         wrapper.appendChild(img);
+      });
+      document.querySelectorAll('button.lightbox[data-src]').forEach(function(btn) {
+        btn.href = btn.getAttribute('data-src');
       });
       window.tobiiInstance = new Tobii({ selector: '.lightbox', zoom: true, counter: false, nav: false, swipe: false });
       var tobiiEl = document.querySelector('.tobii');

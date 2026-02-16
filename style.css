@@ -279,7 +279,13 @@ html {
 }
 
 body {
-  background: #f4f4f0;
+  background: #fff;
+}
+
+.content {
+  padding-top: 3rem;
+  min-height: 100dvh;
+  background: linear-gradient(#f4f4f0, #fff) no-repeat bottom/100% 30vh, #f4f4f0;
 }
 
 a {
@@ -655,7 +661,7 @@ nav input[type=search]:focus::placeholder, nav input[type=search]:active::placeh
 
 header.site-header {
   background: #fff;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -1798,14 +1804,30 @@ section.home {
 }
 
 /* Project images lightbox */
-.project-image .lightbox {
+button.lightbox {
   display: block;
   cursor: zoom-in;
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border-radius: 0;
+  box-shadow: none;
+  outline-offset: 2px;
 }
-.project-image .lightbox img {
+button.lightbox img {
+  display: block;
   transition: opacity 0.15s ease;
 }
-.project-image .lightbox:hover img, .project-image .lightbox:focus img {
+button.lightbox:hover img, button.lightbox:focus img {
   opacity: 0.85;
 }
 
@@ -2014,8 +2036,11 @@ html {
   /* Homepage projects */
 }
 [data-theme=dark] body {
-  background: var(--color-bg);
+  background: #000;
   color: var(--color-text);
+}
+[data-theme=dark] .content {
+  background: linear-gradient(var(--color-bg), #000) no-repeat bottom/100% 30vh, var(--color-bg);
 }
 [data-theme=dark] hr {
   background-color: var(--color-border);
@@ -2072,7 +2097,7 @@ html {
   color: var(--color-text-light);
 }
 [data-theme=dark] .site-footer {
-  background: var(--color-bg);
+  background: transparent;
 }
 [data-theme=dark] .site-footer .smallcaps {
   color: var(--color-text-light);
@@ -2854,3 +2879,4 @@ nav ul li a,
     animation-delay: calc(var(--i, 0) * 30ms);
   }
 }
+/* Stat count-up prototype panel */

@@ -47,9 +47,9 @@ get_header(); ?>
         <div class="project-content">
           <?php if ( $thumb_url ) : ?>
             <div class="project-image">
-              <a href="<?php echo esc_url( $thumb_url ); ?>" class="lightbox" data-group="projects">
+              <button type="button" class="lightbox" data-src="<?php echo esc_url( $thumb_url ); ?>" data-group="projects" aria-label="View larger image of <?php echo esc_attr( get_the_title() ); ?>">
                 <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>"<?php echo $project_index === 1 ? ' fetchpriority="high"' : ' loading="lazy"'; ?> />
-              </a>
+              </button>
             </div>
           <?php endif; ?>
 
