@@ -166,18 +166,28 @@
       animObserver.observe(ratingsSection);
     }
 
-    // Staggered book grid fade-in (only for grids below the fold)
+    // Staggered book grid fade-in
     document.querySelectorAll('.books .list, .book-card-list').forEach(function(list) {
-      var rect = list.getBoundingClientRect();
-      if (rect.top < window.innerHeight) return; // already visible, skip
-
       var children = list.children;
       var max = Math.min(children.length, 18); // cap stagger
       for (var i = 0; i < children.length; i++) {
         children[i].style.setProperty('--i', Math.min(i, max));
       }
       list.classList.add('will-animate');
-      animObserver.observe(list);
+
+      var rect = list.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        // Above the fold: animate on load. Double-rAF ensures the
+        // browser paints the invisible state before starting the animation.
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            list.classList.add('animate-in');
+          });
+        });
+      } else {
+        // Below the fold: animate on scroll into view
+        animObserver.observe(list);
+      }
     });
   })();
 

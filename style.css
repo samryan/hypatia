@@ -2327,23 +2327,16 @@ nav ul li a,
   navigation: auto;
 }
 @media (prefers-reduced-motion: no-preference) {
-  /* Customize the default crossfade transition */
+  /* Old page stays fully visible while the new page fades in on top.
+     Avoids the opacity dip that flashes the body background. */
   ::view-transition-old(root) {
-    animation: 150ms ease-out both fade-out;
+    animation: none;
   }
 
   ::view-transition-new(root) {
-    animation: 150ms ease-in 50ms both fade-in;
+    animation: 150ms ease-out both fade-in;
   }
 
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
   @keyframes fade-in {
     from {
       opacity: 0;
