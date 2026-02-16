@@ -1805,22 +1805,11 @@ section.home {
 
 /* Project images lightbox */
 button.lightbox {
+  all: unset;
   display: block;
   cursor: zoom-in;
-  appearance: none;
-  -webkit-appearance: none;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
   width: 100%;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  border-radius: 0;
-  box-shadow: none;
+  box-sizing: border-box;
   outline-offset: 2px;
 }
 button.lightbox img {
@@ -2873,3 +2862,5 @@ nav ul li a,
   }
 }
 /* Stat count-up prototype panel */
+
+/*# sourceMappingURL=style.css.map */
