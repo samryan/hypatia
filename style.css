@@ -1020,8 +1020,14 @@ div.container {
 }
 .book-detail-header .book-cover-wrapper {
   flex-shrink: 0;
+  min-width: 180px;
   /* Extra padding to accommodate 3D effect overflow */
   padding: 0.5rem 1rem 1.5rem 0;
+}
+@media (max-width: 599px) {
+  .book-detail-header .book-cover-wrapper {
+    min-width: 110px;
+  }
 }
 .book-detail-header .book-3d {
   position: relative;
