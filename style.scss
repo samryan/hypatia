@@ -804,8 +804,12 @@ div.container {
 
   .book-cover-wrapper {
     flex-shrink: 0;
+    min-width: 180px;
     /* Extra padding to accommodate 3D effect overflow */
     padding: 0.5rem 1rem 1.5rem 0;
+    @media (max-width: $screen-sm-max) {
+      min-width: 110px;
+    }
   }
 
   .book-3d {
