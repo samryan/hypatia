@@ -106,24 +106,6 @@
       </div>
     <?php endif; ?>
 
-    <!-- More by this author -->
-    <?php
-      $same_author_books = hypatia_books_by_same_author($post->ID, 6);
-      if (!empty($same_author_books)) :
-        $author_name = get_post_meta($post->ID, 'book_author', true);
-    ?>
-      <div class="book-more-by-author">
-        <div class="container">
-          <h2>More by <?php echo esc_html($author_name); ?></h2>
-          <div class="book-card-list book-card-list--mini">
-            <?php foreach ($same_author_books as $author_book) : ?>
-              <?php echo hypatia_book_card($author_book->ID, 'mini', ['show_rating' => true]); ?>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
-
     <!-- Prev/Next Navigation -->
     <?php
       $prev_post = get_previous_post();
@@ -162,6 +144,24 @@
                 </div>
               </a>
             <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+
+    <!-- More by this author -->
+    <?php
+      $same_author_books = hypatia_books_by_same_author($post->ID, 6);
+      if (!empty($same_author_books)) :
+        $author_name = get_post_meta($post->ID, 'book_author', true);
+    ?>
+      <div class="book-more-by-author">
+        <div class="container">
+          <h2>More by <?php echo esc_html($author_name); ?></h2>
+          <div class="book-card-list book-card-list--mini">
+            <?php foreach ($same_author_books as $author_book) : ?>
+              <?php echo hypatia_book_card($author_book->ID, 'mini', ['show_rating' => true]); ?>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>

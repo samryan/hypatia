@@ -452,8 +452,6 @@ header.site-header {
   transition: box-shadow 0.2s ease;
   &.scrolled {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    padding-top: calc(0.6rem + env(safe-area-inset-top, 0px));
-    padding-bottom: 0.6rem;
   }
 }
 
