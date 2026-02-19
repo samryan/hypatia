@@ -1876,6 +1876,12 @@ html {
   margin-top: 5rem;
 }
 
+@media (max-width: 599px) {
+  .home.intro {
+    margin-top: 2.5rem;
+  }
+}
+
 .home.books {
   margin-top: 5rem;
 }

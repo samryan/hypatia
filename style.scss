@@ -1646,6 +1646,9 @@ html {
 
 .home.intro {
   margin-top: 5rem;
+  @media (max-width: $screen-sm-max) {
+    margin-top: 2.5rem;
+  }
 }
 
 .home.books {
