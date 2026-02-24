@@ -24,7 +24,7 @@
       <div class="home-projects-list">
         <div class="home-project-row">
           <div class="home-project-image">
-            <img src="<?php echo $uploads_url . '/kindle-scribes-2.jpg'; ?>" alt="" fetchpriority="high" />
+            <img src="<?php echo $uploads_url . '/kindle-scribes-2.jpg'; ?>" alt="" fetchpriority="high" data-vt-project />
           </div>
           <div class="home-project-info">
             <h3>Kindle design tools</h3>
@@ -35,7 +35,7 @@
         </div>
         <div class="home-project-row">
           <div class="home-project-image storm">
-            <img src="<?php echo $uploads_url . '/storm.png'; ?>" alt="" loading="lazy" />
+            <img src="<?php echo $uploads_url . '/storm.png'; ?>" alt="" loading="lazy" data-vt-project />
           </div>
           <div class="home-project-info">
             <h3>Storm design system</h3>

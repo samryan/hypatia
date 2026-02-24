@@ -130,6 +130,92 @@
   })();
 
   // ==========================================================================
+  // Lazy view-transition-name for project images (home ↔ projects page).
+  // Home page images are marked with [data-vt-project]; on the projects page
+  // matching images are found in .entry-content by comparing filenames.
+  // ==========================================================================
+  (function() {
+    if (!document.startViewTransition && !CSS.supports('view-transition-name', 'test')) return;
+
+    function vtName(src) {
+      var base = src.split('/').pop().split('?')[0].replace(/\.[^.]+$/, '');
+      return 'project--' + base.replace(/[^a-zA-Z0-9-]/g, '-');
+    }
+
+    // Gather home page project images (marked in template)
+    var homeImgs = document.querySelectorAll('img[data-vt-project]');
+
+    // Persist the matchable VT keys when on the home page so the projects
+    // page knows which entry-content images are worth tagging.
+    if (homeImgs.length) {
+      var keys = [];
+      homeImgs.forEach(function(img) { keys.push(vtName(img.src)); });
+      sessionStorage.setItem('vt-project-keys', JSON.stringify(keys));
+    }
+
+    var knownKeys = null;
+    try { knownKeys = JSON.parse(sessionStorage.getItem('vt-project-keys')); } catch(e) {}
+    if (!knownKeys || !knownKeys.length) return;
+
+    var tagged = [];
+
+    document.addEventListener('pointerdown', function(e) {
+      tagged.forEach(function(el) { el.style.viewTransitionName = ''; });
+      tagged = [];
+
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+
+      // Home page: tag the marked project images
+      if (homeImgs.length) {
+        homeImgs.forEach(function(img) {
+          img.style.viewTransitionName = vtName(img.src);
+          tagged.push(img);
+        });
+        sessionStorage.setItem('vt-project', '1');
+        return;
+      }
+
+      // Projects page: only tag entry-content images that match known keys
+      var used = {};
+      document.querySelectorAll('.entry-content img').forEach(function(img) {
+        var name = vtName(img.src);
+        if (!used[name] && knownKeys.indexOf(name) !== -1) {
+          img.style.viewTransitionName = name;
+          tagged.push(img);
+          used[name] = true;
+        }
+      });
+      if (tagged.length) sessionStorage.setItem('vt-project', '1');
+    });
+
+    window.addEventListener('pagereveal', function(e) {
+      if (!e.viewTransition) return;
+      if (!sessionStorage.getItem('vt-project')) return;
+      sessionStorage.removeItem('vt-project');
+
+      // Home page: tag marked images
+      var revealHomeImgs = document.querySelectorAll('img[data-vt-project]');
+      if (revealHomeImgs.length) {
+        revealHomeImgs.forEach(function(img) {
+          img.style.viewTransitionName = vtName(img.src);
+        });
+        return;
+      }
+
+      // Projects page: tag matching entry-content images
+      var used = {};
+      document.querySelectorAll('.entry-content img').forEach(function(img) {
+        var name = vtName(img.src);
+        if (!used[name] && knownKeys.indexOf(name) !== -1) {
+          img.style.viewTransitionName = name;
+          used[name] = true;
+        }
+      });
+    });
+  })();
+
+  // ==========================================================================
   // Scroll-triggered animations
   // ==========================================================================
   (function() {

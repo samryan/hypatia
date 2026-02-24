@@ -106,24 +106,6 @@
       </div>
     <?php endif; ?>
 
-    <!-- More by this author -->
-    <?php
-      $same_author_books = hypatia_books_by_same_author($post->ID, 6);
-      if (!empty($same_author_books)) :
-        $author_name = get_post_meta($post->ID, 'book_author', true);
-    ?>
-      <div class="book-more-by-author">
-        <div class="container">
-          <h2>More by <?php echo esc_html($author_name); ?></h2>
-          <div class="book-card-list book-card-list--mini">
-            <?php foreach ($same_author_books as $author_book) : ?>
-              <?php echo hypatia_book_card($author_book->ID, 'mini', ['show_rating' => true]); ?>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
-
     <!-- Prev/Next Navigation -->
     <?php
       $prev_post = get_previous_post();
@@ -135,7 +117,7 @@
           <div class="book-nav-links">
             <?php if ($prev_post) : ?>
               <a href="<?php echo get_permalink($prev_post->ID); ?>" class="book-nav-link book-nav-prev" rel="prev">
-                <span class="nav-label">Previous</span>
+                <h2>Previous</h2>
                 <div class="nav-book">
                   <div class="cover">
                     <?php echo get_the_post_thumbnail($prev_post->ID, 'full', array('class' => 'book', 'data-book-id' => $prev_post->ID)); ?>
@@ -149,7 +131,7 @@
             <?php endif; ?>
             <?php if ($next_post) : ?>
               <a href="<?php echo get_permalink($next_post->ID); ?>" class="book-nav-link book-nav-next" rel="next">
-                <span class="nav-label">Next</span>
+                <h2>Next</h2>
                 <div class="nav-book">
                   <div class="cover">
                     <div class="book-spine"></div>
@@ -162,6 +144,24 @@
                 </div>
               </a>
             <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+
+    <!-- More by this author -->
+    <?php
+      $same_author_books = hypatia_books_by_same_author($post->ID, 6);
+      if (!empty($same_author_books)) :
+        $author_name = get_post_meta($post->ID, 'book_author', true);
+    ?>
+      <div class="book-more-by-author">
+        <div class="container">
+          <h2>More by <?php echo esc_html($author_name); ?></h2>
+          <div class="book-card-list book-card-list--mini">
+            <?php foreach ($same_author_books as $author_book) : ?>
+              <?php echo hypatia_book_card($author_book->ID, 'mini', ['show_rating' => true]); ?>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>

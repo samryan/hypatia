@@ -452,8 +452,6 @@ header.site-header {
   transition: box-shadow 0.2s ease;
   &.scrolled {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    padding-top: calc(0.6rem + env(safe-area-inset-top, 0px));
-    padding-bottom: 0.6rem;
   }
 }
 
@@ -982,7 +980,8 @@ div.container {
 /* Section dividers */
 .book-review,
 .book-highlights,
-.book-more-by-author {
+.book-more-by-author,
+.book-navigation {
   margin-top: 4rem;
   h2 {
     font-size: 1rem;
@@ -993,7 +992,6 @@ div.container {
 
 /* Book navigation - prev/next with covers */
 .book-navigation {
-  margin-top: 4rem;
   .book-nav-links {
     display: flex;
     flex-direction: column;
@@ -1008,11 +1006,6 @@ div.container {
   .book-nav-link {
     text-decoration: none;
     color: $color__text-main;
-
-    .nav-label {
-      display: block;
-      margin-bottom: 1rem;
-    }
 
     .nav-book {
       display: flex;
@@ -1992,7 +1985,6 @@ html {
   .book-navigation {
     .book-nav-link {
       color: var(--color-text);
-      .nav-label,
       .author {
         color: var(--color-text-light);
       }
@@ -2127,7 +2119,7 @@ html {
   /* Header: combine theme color transitions + scroll-triggered transitions */
   header.site-header {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
-                box-shadow 0.2s ease, padding-top 0.2s ease, padding-bottom 0.2s ease;
+                box-shadow 0.2s ease;
   }
 
   a,
@@ -2146,7 +2138,6 @@ html {
   .book-breadcrumb a,
   .book-detail-header .book-metadata .author,
   .book-detail-header .book-metadata .finished,
-  .book-navigation .book-nav-link .nav-label,
   .book-navigation .book-nav-link .author,
   .book-list-item .book-author,
   .book-list-item .book-meta {

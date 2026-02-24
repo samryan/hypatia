@@ -671,8 +671,6 @@ header.site-header {
 }
 header.site-header.scrolled {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding-top: calc(0.6rem + env(safe-area-inset-top, 0px));
-  padding-bottom: 0.6rem;
 }
 
 .site-footer {
@@ -1200,21 +1198,20 @@ div.container {
 /* Section dividers */
 .book-review,
 .book-highlights,
-.book-more-by-author {
+.book-more-by-author,
+.book-navigation {
   margin-top: 4rem;
 }
 .book-review h2,
 .book-highlights h2,
-.book-more-by-author h2 {
+.book-more-by-author h2,
+.book-navigation h2 {
   font-size: 1rem;
   color: #3e3c2f;
   margin: 0 0 1rem;
 }
 
 /* Book navigation - prev/next with covers */
-.book-navigation {
-  margin-top: 4rem;
-}
 .book-navigation .book-nav-links {
   display: flex;
   flex-direction: column;
@@ -1230,10 +1227,6 @@ div.container {
 .book-navigation .book-nav-link {
   text-decoration: none;
   color: #3e3c2f;
-}
-.book-navigation .book-nav-link .nav-label {
-  display: block;
-  margin-bottom: 1rem;
 }
 .book-navigation .book-nav-link .nav-book {
   display: flex;
@@ -2191,7 +2184,6 @@ html {
 [data-theme=dark] .book-navigation .book-nav-link {
   color: var(--color-text);
 }
-[data-theme=dark] .book-navigation .book-nav-link .nav-label,
 [data-theme=dark] .book-navigation .book-nav-link .author {
   color: var(--color-text-light);
 }
@@ -2297,7 +2289,7 @@ pre,
 
   /* Header: combine theme color transitions + scroll-triggered transitions */
   header.site-header {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease, padding-top 0.2s ease, padding-bottom 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease;
   }
 
   a,
@@ -2316,7 +2308,6 @@ nav ul li a,
 .book-breadcrumb a,
 .book-detail-header .book-metadata .author,
 .book-detail-header .book-metadata .finished,
-.book-navigation .book-nav-link .nav-label,
 .book-navigation .book-nav-link .author,
 .book-list-item .book-author,
 .book-list-item .book-meta {
@@ -2874,5 +2865,3 @@ nav ul li a,
   }
 }
 /* Stat count-up prototype panel */
-
-/*# sourceMappingURL=style.css.map */
