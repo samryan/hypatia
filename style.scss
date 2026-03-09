@@ -1604,37 +1604,32 @@ html {
   scrollbar-gutter: stable;
 }
 
-.home.intro .container {
+.home-intro-row {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  gap: 1rem;
   @media (min-width: $screen-sm-min) {
     flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
   }
-  > div {
-    flex-grow: 1;
+}
+
+.home-photo {
+  flex-shrink: 0;
+  @media (min-width: $screen-sm-min) {
+    width: 280px;
+  }
+  > img {
     width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
   }
-  figure {
-    align-self: center;
-    flex-grow: 0;
-    flex-shrink: 1;
-    @media (max-width: $screen-sm-max) {
-      margin: 1rem 0 0;
-      align-self: flex-start;
-    }
-    @media (min-width: $screen-sm-min) {
-      margin-inline-start: 0;
-    }
-    img {
-      border-radius: 0.5rem;
-      display: block;
-      width: 140px;
-      box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.18);
-      @media (min-width: $screen-sm-min) {
-        width: 200px;
-      }
-    }
-  }
+}
+
+.home-intro-text p:first-child {
+  margin-block-start: 0;
 }
 
 .home.intro {

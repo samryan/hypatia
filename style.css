@@ -1824,51 +1824,41 @@ html {
   scrollbar-gutter: stable;
 }
 
-.home.intro .container {
+.home-intro-row {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  gap: 1rem;
 }
 @media (min-width: 600px) {
-  .home.intro .container {
+  .home-intro-row {
     flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
   }
 }
-.home.intro .container > div {
-  flex-grow: 1;
+
+.home-photo {
+  flex-shrink: 0;
+}
+@media (min-width: 600px) {
+  .home-photo {
+    width: 280px;
+  }
+}
+.home-photo > img {
   width: 100%;
-}
-.home.intro .container figure {
-  align-self: center;
-  flex-grow: 0;
-  flex-shrink: 1;
-}
-@media (max-width: 599px) {
-  .home.intro .container figure {
-    margin: 1rem 0 0;
-    align-self: flex-start;
-  }
-}
-@media (min-width: 600px) {
-  .home.intro .container figure {
-    margin-inline-start: 0;
-  }
-}
-.home.intro .container figure img {
-  border-radius: 0.5rem;
+  height: auto;
+  border-radius: 4px;
   display: block;
-  width: 140px;
-  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.18);
 }
-@media (min-width: 600px) {
-  .home.intro .container figure img {
-    width: 200px;
-  }
+
+.home-intro-text p:first-child {
+  margin-block-start: 0;
 }
 
 .home.intro {
   margin-top: 5rem;
 }
-
 @media (max-width: 599px) {
   .home.intro {
     margin-top: 2.5rem;
@@ -2865,3 +2855,5 @@ nav ul li a,
   }
 }
 /* Stat count-up prototype panel */
+
+/*# sourceMappingURL=style.css.map */

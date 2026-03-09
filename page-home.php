@@ -4,13 +4,16 @@
 
   <div class="home intro">
     <div class="container">
-      <figure class="home-photo">
-        <img src="<?php echo get_template_directory_uri(); ?>/sam.jpg" width="800" height="800" alt="Sam Ryan" />
-      </figure>
-      <div>
+      <h2 class="section-header">About me</h2>
+      <div class="home-intro-row">
+        <div class="home-photo">
+          <img src="<?php echo get_template_directory_uri(); ?>/sam_560w.jpg" alt="Sam Ryan" />
+        </div>
+        <div class="home-intro-text">
         <?php while(have_posts()) : the_post(); ?>
           <?php the_content(); ?>
         <?php endwhile; ?>
+        </div>
       </div>
     </div>
   </div>
